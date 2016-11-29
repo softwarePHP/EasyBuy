@@ -1,0 +1,1 @@
+a:6:{i:0;s:7:"adminid";i:1;s:9:"adminname";i:2;s:9:"adminpswd";i:3;s:10:"permission";s:3:"_pk";s:7:"adminid";s:5:"_type";a:4:{s:7:"adminid";s:7:"int(11)";s:9:"adminname";s:8:"char(20)";s:9:"adminpswd";s:8:"char(20)";s:10:"permission";s:7:"int(11)";}}
