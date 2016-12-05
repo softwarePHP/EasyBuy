@@ -1,0 +1,39 @@
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__APP__/home/index/index">首页</a><span class="crumb-step">&gt;</span>用户管理<span class="crumb-step">&gt;</span><span>查看用户</span><span class="crumb-step">&gt;</span><span>查看</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__APP__/home/user/view/userid/{$user.username}" method="post">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                        <tr>
+                            <th><i class="require-red">*</i>用户账号：</th>
+                            <td>
+                                {$user.username}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>创建时间：</th>
+                            <td>{$user.createtime}</td>
+                        </tr>
+                        <tr>
+                            <th>密码：</th>
+                            <td>{$user.userpswd}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                   <a href="__APP__/home/user/index"><input class="btn btn6" value="返回" type="button"></a>
+                                   <a href="__APP__/home/user/update/userid/{$user.userid}"><input class="btn btn6" value="修改" type="button"></a>
+                                </td>
+                        </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->

@@ -1,0 +1,35 @@
+ <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__APP__/home/index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/index.php/home/admin/index">管理员管理</a><span class="crumb-step">&gt;</span><span>修改管理员</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+        <form action="__APP__/Home/Admin/save" method="post" >
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            
+                            <tr>
+                                <th>原密码：</th>
+                                <td><input class="common-text" name="author" size="50" value='{$admin.adminpswd}' type="text"></td>
+                            </tr>
+                           <tr>
+                                <th>修改密码为：</th>
+                                <td><input class="common-text" name="author1" size="50" value="" type="text"></td>
+                            </tr>
+                          <input type="hidden" name="adminid" value="{$admin.adminid}" />
+                            <tr>
+                                <th></th>
+                                <td>
+                                   <input class="btn btn6" value="提交" type="submit">
+                                   <a href="__APP__/home/admin/index"><input class="btn btn6" value="返回" type="button"></a>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
