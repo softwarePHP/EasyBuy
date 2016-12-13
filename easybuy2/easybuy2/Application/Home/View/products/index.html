@@ -115,7 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>
 								</ul>
 							</li>
-							<li><a href="products.html">每日精选</a></li>
+							<li><a href="__APP__/home/index/daily">每日精选</a></li>
 
 						</ul>
 					</div>
@@ -125,8 +125,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="search-box">
 				<div id="sb-search" class="sb-search">
-					<form>
-						<input class="sb-search-input" placeholder="输入你想要搜索的内容..." type="search" name="search" id="search">
+					<form action="__APP__/home/index/select" method="post">
+						<input class="sb-search-input" placeholder="输入您的搜索词" type="search" name="search" id="search">
 						<input class="sb-search-submit" type="submit" value="">
 						<span class="sb-icon-search"> </span>
 					</form>
@@ -181,7 +181,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 </div>
-		<form action="getproducts" method="post">
+		<form action="__APP__/home/products/getproducts" method="post">
 <div class="rsidebar span_1_of_left">
 	<section  class="sky-form">
 	<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>种类</h4>

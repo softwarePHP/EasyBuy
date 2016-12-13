@@ -28,7 +28,7 @@ class UserController extends Controller
             {
                 $result = $userTable->add($data);
                 if ($result) {
-                    $this->success("用户注册成功");
+                    $this->success("用户注册成功","../../home/index/login");
                 } else {
                     $this->error("Sorry,用户信息注册不成功");
                 }

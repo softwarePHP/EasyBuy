@@ -84,6 +84,12 @@ class ProductsController extends Controller
         $grand = M('grand');
         $gr = $grand->select();
         $this->assign('grand', $gr);
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women', $women);
+        $this->assign('men', $men);
+        $this->assign('children', $children);
 
         $this->display('index');
 
