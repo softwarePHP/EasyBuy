@@ -167,7 +167,7 @@ class IndexController extends Controller
         $search = I('search');
         $condetion['goodname'] = array('like',"%$search%");
         $result = M('goods')->where($condetion)->select();
-        $this->assign('result',$result);
+        $this->assign('goods',$result);
         $women = M('grand')->where("mark=1")->select();
         $men = M('grand')->where("mark=2")->select();
         $children = M('grand')->where("mark=3")->select();
