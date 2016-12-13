@@ -86,24 +86,55 @@ class PersonalController extends Controller
         }
       }
     public function personalCenter(){
-        $name = $_SESSION['user'];//获取已登录的用户名
-        $user = M('user');
-        $userid = $user->where('username = "'.$name.'"')->getField('userid');//获取已登录的用户的userid
-        //dump($userid);
-        $easybuyhome = new easybuyhome();
-        $count = M('orders')->where('userid ='.$userid)->count();
-        $page = $easybuyhome->getpage($count);
-        $pages = $page->show();
-        $order = M('orders');
-        $oredrs = $order->limit($page->firstRow.','.$page->listRows)->where('userid ='.$userid)->select();
-        $data = $easybuyhome->OrderSelect($oredrs);
-        //dump($pages);
-        $this->assign('data',$data);
-        $this->assign('pages',$pages);
-        $this->display();
+        session_start();
+        if($_SESSION['id']==null) {
+            $this->success('请先登录','../../home/index/login');
+        }
+        else{
+
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+            $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
+            $name = $_SESSION['user'];//获取已登录的用户名
+            $user = M('user');
+            $userid = $user->where('username = "'.$name.'"')->getField('userid');//获取已登录的用户的userid
+            //dump($userid);
+            $easybuyhome = new easybuyhome();
+            $count = M('orders')->where('userid ='.$userid)->count();
+            $page = $easybuyhome->getpage($count);
+            $pages = $page->show();
+            $order = M('orders');
+            $oredrs = $order->limit($page->firstRow.','.$page->listRows)->where('userid ='.$userid)->select();
+            $data = $easybuyhome->OrderSelect($oredrs);
+            //dump($pages);
+            $this->assign('data',$data);
+            $this->assign('pages',$pages);
+            $this->display();
+        }
+
     }
 //待付款
     public function pendingPayment(){
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
         $name = $_SESSION['user'];//获取已登录的用户名
         $user = M('user');
         $userid = $user->where('username = "'.$name.'"')->getField('userid');//获取已登录的用户的userid
@@ -121,6 +152,21 @@ class PersonalController extends Controller
     }
 //未发货
     public function unSend(){
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
         $name = $_SESSION['user'];//获取已登录的用户名
         $user = M('user');
         $userid = $user->where('username = "'.$name.'"')->getField('userid');//获取已登录的用户的userid
@@ -138,6 +184,21 @@ class PersonalController extends Controller
     }
 //已发货
     public function send(){
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
         $name = $_SESSION['user'];//获取已登录的用户名
         $user = M('user');
         $userid = $user->where('username = "'.$name.'"')->getField('userid');//获取已登录的用户的userid
@@ -155,6 +216,21 @@ class PersonalController extends Controller
     }
 //已签收
     public function over(){
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
         $name = $_SESSION['user'];//获取已登录的用户名
         $user = M('user');
         $userid = $user->where('username = "'.$name.'"')->getField('userid');//获取已登录的用户的userid
@@ -172,6 +248,21 @@ class PersonalController extends Controller
     }
 //已取消
     public function canceledOrder(){
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
         $name = $_SESSION['user'];//获取已登录的用户名
         $user = M('user');
         $userid = $user->where('username = "'.$name.'"')->getField('userid');//获取已登录的用户的userid
@@ -189,6 +280,21 @@ class PersonalController extends Controller
     }
 //已退货
     public function returned(){
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
         $name = $_SESSION['user'];//获取已登录的用户名
         $user = M('user');
         $userid = $user->where('username = "'.$name.'"')->getField('userid');//获取已登录的用户的userid
