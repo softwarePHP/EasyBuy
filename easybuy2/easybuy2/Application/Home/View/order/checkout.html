@@ -50,14 +50,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="top-right">
 				<ul>
-					<li class="text"><a href="__APP__/home/index/login">登录</a>
+					<li class="text"><a href="__APP__/home/personal/personalCenter">{$user}</a></li>
 					<li><div class="cart box_1">
-						<a href="__APP__/home/order/checkout">
+						<a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
 							<span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">清空购物车</a></p>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
 						<div class="clearfix"> </div>
 					</div></li>
+					<li class="text"><a href="__APP__/home/index/logout">{$logout}</a></li>
+
 				</ul>
 			</div>
 			<div class="clearfix"></div>
@@ -75,47 +77,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h1 class="navbar-brand"><a  href="__APP__/home/index/index">Easy Buy</a></h1>
+						<h1 class="navbar-brand"><a  href="index.html">Easy Buy</a></h1>
 					</div>
 					<!--/.navbar-header-->
 
+
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li><a href="__APP__/home/index/index">主页</a></li>
+							<li><a href="index.html">主页</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">女士<b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
 									<div class="row">
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<!--<li><a class="list" href="products.html">女士</a></li>-->
-												<li><a class="list1" href="__APP__/home/products/index">兰蔻(lancome)</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">资生堂(shiseido)</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">雅诗兰黛(estee lauder)</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">迪奥(dior)</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">香奈儿(chanel)</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-												<!--<li><a class="list" href="products.html">男士</a></li>-->
-												<li><a class="list1" href="__APP__/home/products/index">碧欧泉(biotherm)</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">赫莲娜(hr)</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">伊丽莎白·雅顿(ea)</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">百雀羚</a></li>
-												<li><a class="list1" href="__APP__/home/products/index"> </a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<ul class="multi-column-dropdown">
-
-												<li><a class="list1" href="__APP__/home/products/index">温碧泉</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">植美村</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">相宜本草</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">欧莱雅</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">丸美</a></li>
-											</ul>
-										</div>
+										<volist name="women" id="vo">
+											<div class="col-sm-4">
+												<ul class="multi-column-dropdown">
+													<!--<li><a class="list" href="products.html">女士</a></li>-->
+													<li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+												</ul>
+											</div>
+										</volist>
 									</div>
 								</ul>
 							</li>
@@ -123,25 +104,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">男士 <b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-2">
 									<div class="row">
-										<div class="col-sm-5">
-											<ul class="multi-column-dropdown">
-												<li><a class="list1" href="__APP__/home/products/index">碧欧泉</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">娇韵诗</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">兰蔻</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">欧珀莱</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">资生堂</a></li>
-											</ul>
-										</div>
-										<div class="col-sm-5">
-											<ul class="multi-column-dropdown">
-												<li><a class="list1" href="__APP__/home/products/index">倩碧</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">阿迪达斯</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">雅男士</a></li>
-												<li><a class="list1" href="__APP__/home/products/index">杰士派</a></li>
-												<li><a class="list1" href="__APP__/home/products/index__APP__/home/products/index">高夫</a></li>
-											</ul>
-										</div>
-
+										<volist name="men" id="vo">
+											<div class="col-sm-4">
+												<ul class="multi-column-dropdown">
+													<!--<li><a class="list" href="products.html">女士</a></li>-->
+													<li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+												</ul>
+											</div>
+										</volist>
 									</div>
 								</ul>
 							</li>
@@ -151,18 +121,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="row">
 										<div class="col-sm-1">
 											<ul class="multi-column-dropdown">
-												<li><a class="list1" style="width:150px;" href="__APP__/home/products/index">强生(Johnson)</a></li>
-												<li><a class="list1" style="width:150px;" href="__APP__/home/products/index">贝亲(Pigeon)</a></li>
-												<li><a class="list1" style="width:150px;" href="__APP__/home/products/index">施巴(Sebamed)</a></li>
-												<li><a class="list1" style="width:150px;" href="__APP__/home/products/index">妙思乐(mustela)</a></li>
-												<li><a class="list1" style="width:150px;" href="__APP__/home/products/index">贝比拉比</a></li>
+												<volist name="children" id="vo">
+													<li><a class="list1" style="width:150px;" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+												</volist>
 											</ul>
 										</div>
 
 									</div>
 								</ul>
 							</li>
-							<li><a href="__APP__/home/products/index">每日精选</a></li>
+							<li><a href="products.html">每日精选</a></li>
 
 						</ul>
 					</div>
@@ -198,8 +166,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="cart-items">
 			<div class="container">
 				<h2>我的购物车</h2>
-                <!--<form action="__APP__/home/order/order/userid/{$vo.userid}" method="post">-->
-                    <form>
+				<!--<form action="__APP__/home/order/order/userid/{$vo.userid}" method="post">-->
+				<form action="__APP__/home/order/order" method="post">
 					<foreach name='data' item='vo'>
 						<script>$(document).ready(function(c) {
 							$('.close1').on('click', function(c){
@@ -214,7 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="close1"> </div>
 							<div class="cart-sec simpleCart_shelfItem">
 								<div class="cart-item cyc">
-									<label><input name="goods[]" type="checkbox" /> </label>
+									<label><input name="shopids[]" type="checkbox" value="{$vo.shopid}"/> </label>
 									<img src="__ROOT__/{$vo.imageurl}" class="img-responsive" alt="">
 								</div>
 								<div class="cart-item-info">
@@ -233,14 +201,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="delivery">
 
 											<div class="clearfix"></div>
-											<p class="qty"> 数量 :  </p><input min="1" type="number" id="quantity" name="quantity" value="$vo.shopcount" class="form-control input-small">
+											<p class="qty"> 数量 :  </p><input min="1" type="number" id="quantity" name="quantity" value="{$vo.shopcount}" class="form-control input-small">
 										</div>
-											</div>
+									</div>
 
 								</div>
 								<div class="subscribe2" style="float: right;">
 
-									<a href="__APP__/home/order/order/shopid/{$vo.shopid}" class="button">支付</a>
 								</div>
 
 								<div class="clearfix"></div>
@@ -248,10 +215,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 					</foreach>
+
 					<br/>
 					<div style="float: right">
-						<a href="__APP__/home/order/order" class="button">购买</a>
-                        <!--<input type="submit" value="支付"/>-->
+						<a href="__APP__/home/order/order/userid/{$vo.userid}" class="button">购买</a>
+						<input type="submit" value="支付"/>
 					</div>
 				</form>
 			</div>
