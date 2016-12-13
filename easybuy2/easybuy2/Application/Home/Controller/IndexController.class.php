@@ -174,6 +174,12 @@ class IndexController extends Controller
         $this->assign('women',$women);
         $this->assign('men',$men);
         $this->assign('children',$children);
+        $categories = M('categories');
+            $ca = $categories->select();
+            $this->assign('categories', $ca);
+            $grand = M('grand');
+            $gr = $grand->select();
+            $this->assign('grand', $gr);
         $this->display('./products/index');
 
     }
