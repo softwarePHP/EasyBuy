@@ -177,6 +177,39 @@ class IndexController extends Controller
         $this->display('./products/index');
 
     }
+ public function daily()
+    {
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        //从商品数据库里获取数据，显示商品
+        $goodsTable=M('goods');
+        $goods=$goodsTable->where('daily=1')->limit(4)->select();
+        $this->assign('goods',$goods);
+        //
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
+        $categories = M('categories');
+        $ca = $categories->select();
+        $this->assign('categories', $ca);
+        $grand = M('grand');
+        $gr = $grand->select();
+        $this->assign('grand', $gr);
+
+
+        $this->display('index/daily');
+    }
+
 
 
 
