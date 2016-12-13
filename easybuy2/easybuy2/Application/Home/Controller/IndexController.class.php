@@ -190,7 +190,7 @@ class IndexController extends Controller
         }
         //从商品数据库里获取数据，显示商品
         $goodsTable=M('goods');
-        $goods=$goodsTable->where('daily=1')->limit(4)->select();
+        $goods=$goodsTable->where('daily=1')->limit(9)->select();
         $this->assign('goods',$goods);
         //
         $women = M('grand')->where("mark=1")->select();
