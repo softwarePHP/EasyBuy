@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Home</title>
+<link href="__PUBLIC__/home/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="__PUBLIC__/home/css/owl.carousel.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Swim Wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="__PUBLIC__/home/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/bootstrap-3.1.1.min.js"></script>
+	<!-- cart -->
+		<script src="__PUBLIC__/home/js/simpleCart.min.js"> </script>
+	<!-- cart -->
+</head>
+<body>
+	<!--header-->
+		<div class="header">
+			<div class="header-top">
+			<div class="container">
+				 <div class="lang_list">
+					<select tabindex="4" class="dropdown1">
+						<option value="" class="label" value="">中文</option>
+						<option value="1">英文</option>
+						<option value="2">法语</option>
+						<option value="3">德语</option>
+					</select>
+   			</div>
+				<div class="top-right">
+				<ul>
+					<li class="text"><a href="__APP__/home/index/login">{$user}</a></li>
+					<li><div class="cart box_1">
+							<a href="checkout.html">
+								 <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
+							</a>	
+							<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
+							<div class="clearfix"> </div>
+						</div></li>
+					<li class="text"><a href="__APP__/home/index/logout">{$logout}</a></li>
+
+				</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			</div>
+			<div class="header-bottom">
+					<div class="container">
+<!--/.content-->
+						<div class="content white">
+							<nav class="navbar navbar-default" role="navigation">
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+									<h1 class="navbar-brand"><a  href="index.html">Easy Buy</a></h1>
+								</div>
+								<!--/.navbar-header-->
+
+
+								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+									<ul class="nav navbar-nav">
+										<li><a href="index.html">主页</a></li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">女士<b class="caret"></b></a>
+											<ul class="dropdown-menu multi-column columns-3">
+												<div class="row">
+													<volist name="women" id="vo">
+														<div class="col-sm-4">
+															<ul class="multi-column-dropdown">
+																<!--<li><a class="list" href="products.html">女士</a></li>-->
+																<li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+															</ul>
+														</div>
+													</volist>
+												</div>
+											</ul>
+										</li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">男士 <b class="caret"></b></a>
+											<ul class="dropdown-menu multi-column columns-2">
+												<div class="row">
+													<volist name="men" id="vo">
+														<div class="col-sm-4">
+															<ul class="multi-column-dropdown">
+																<!--<li><a class="list" href="products.html">女士</a></li>-->
+																<li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+															</ul>
+														</div>
+													</volist>
+												</div>
+											</ul>
+										</li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">儿童 <b class="caret"></b></a>
+											<ul class="dropdown-menu multi-column columns-1">
+												<div class="row">
+													<div class="col-sm-1">
+														<ul class="multi-column-dropdown">
+															<volist name="children" id="vo">
+																<li><a class="list1" style="width:150px;" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+															</volist>
+														</ul>
+													</div>
+
+												</div>
+											</ul>
+										</li>
+										<li><a href="products.html">每日精选</a></li>
+
+									</ul>
+								</div>
+								<!--/.navbar-collapse-->
+							</nav>
+	<!--/.navbar-->
+</div>
+			   <div class="search-box">
+					<div id="sb-search" class="sb-search">
+						<form action="__APP__/home/index/select" method="post">
+							<input class="sb-search-input" placeholder="输入您的搜索词" type="search" name="search" id="search">
+							<input class="sb-search-submit" type="submit" value="">
+							<span class="sb-icon-search"> </span>
+						</form>
+					</div>
+				</div>
+			
+<!-- search-scripts -->
+					<script src="__PUBLIC__/home/js/classie.js"></script>
+					<script src="__PUBLIC__/home/js/uisearch.js"></script>
+						<script>
+							new UISearch( document.getElementById( 'sb-search' ) );
+						</script>
+					<!-- //search-scripts -->
+					<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<!--header-->
+		<div class="banner-section">
+			<div class="container">
+				<div class="banner-grids">
+					<div class="col-md-6 banner-grid">
+						<h2>欢迎光临易购商城</h2>
+						<p>易购商城彩妆团购,优品精选.上易购,体验美妆奥秘.众多大牌任你选!</p>
+						<a href="__APP__/home/products" class="button"> 去逛逛 </a>
+					</div>
+				<div class="col-md-6 banner-grid1">
+						<img src="__PUBLIC__/home/images/a1.jpg" class="img-responsive" alt=""/>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div><div class="copyrights">Collect from <a href="http://www.mycodes.net/" >企业网站模板</a></div>
+		</div>
+		<div class="banner-bottom">
+		<div class="gallery-cursual">
+		<!--requried-jsfiles-for owl-->
+		<script src="__PUBLIC__/home/js/owl.carousel.js"></script>
+			<script>
+				$(document).ready(function() {
+					$("#owl-demo").owlCarousel({
+						items : 3,
+						lazyLoad : true,
+						autoPlay : true,
+						pagination : false,
+					});
+				});
+			</script>
+		<!--requried-jsfiles-for owl -->
+		<!--start content-slider-->
+		<div id="owl-demo" class="owl-carousel text-center">
+			<volist name="grand" id="vo">
+			<div class="item">
+				<img class="lazyOwl" data-src="__ROOT__/{$vo.imageurl}" alt="name">
+				<div class="item-info">
+					<h5>{$vo.grandname}</h5>
+				</div>
+			</div>
+
+			</volist>
+			</div>
+		</div>
+		<!--sreen-gallery-cursual-->
+		</div>
+		</div>
+		<div class="gallery">
+			<div class="container">
+			<h3>明星产品 MUST CHECK OUT</h3>
+			<div class="gallery-grids">
+				<volist name="goods" id="vo">
+				<div class="col-md-3 gallery-grid ">
+					<a href="__APP__/home/goods/index/id/{$vo.goodid}"><img src="__ROOT__/{$vo.imageurl}" class="img-responsive" alt=""/>
+					<div class="gallery-info">
+					<div class="quick">
+					<p><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> view</p>
+					</div>
+					</div></a>
+					<div class="galy-info">
+						<p>{$vo.goodname}</p>
+						<div class="galry">
+						<div class="prices">
+						<h5 class="item_price">￥{$vo.goodprice}</h5>
+						</div>
+							<div class="shop">
+								<div class="btn_form">
+									<a href="__APP__/home/goods/checkout/goodid/{$vo.goodid}" class="add-cart item_add">加入购物车</a>
+								</div>
+
+							</div>
+
+						<div class="clearfix"></div>
+					</div>
+					</div>
+				</div>
+				</volist>
+				</div>
+			</div>
+
+	<!--  -->
+	<div class="subscribe">
+		<div class="container">
+			<div class="subscribe1">
+				<h4>最新的化妆品信息</h4>
+			</div>
+			<div class="subscribe2">
+				<form>
+					<input type="text" class="text" value="电子邮件地址" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Email';}">
+					<input type="submit" value="加入我们">
+				</form>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	</div>
+
+	<!--footer-->
+	<div class="footer-section">
+		<div class="container">
+			<div class="footer-grids">
+				<div class="col-md-2 footer-grid">
+					<h4>公司</h4>
+					<ul>
+						<li><a href="products.html">产品</a></li>
+						<li><a href="#">来这里工作</a></li>
+						<li><a href="#">团队</a></li>
+						<li><a href="#">事件</a></li>
+						<li><a href="#">经销商定位器</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 footer-grid">
+					<h4>服务</h4>
+					<ul>
+						<li><a href="#">支持</a></li>
+						<li><a href="#">产检问题解答</a></li>
+						<li><a href="#">保修</a></li>
+						<li><a href="contact.html">联系我们</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 footer-grid">
+					<h4>秩序 & 回报</h4>
+					<ul>
+						<li><a href="#">订单状态</a></li>
+						<li><a href="#">航运政策</a></li>
+						<li><a href="#">退货政策</a></li>
+						<li><a href="#">电子商务卡</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 footer-grid">
+					<h4>法律</h4>
+					<ul>
+						<li><a href="#">隐私声明</a></li>
+						<li><a href="#">条款和条件</a></li>
+						<li><a href="#">社会责任</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 footer-grid1">
+					<div class="social-icons">
+						<a href="#"><i class="icon"></i></a>
+						<a href="#"><i class="icon1"></i></a>
+						<a href="#"><i class="icon2"></i></a>
+						<a href="#"><i class="icon3"></i></a>
+						<a href="#"><i class="icon4"></i></a>
+					</div>
+					<p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.mycodes.net/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--footer-->
+		
+</body>
+</html>

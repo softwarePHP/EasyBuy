@@ -1,0 +1,435 @@
+[ 2016-11-29T11:06:37+08:00 ] ::1 /EASYBUY/admin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Index
+
+[ 2016-11-29T11:06:44+08:00 ] ::1 /EASYBUY/admin/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Login
+
+[ 2016-11-29T11:07:38+08:00 ] ::1 /EASYBUY/admin/index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Index
+
+[ 2016-11-29T11:08:01+08:00 ] ::1 /EASYBUY/admin/index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-11-29T11:08:01+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/login.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:01+08:00 ] ::1 /EASYBUY/admin/index/css/css3.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:css
+
+[ 2016-11-29T11:08:01+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/vds.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:01+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/jquery.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:01+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/LFControl.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:01+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/login.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:01+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/passportCommon.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:01+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/vds(1).js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:02+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/mars_vipapp.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:02+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/pc-mar.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:02+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/global.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:02+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/loginPublicHeadAndTaul.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:08:02+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/xz_icon_for_lf.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+
+[ 2016-11-29T11:08:02+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/wx_icon_for_lf.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-11-29T11:08:02+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/bi_wt.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/css/css3.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:css
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/vds.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/jquery.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/LFControl.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/login.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/passportCommon.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/vds(1).js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/mars_vipapp.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/pc-mar.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/global.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/loginPublicHeadAndTaul.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/xz_icon_for_lf.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/wx_icon_for_lf.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-11-29T11:09:47+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/bi_wt.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/css/css3.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:css
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/vds.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/jquery.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/LFControl.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/login.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/passportCommon.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/vds(1).js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/mars_vipapp.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/pc-mar.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/global.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/loginPublicHeadAndTaul.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/xz_icon_for_lf.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/wx_icon_for_lf.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-11-29T11:10:20+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/bi_wt.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:12:54+08:00 ] ::1 /EASYBUY/admin/index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-11-29T11:12:54+08:00 ] ::1 /EASYBUY/admin/index/css/css3.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:css
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/jquery.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/LFControl.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/login.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/passportCommon.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/vds(1).js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/mars_vipapp.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/pc-mar.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/loginPublicHeadAndTaul.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/xz_icon_for_lf.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/wx_icon_for_lf.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-11-29T11:12:55+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/bi_wt.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T14:07:29+08:00 ] ::1 /EASYBUY/admin/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.082502s ]
+ERR: 无法加载控制器:Login
+
+[ 2016-11-29T14:07:37+08:00 ] ::1 /EASYBUY/admin/index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-11-29T14:07:37+08:00 ] ::1 /EASYBUY/admin/index/css/css3.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:css
+
+[ 2016-11-29T14:07:37+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/jquery.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T14:07:37+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/LFControl.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T14:07:59+08:00 ] ::1 /EASYBUY/admin/index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-11-29T14:07:59+08:00 ] ::1 /EASYBUY/admin/index/css/css3.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:css
+
+[ 2016-11-29T14:07:59+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/jquery.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T14:07:59+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/LFControl.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T14:38:28+08:00 ] ::1 /EASYBUY/admin/index/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011000s ]
+
+[ 2016-11-29T14:38:29+08:00 ] ::1 /EASYBUY/admin/index/css/css3.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:css
+
+[ 2016-11-29T14:38:29+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/jquery.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
+[ 2016-11-29T14:38:29+08:00 ] ::1 /EASYBUY/admin/index/%E7%99%BB%E5%BD%95_%E4%B9%90%E8%9C%82%E7%BD%91_files/LFControl.pack.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+ERR: 非法操作:登录_乐蜂网_files
+
