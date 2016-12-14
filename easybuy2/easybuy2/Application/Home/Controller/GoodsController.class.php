@@ -68,7 +68,7 @@ class GoodsController extends Controller
                 $result=$shopingcar->where($condition)->save($condition1);
                 if($result)
                 {
-                    $this->success('添加成功','../../../order/order');
+                    $this->success('添加成功');
                 }
             }
             else{
@@ -76,7 +76,7 @@ class GoodsController extends Controller
                 $result=$shopingcar->add($condition);
                 if($result)
                 {
-                    $this->success('添加成功','../../../order/order');
+                    $this->success('添加成功');
                 }
 
             }
