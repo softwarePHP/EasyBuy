@@ -1,0 +1,43 @@
+ <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__APP__/admin/index/index">首页</a><span class="crumb-step">&gt;</span>用户管理<span class="crumb-step">&gt;</span><span>查看用户</span><span class="crumb-step">&gt;</span><span>修改</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__APP__/admin/user/verify/userid/{$user.userid}" method="post" >
+                    <table class="insert-tab" width="100%">
+
+                        <tr>
+                            <th><i class="require-red">*</i>用户账号：</th>
+                            <td>
+                                <input class="common-text required" id="" name="username" size="50" value="{$user.username}" type="text"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th>创建时间：</th>
+                            <td><input class="common-text" name="createtime" size="50" value="{$user.createtime}" type="text"></td>
+                        </tr>
+
+                        <tr>
+                            <th>密码：</th>
+                            <td><input class="common-text" name="userpswd" size="50" value="{$user.userpswd}" type="text"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                           <td>
+                         <a href="__APP__/admin/user/verify/userid/{$user.userid}"><input type="submit" tabindex="3" value="确定" class="btn btn-primary" /></a>
+                            </td>
+                        </tr>
+
+                        </table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->

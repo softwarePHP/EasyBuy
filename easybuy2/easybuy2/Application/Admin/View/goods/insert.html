@@ -1,0 +1,89 @@
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__APP__/home/index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/index.php/home/good/index">商品管理</a><span class="crumb-step">&gt;</span><span>添加商品</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__APP__/admin/goods/add" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>分类：</th>
+                            <td>
+                                <select name="g_name" id="brand" class="required">
+                                    <volist name="grands" id="gr">
+                                        <option value="{$gr.grandname}">{$gr.grandname}</option>
+                                    </volist>
+                                </select>
+                                <select name="c_name" id="catids" class="required">
+                                    <volist name="categories" id="ca">
+                                        <option value="{$ca.categoriesname}">{$ca.categoriesname}</option>
+                                    </volist>
+                                </select>
+                            </td>
+                        </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>商品名称：</th>
+                                <td>
+                                    <input class="common-text required" id="goodname" name="goodname" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>商品价格：</th>
+                                <td>
+                                    <input class="common-text required"  name="goodprice" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>商品数量：</th>
+                                <td>
+                                    <input class="common-text required"  name="count" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>第一标签：</th>
+                                <td>
+                                    <input class="common-text required"  name="mark1" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>第二标签：</th>
+                                <td>
+                                    <input class="common-text required"  name="mark2" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                        <tr>
+                            <th>商品简介：</th>
+                            <td><input class="common-text required"  name="brief" size="50" value="" type="text"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>每日精选：</th>
+                            <td>
+                                <input type="radio" name="daily" value="1">是&nbsp;
+                                <input type="radio" name="daily" value="0">否&nbsp;
+                            </td>
+                        </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>商品图片：</th>
+                                <td><input name="image" id="" type="file"></td>
+                            </tr>
+
+                            <tr>
+                                <th>商品详情：</th>
+                                <td><textarea name="introduction" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10"></textarea></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                 <td>
+                                    <input class="btn btn6" value="提交" type="submit">
+                                    <a class="link-update" href="__APP__/home/good/index"><input class="btn btn6" value="返回" type="button"></a>
+                                 </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>

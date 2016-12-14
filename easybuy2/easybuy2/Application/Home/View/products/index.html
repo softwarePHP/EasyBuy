@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Search页面</title>
+	<link href="__PUBLIC__/home/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="__PUBLIC__/home/css/owl.carousel.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Swim Wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<script src="__PUBLIC__/home/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/home/js/bootstrap-3.1.1.min.js"></script>
+	<!-- cart -->
+	<script src="__PUBLIC__/home/js/simpleCart.min.js"> </script>
+	<!-- cart -->
+	<!-- the jScrollPane script -->
+	<script type="text/javascript" src="__PUBLIC__/home/js/jquery.jscrollpane.min.js"></script>
+	<script type="text/javascript" id="sourcecode">
+		$(function()
+		{
+			$('.scroll-pane').jScrollPane();
+		});
+	</script>
+	<!-- //the jScrollPane script -->
+	<link href="__PUBLIC__/home/css/form.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- the mousewheel plugin -->
+	<script type="text/javascript" src="__PUBLIC__/home/js/jquery.mousewheel.js"></script>
+</head>
+<body>
+<!--header-->
+<div class="header">
+	<div class="header-top">
+		<div class="container">
+
+			<div class="top-right">
+				<ul>
+					<li class="text"><a href="__APP__/home/personal/personalCenter">{$user}</a></li>
+					<li><div class="cart box_1">
+						<a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
+							<span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
+						<div class="clearfix"> </div>
+					</div></li>
+					<li class="text"><a href="__APP__/home/index/logout">{$logout}</a></li>
+
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="header-bottom">
+		<div class="container">
+			<!--/.content-->
+			<div class="content white">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<h1 class="navbar-brand"><a  href="__APP__/home/index/index">Easy Buy</a></h1>
+					</div>
+					<!--/.navbar-header-->
+
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a href="index.html">主页</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">女士<b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3">
+									<div class="row">
+										<volist name="women" id="vo">
+											<div class="col-sm-4">
+												<ul class="multi-column-dropdown">
+													<!--<li><a class="list" href="products.html">女士</a></li>-->
+													<li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+												</ul>
+											</div>
+										</volist>
+									</div>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">男士 <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-2">
+									<div class="row">
+										<volist name="men" id="vo">
+											<div class="col-sm-4">
+												<ul class="multi-column-dropdown">
+													<!--<li><a class="list" href="products.html">女士</a></li>-->
+													<li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+												</ul>
+											</div>
+										</volist>
+									</div>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">儿童 <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-1">
+									<div class="row">
+										<div class="col-sm-1">
+											<ul class="multi-column-dropdown">
+												<volist name="children" id="vo">
+													<li><a class="list1" style="width:150px;" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+												</volist>
+											</ul>
+										</div>
+
+									</div>
+								</ul>
+							</li>
+							<li><a href="__APP__/home/index/daily">每日精选</a></li>
+
+						</ul>
+					</div>
+					<!--/.navbar-collapse-->
+				</nav>
+				<!--/.navbar-->
+			</div>
+			<div class="search-box">
+				<div id="sb-search" class="sb-search">
+					<form action="__APP__/home/index/select" method="post">
+						<input class="sb-search-input" placeholder="输入您的搜索词" type="search" name="search" id="search">
+						<input class="sb-search-submit" type="submit" value="">
+						<span class="sb-icon-search"> </span>
+					</form>
+				</div>
+			</div>
+
+			<!-- search-scripts -->
+			<script src="__PUBLIC__/home/js/classie.js"></script>
+			<script src="__PUBLIC__/home/js/uisearch.js"></script>
+			<script>
+				new UISearch( document.getElementById( 'sb-search' ) );
+			</script>
+			<!-- //search-scripts -->
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<!--header-->
+<div class="content">
+	<div class="product-model">
+		<div class="container">
+			<h2>Our Products</h2>
+			<div class="col-md-9 product-model-sec">
+				<volist name="goods" id="vo">
+				<a href="__APP__/home/goods/index"><div class="product-grid">
+					<div class="more-product"><span> </span></div>
+					<div class="product-img b-link-stripe b-animate-go  thickbox">
+						<img src="__ROOT__/{$vo.imageurl}" class="img-responsive" alt="">
+						<div class="b-wrapper">
+							<h4 class="b-animate b-from-left  b-delay03">
+								<button> + </button>
+							</h4>
+						</div>
+					</div>
+				</a>
+				<div class="product-info simpleCart_shelfItem">
+					<div class="product-info-cust prt_name">
+						<h4>{$vo.goodname}</h4>
+						<span class="item_price">￥{$vo.goodprice}</span>
+						<div class="ofr">
+							<!--<p class="pric1"><del>Rs ￥{$vo.goodprice}</del></p>-->
+							<!--<p class="disc">[8折]</p>-->
+						</div>
+						<!--<input type="text" class="item_quantity" value="1" />-->
+						<a href = "__APP__/home/order/checkout?id={$vo.goodid}"><input type="button" class="item_add items" value="+"></a>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+			</volist>
+
+
+
+</div>
+		<form action="__APP__/home/products/getproducts" method="post">
+<div class="rsidebar span_1_of_left">
+	<section  class="sky-form">
+	<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>种类</h4>
+	<div class="row row1 scroll-pane">
+
+		<div class="col col-4">
+			<volist name="categories" id="vo">
+				<label class="checkbox"><input type="radio" name="radio" value="{$vo.categoriesid}"><i></i>{$vo.categoriesname}</label>
+			</volist>
+		</div>
+	</div>
+	</section>
+
+	<section  class="sky-form">
+		<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>价格</h4>
+		<div class="row row1 scroll-pane">
+
+			<div class="col col-4">
+				<label class="checkbox"><input type="radio" name="price" value="99"><i></i>￥0 - 99</label>
+				<label class="checkbox"><input type="radio" name="price" value="199"><i></i>￥99 - 199</label>
+				<label class="checkbox"><input type="radio" name="price" value="299" ><i></i>￥199 - 299</label>
+				<label class="checkbox"><input type="radio" name="price" value="399"><i></i>￥299 - 399</label>
+				<label class="checkbox"><input type="radio" name="price" value="499"><i></i>￥399 - 499</label>
+				<label class="checkbox"><input type="radio" name="price" value="599"><i></i>￥499 - 599</label>
+				<label class="checkbox"><input type="radio" name="price" value="699"><i></i>￥599 - 699</label>
+				<label class="checkbox"><input type="radio" name="price" value="799"><i></i>￥699 - 799</label>
+				<label class="checkbox"><input type="radio" name="price" value="899"><i></i>￥799 - 899</label>
+				<label class="checkbox"><input type="radio" name="price" value="999"><i></i>￥899 - 999</label>
+				<label class="checkbox"><input type="radio" name="price" value="1099"><i></i>￥1000以上</label>
+
+			</div>
+		</div>
+	</section>
+
+	<!--<section  class="sky-form">
+		<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>折扣</h4>
+		<div class="row row1 scroll-pane">
+			<div class="col col-4">
+				<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>折扣商品(20)</label>
+			</div>
+			<div class="col col-4">
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>1 - 2折 (5)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>2 - 3折 (7)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>3 - 4折 (2)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>4 - 5折 (5)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>5 - 6折 (7)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>6 - 7折 (2)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>其他(50)</label>
+			</div>
+		</div>
+	</section>-->
+
+	<!--<section  class="sky-form">
+		<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>价格</h4>
+		<ul class="dropdown-menu1">
+			<li><a href="">
+				<div id="slider-range"></div>
+				<input type="text" id="amount" style="border: 0; font-weight: NORMAL;   font-family: 'Dosis-Regular';" />
+			</a></li>
+		</ul>
+	</section>
+	<!---->
+	<!--<script type="text/javascript" src="__PUBLIC__/home/js/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/jquery-ui.css">
+	<script type='text/javascript'>//<![CDATA[
+	$(window).load(function(){
+		$( "#slider-range" ).slider({
+			range: true,
+			min: 0,
+			max: 10000,
+			values: [ 0, 10000 ],
+			slide: function( event, ui ) {  $( "#amount" ).val( "￥" + ui.values[ 0 ] + " - ￥" + ui.values[ 1 ] );
+			}
+		});
+		$( "#amount" ).val( "￥" + $( "#slider-range" ).slider( "values", 0 ) + " - ￥" + $( "#slider-range" ).slider( "values", 1 ) );
+
+	});//]]>
+	</script>
+	<!---->
+
+
+	<!--<section  class="sky-form">
+		<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>功效</h4>
+		<div class="row row1 scroll-pane">
+
+			<div class="col col-4">
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>补水保湿   (30)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>控油细肤      (30)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>提拉紧致        (30)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>劲爽通透  (30)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>吸黑去黄  (30)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>紧致轮廓  (30)</label>
+				<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>抚平痘痘肌  (30)</label>
+			</div>
+		</div>
+	</section>-->
+	<section  class="sky-form">
+		<h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>品牌</h4>
+		<div class="row row1 scroll-pane">
+
+			<div class="col col-4">
+				<volist name="grand" id="vo">
+				<label class="checkbox"><input type="radio" name="grand" value="{$vo.grandid}"><i></i>{$vo.grandname}</label>
+				</volist>
+			</div>
+		</div>
+	</section>
+</div>
+</div>
+	<input type="submit" class="item_add items" value="确定选择">
+	</form>
+</div>
+</div>
+<!---->
+</div>
+<!--footer-->
+<div class="footer-section">
+	<div class="container">
+		<div class="footer-grids">
+			<div class="col-md-1 footer-grid">
+			</div>
+			<div class="col-md-2 footer-grid">
+				<h4>新手指南</h4>
+				<ul>
+					<li><a href="products.html">购物流程</a></li>
+					<li><a href="#">优惠券规则</a></li>
+					<li><a href="#">联系客服</a></li>
+					<li><a href="#">常见问题</a></li>
+
+				</ul>
+			</div>
+			<div class="col-md-2 footer-grid">
+				<h4>付款方式</h4>
+				<ul>
+					<li><a href="#">在线支付</a></li>
+					<li><a href="#">货到付款</a></li>
+					<li><a href="#">钱包支付</a></li>
+
+				</ul>
+			</div>
+			<div class="col-md-2 footer-grid">
+				<h4>配送方式</h4>
+				<ul>
+					<li><a href="#">配送时效及运费</a></li>
+					<li><a href="#">验货与签收</a></li>
+
+				</ul>
+			</div>
+			<div class="col-md-2 footer-grid">
+				<h4>售后服务</h4>
+				<ul>
+					<li><a href="#">退货政策</a></li>
+					<li><a href="#">退货流程</a></li>
+					<li><a href="#">退货方式及时效</a></li>
+				</ul>
+			</div>
+			<div class="col-md-2 footer-grid">
+				<h4>部分合作网站</h4>
+				<ul>
+					<li><a href="www.lancome.com">兰蔻</a></li>
+					<li><a href="#">雅诗兰黛</a></li>
+					<li><a href="#">百雀羚</a></li>
+				</ul>
+			</div>
+			<div class="col-md-1 footer-grid">
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-md-12 footer-grid1">
+			<div class="col-md-5 footer-grid">
+			</div>
+			<div class="col-md-2 social-icons">
+				<a href="#"><i class="icon"></i></a>
+				<a href="#"><i class="icon1"></i></a>
+				<a href="#"><i class="icon2"></i></a>
+				<a href="#"><i class="icon3"></i></a>
+				<a href="#"><i class="icon4"></i></a>
+				<p>Copyright &copy; 易购商城</p>
+			</div>
+			<div class="col-md-5 footer-grid">
+			</div>
+		</div>
+	</div>
+</div>
+<!--footer-->
+
+</body>
+</html>
