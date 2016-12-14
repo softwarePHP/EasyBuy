@@ -1,0 +1,10 @@
+修改了indexcontroller和/index/index.html和/index/login.html
+修改了usercontroller和user数据表和/user/index.html
+修改了admin数据表
+修改了/user/update.html
+修改了/user/view.html
+修改了admin数据表中permission的属性，string
+
+关联模型：
+	user   order 一对多
+        address  order 一对一
