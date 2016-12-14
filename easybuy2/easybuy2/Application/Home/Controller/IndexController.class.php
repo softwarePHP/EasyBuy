@@ -35,33 +35,39 @@ class IndexController extends Controller
         $this->assign('men',$men);
         $this->assign('children',$children);
         //添加购物车，获取价格，数量功能
-        $id=$_SESSION['id'];
-        $shopingcar=M('shopingcar')->where("userid=$id")->select();
-        $i=0;
-        $alltotal=0;
-        $allcount=0;
-        foreach($shopingcar as $vo){
-            $goodid=$vo['goodid'];
-            $good=M('goods')->find($goodid);
-            $data[$i]['shopid']=$vo['shopid'];
-            $data[$i]['userid']=$vo['userid'];
-            $data[$i]['goodid']=$good['goodid'];
-            $data[$i]['goodname']=$good['goodname'];
-            //$discount1 = $good['discount'];
-            //$discount = $discount1 * 100;
-            $goodprice = $good['goodprice'];
-            $count = $vo['shopcount'];
-            $total =  $goodprice * $count;
-            $data[$i]['shopcount']=$count;
-            $allcount+=$count;
-            $alltotal+= $total;
-            $i++;
+       if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
         }
 
-
-        $this->assign('total',$alltotal);
-        $this->assign('count',$allcount);
-      
         $this->display();
     }
     public function login(){
