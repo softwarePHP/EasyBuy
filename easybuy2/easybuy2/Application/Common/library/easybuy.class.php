@@ -123,6 +123,8 @@ class easybuy extends Controller
         foreach ($oredrs as $value){
             $orderid = $value['orderid'];
             $userid  = $value['userid'];
+            $name  = $value['name'];
+            $tel  = $value['tel'];
             $ordernumber = $value['ordernumber'];
             $ordertime = $value['ordertime'];
             $orderaddress = $value['orderaddress'];
@@ -130,9 +132,7 @@ class easybuy extends Controller
 
             //查状态名称表
             $state = M('state');
-            $states = $state->find($orderstate);
-            $statename = $states['statename'];
-            //echo '订单状态:'.$statename."&nbsp&nbsp";
+            $statename = $state->where('orderstate = '.$orderstate)->getField('statename');
 
             //查用户表
             $user= M('user');
@@ -171,9 +171,12 @@ class easybuy extends Controller
             $data[$i]['订单号'] = $ordernumber;
             $data[$i]['下单时间'] = $ordertime;
             $data[$i]['用户姓名'] = $username;
+            $data[$i]['收货人姓名'] = $name;
+            $data[$i]['收货人电话'] = $tel;
             $data[$i]['收货地址'] = $orderaddress;
             $data[$i]['订单状态'] = $statename;
             $data[$i]['总金额'] = $newmoney;
+            $data[$i]['订单id'] = $orderid;
             //dump($money);
             $i++;
         }
