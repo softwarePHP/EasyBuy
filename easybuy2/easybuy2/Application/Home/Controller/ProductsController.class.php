@@ -85,6 +85,15 @@ class ProductsController extends Controller
 
     public function getproducts()
     {
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
 
         $cat = I('post.radio');
         $price = I('post.price');

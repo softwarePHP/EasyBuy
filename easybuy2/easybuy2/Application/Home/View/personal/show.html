@@ -14,9 +14,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="__PUBLIC__/home/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="__PUBLIC__/home/js/megamenu.js"></script>
     <!--<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>-->
-    <!-- cart -->
-    <script src="__PUBLIC__/home/js/simpleCart.min.js"> </script>
-    <!-- cart -->
+   
     <script type="text/javascript" src="__PUBLIC__/home/js/bootstrap-3.1.1.min.js"></script>
     <script src="__PUBLIC__/home/js/imagezoom.js"></script>
 
@@ -46,14 +44,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="top-right">
                 <ul>
-                    <li class="text"><a href="__APP__/home/index/login">登录</a>
+                    <li class="text" title="我的账户"><a href="__APP__/home/personal/personalCenter">{$user}</a></li>
                     <li><div class="cart box_1">
                         <a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
-                            <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
+                            <span class="simpleCart_total" title="我的购物车">  ￥{$total} </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> {$count} </span>)
                         </a>
-                        <p><a href="javascript:;" class="simpleCart_empty">清空购物车</a></p>
                         <div class="clearfix"> </div>
                     </div></li>
+                    <li class="text"><a href="__APP__/home/index/logout">{$logout}</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -78,90 +76,55 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="__APP__/home/index/index">主页</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">女士<b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <!--<li><a class="list" href="products.html">女士</a></li>-->
-                                                <li><a class="list1" href="__APP__/home/products/index">兰蔻(lancome)</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">资生堂(shiseido)</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">雅诗兰黛(estee lauder)</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">迪奥(dior)</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">香奈儿(chanel)</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <!--<li><a class="list" href="products.html">男士</a></li>-->
-                                                <li><a class="list1" href="__APP__/home/products/index">碧欧泉(biotherm)</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">赫莲娜(hr)</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">伊丽莎白·雅顿(ea)</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">百雀羚</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index"> </a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">女士<b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3">
+									<div class="row">
+										<volist name="women" id="vo">
+											<div class="col-sm-4">
+												<ul class="multi-column-dropdown">
+													<!--<li><a class="list" href="products.html">女士</a></li>-->
+													<li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+												</ul>
+											</div>
+										</volist>
+									</div>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">男士 <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-2">
+									<div class="row">
+										<volist name="men" id="vo">
+											<div class="col-sm-4">
+												<ul class="multi-column-dropdown">
+													<!--<li><a class="list" href="products.html">女士</a></li>-->
+													<li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+												</ul>
+											</div>
+										</volist>
+									</div>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">儿童 <b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-1">
+									<div class="row">
+										<div class="col-sm-1">
+											<ul class="multi-column-dropdown">
+												<volist name="children" id="vo">
+													<li><a class="list1" style="width:150px;" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+												</volist>
+											</ul>
+										</div>
 
-                                                <li><a class="list1" href="__APP__/home/products/index">温碧泉</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">植美村</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">相宜本草</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">欧莱雅</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">丸美</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">男士 <b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-column columns-2">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a class="list1" href="__APP__/home/products/index">碧欧泉</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">娇韵诗</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">兰蔻</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">欧珀莱</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">资生堂</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a class="list1" href="__APP__/home/products/index">倩碧</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">阿迪达斯</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">雅男士</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index">杰士派</a></li>
-                                                <li><a class="list1" href="__APP__/home/products/index__APP__/home/products/index">高夫</a></li>
-                                            </ul>
-                                        </div>
+									</div>
+								</ul>
+							</li>
+							<li><a href="__APP__/home/index/daily">每日精选</a></li>
 
-                                    </div>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">儿童 <b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-column columns-1">
-                                    <div class="row">
-                                        <div class="col-sm-1">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a class="list1" style="width:150px;" href="__APP__/home/products/index">强生(Johnson)</a></li>
-                                                <li><a class="list1" style="width:150px;" href="__APP__/home/products/index">贝亲(Pigeon)</a></li>
-                                                <li><a class="list1" style="width:150px;" href="__APP__/home/products/index">施巴(Sebamed)</a></li>
-                                                <li><a class="list1" style="width:150px;" href="__APP__/home/products/index">妙思乐(mustela)</a></li>
-                                                <li><a class="list1" style="width:150px;" href="__APP__/home/products/index">贝比拉比</a></li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </ul>
-                            </li>
-                            <li><a href="__APP__/home/products/index">每日精选</a></li>
-
-                        </ul>
-                    </div>
+						</ul>
+					</div>
                     <!--/.navbar-collapse-->
                 </nav>
                 <!--/.navbar-->
