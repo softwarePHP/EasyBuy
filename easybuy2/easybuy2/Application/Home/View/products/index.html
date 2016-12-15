@@ -12,9 +12,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<script src="__PUBLIC__/home/js/jquery.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/home/js/bootstrap-3.1.1.min.js"></script>
-	<!-- cart -->
-	<script src="__PUBLIC__/home/js/simpleCart.min.js"> </script>
-	<!-- cart -->
+
 	<!-- the jScrollPane script -->
 	<script type="text/javascript" src="__PUBLIC__/home/js/jquery.jscrollpane.min.js"></script>
 	<script type="text/javascript" id="sourcecode">
@@ -36,15 +34,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<div class="top-right">
 				<ul>
-					<li class="text"><a href="__APP__/home/personal/personalCenter">{$user}</a></li>
-					<li><div class="cart box_1">
-						<a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
-							<span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
-						<div class="clearfix"> </div>
-					</div></li>
-					<li class="text"><a href="__APP__/home/index/logout">{$logout}</a></li>
+					 <li class="text" title="我的账户"><a href="__APP__/home/personal/personalCenter">{$user}</a></li>
+                    			<li><div class="cart box_1">
+                        		<a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
+                           		 <span class="simpleCart_total" title="我的购物车">  ￥{$total} </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> {$count} </span>)
+                        		</a>
+                        		<div class="clearfix"> </div>
+                   			 </div></li>
+                    			<li class="text"><a href="__APP__/home/index/logout">{$logout}</a></li>
 
 				</ul>
 			</div>

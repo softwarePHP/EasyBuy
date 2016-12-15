@@ -76,6 +76,7 @@ public function insert()
                     $data['grandnum'] = I('grandnum');
                     $data['grandname'] = I('grandname');
                     $data['imageurl']=$url;
+                    $data['mark'] =     I('mark');
                     $data['grandintroduction'] = I('content');
                     $result = $grandTable->add($data);
                     if($result)
@@ -146,9 +147,20 @@ public function show()
     $id = I('id');
 
     //2、获取记录
-    $grands = M('grand')->find($id);
+    $grand = M('grand')->find($id);
+    if($grand['mark'] == 1)
+    {
+        $grand['mark'] = '女士';
+    }
+    elseif($grand['mark'] == 1)
+    {
+        $grand['mark'] = '男士';
+    }
+    else{
+        $grand['mark'] = '儿童';
+    }
     //3、赋值给视图变量
-    $this->assign('grand',$grands);
+    $this->assign('grand',$grand);
     //4、显示视图
     $this->display();
 }

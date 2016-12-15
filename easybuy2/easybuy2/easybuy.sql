@@ -1,23 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version phpStudy 2014
+-- version 4.5.5.1
 -- http://www.phpmyadmin.net
 --
--- 主机: localhost
--- 生成日期: 2016 年 12 月 12 日 20:59
--- 服务器版本: 5.5.47
--- PHP 版本: 5.3.29
+-- Host: 127.0.0.1
+-- Generation Time: 2016-12-15 03:07:49
+-- 服务器版本： 5.7.11
+-- PHP Version: 5.6.19
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库: `easybuy`
+-- Database: `eshiyan`
 --
 
 -- --------------------------------------------------------
@@ -26,13 +26,12 @@ SET time_zone = "+00:00";
 -- 表的结构 `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
-  `adminid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `adminid` int(11) NOT NULL,
   `adminname` char(20) NOT NULL,
   `adminpswd` char(20) NOT NULL,
-  `permission` char(100) DEFAULT NULL,
-  PRIMARY KEY (`adminid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=5 ;
+  `permission` char(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 --
 -- 转存表中的数据 `admin`
@@ -48,15 +47,13 @@ INSERT INTO `admin` (`adminid`, `adminname`, `adminpswd`, `permission`) VALUES
 -- 表的结构 `adress`
 --
 
-CREATE TABLE IF NOT EXISTS `adress` (
-  `adressid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `adress` (
+  `adressid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `adress` char(255) NOT NULL,
-  `tel` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`adressid`),
-  KEY `FK_Reference_7` (`userid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=7 ;
+  `tel` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 --
 -- 转存表中的数据 `adress`
@@ -75,12 +72,11 @@ INSERT INTO `adress` (`adressid`, `userid`, `name`, `adress`, `tel`) VALUES
 -- 表的结构 `categories`
 --
 
-CREATE TABLE IF NOT EXISTS `categories` (
-  `categoriesid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `categories` (
+  `categoriesid` int(11) NOT NULL,
   `categoriesnum` varchar(11) NOT NULL,
-  `categoriesname` char(255) NOT NULL,
-  PRIMARY KEY (`categoriesid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=3 ;
+  `categoriesname` char(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 --
 -- 转存表中的数据 `categories`
@@ -96,11 +92,9 @@ INSERT INTO `categories` (`categoriesid`, `categoriesnum`, `categoriesname`) VAL
 -- 表的结构 `gc`
 --
 
-CREATE TABLE IF NOT EXISTS `gc` (
+CREATE TABLE `gc` (
   `categoriesid` int(11) NOT NULL,
-  `grandid` int(11) NOT NULL,
-  PRIMARY KEY (`categoriesid`,`grandid`),
-  KEY `FK_Reference_9` (`grandid`)
+  `grandid` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 --
@@ -119,8 +113,8 @@ INSERT INTO `gc` (`categoriesid`, `grandid`) VALUES
 -- 表的结构 `goods`
 --
 
-CREATE TABLE IF NOT EXISTS `goods` (
-  `goodid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `goods` (
+  `goodid` int(11) NOT NULL,
   `goodname` char(255) NOT NULL,
   `daily` int(11) NOT NULL,
   `count` int(11) NOT NULL,
@@ -131,11 +125,8 @@ CREATE TABLE IF NOT EXISTS `goods` (
   `introduction` text NOT NULL,
   `mark1` char(20) DEFAULT NULL,
   `mark2` char(20) DEFAULT NULL,
-  `brief` varchar(255) NOT NULL,
-  PRIMARY KEY (`goodid`),
-  KEY `FK_Relationship_2` (`categoriesid`),
-  KEY `FK_Relationship_3` (`grandid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+  `brief` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `goods`
@@ -160,15 +151,14 @@ INSERT INTO `goods` (`goodid`, `goodname`, `daily`, `count`, `goodprice`, `grand
 -- 表的结构 `grand`
 --
 
-CREATE TABLE IF NOT EXISTS `grand` (
-  `grandid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `grand` (
+  `grandid` int(11) NOT NULL,
   `grandnum` varchar(11) NOT NULL,
   `grandname` varchar(255) NOT NULL,
   `imageurl` varchar(255) CHARACTER SET utf8 NOT NULL,
   `grandintroduction` text NOT NULL,
-  `mark` int(11) NOT NULL,
-  PRIMARY KEY (`grandid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=31 ;
+  `mark` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 --
 -- 转存表中的数据 `grand`
@@ -190,15 +180,12 @@ INSERT INTO `grand` (`grandid`, `grandnum`, `grandname`, `imageurl`, `grandintro
 -- 表的结构 `orderdate`
 --
 
-CREATE TABLE IF NOT EXISTS `orderdate` (
-  `orderdateid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `orderdate` (
+  `orderdateid` int(11) NOT NULL,
   `goodid` int(11) DEFAULT NULL,
   `orderid` int(11) DEFAULT NULL,
-  `count` int(11) DEFAULT NULL,
-  PRIMARY KEY (`orderdateid`),
-  KEY `FK_Reference_4` (`goodid`),
-  KEY `FK_Reference_6` (`orderid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=12 ;
+  `count` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 --
 -- 转存表中的数据 `orderdate`
@@ -223,32 +210,33 @@ INSERT INTO `orderdate` (`orderdateid`, `goodid`, `orderid`, `count`) VALUES
 -- 表的结构 `orders`
 --
 
-CREATE TABLE IF NOT EXISTS `orders` (
-  `orderid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `orders` (
+  `orderid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `ordernumber` char(255) NOT NULL,
   `ordertime` datetime NOT NULL,
   `discount` float NOT NULL,
   `orderaddress` char(255) NOT NULL,
-  `orderstate` int(10) NOT NULL,
-  PRIMARY KEY (`orderid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=11 ;
+  `tel` char(12) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `orderstate` int(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 --
 -- 转存表中的数据 `orders`
 --
 
-INSERT INTO `orders` (`orderid`, `userid`, `ordernumber`, `ordertime`, `discount`, `orderaddress`, `orderstate`) VALUES
-(1, 6, '1111153711279', '2016-11-03 02:17:10', 0.6, '河北师范大学新校区', 1),
-(2, 4, '2221153711279', '2016-11-18 00:00:00', 0.8, '河北科技大学西门', 2),
-(3, 8, '0001537113332', '2016-11-10 00:00:00', 0.9, '石家庄建设南大街20号', 2),
-(4, 3, '1123153711277', '2016-11-16 00:00:00', 0.8, '西安唐延安路都市世纪城', 3),
-(5, 4, '1111112223456', '2016-12-15 09:23:17', 0.3, '河北师大', 1),
-(6, 4, '1111113232324', '2016-12-29 08:21:36', 0.2, '师大西门', 3),
-(7, 4, '1111112345432', '2016-12-15 07:22:18', 0.8, '师大东门', 2),
-(8, 4, '1212121212112', '2016-12-08 03:04:15', 0.8, '呼呼呼', 4),
-(9, 4, '1234567899876', '2016-12-28 06:15:17', 0.9, '哈哈哈', 5),
-(10, 4, '1323456543234', '2016-12-15 06:14:30', 0.1, '嘿嘿', 6);
+INSERT INTO `orders` (`orderid`, `userid`, `ordernumber`, `ordertime`, `discount`, `orderaddress`, `tel`, `name`, `orderstate`) VALUES
+(1, 4, '1111153711279', '2016-11-03 02:17:10', 0.6, '河北师范大学新校区', '15230170175', '刘景荣', 1),
+(2, 4, '2221153711279', '2016-11-18 00:00:00', 0.8, '河北科技大学西门', '15231135280', '刘莉莉', 2),
+(3, 8, '0001537113332', '2016-11-10 00:00:00', 0.9, '石家庄建设南大街20号', '15230170921', '岳彬彬', 2),
+(4, 3, '1123153711277', '2016-11-16 00:00:00', 0.8, '西安唐延安路都市世纪城', '787887', '软件', 3),
+(5, 4, '1111112223456', '2016-12-15 09:23:17', 0.3, '河北师大', '8078111', '商院', 1),
+(6, 4, '1111113232324', '2016-12-29 08:21:36', 0.2, '师大西门', '8078122', '资环', 3),
+(7, 4, '1111112345432', '2016-12-15 07:22:18', 0.8, '师大东门', '8078222', '发证', 2),
+(8, 4, '1212121212112', '2016-12-08 03:04:15', 0.8, '呼呼呼', '8078333', '马克思', 4),
+(9, 4, '1234567899876', '2016-12-28 06:15:17', 0.9, '哈哈哈', '8078444', '路由', 5),
+(10, 4, '1323456543234', '2016-12-15 06:14:30', 0.1, '嘿嘿', '8078343', '体院', 6);
 
 -- --------------------------------------------------------
 
@@ -256,15 +244,12 @@ INSERT INTO `orders` (`orderid`, `userid`, `ordernumber`, `ordertime`, `discount
 -- 表的结构 `shopingcar`
 --
 
-CREATE TABLE IF NOT EXISTS `shopingcar` (
-  `shopid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `shopingcar` (
+  `shopid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `goodid` int(11) NOT NULL,
-  `shopcount` int(3) NOT NULL,
-  PRIMARY KEY (`shopid`),
-  KEY `USER_DEPARTMENT_FK` (`userid`),
-  KEY `USER_DEPARTMENT_FK2` (`goodid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+  `shopcount` int(3) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `shopingcar`
@@ -286,13 +271,11 @@ INSERT INTO `shopingcar` (`shopid`, `userid`, `goodid`, `shopcount`) VALUES
 -- 表的结构 `state`
 --
 
-CREATE TABLE IF NOT EXISTS `state` (
-  `stateid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `state` (
+  `stateid` int(11) NOT NULL,
   `orderstate` int(11) DEFAULT NULL,
-  `statename` char(20) NOT NULL,
-  PRIMARY KEY (`stateid`),
-  KEY `FK_Relationship_7` (`orderstate`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=10 ;
+  `statename` char(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 --
 -- 转存表中的数据 `state`
@@ -312,14 +295,13 @@ INSERT INTO `state` (`stateid`, `orderstate`, `statename`) VALUES
 -- 表的结构 `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `userid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `userid` int(11) NOT NULL,
   `username` varchar(100) CHARACTER SET utf8 NOT NULL,
   `createtime` date NOT NULL,
   `userpswd` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`userid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=gbk AUTO_INCREMENT=20 ;
+  `phone` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 --
 -- 转存表中的数据 `user`
@@ -335,6 +317,139 @@ INSERT INTO `user` (`userid`, `username`, `createtime`, `userpswd`, `phone`) VAL
 (18, 'zyhhhh', '2016-12-07', 'bbb', NULL),
 (19, 'zsxd123', '2016-12-07', 'zyh', '15230186900');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`adminid`);
+
+--
+-- Indexes for table `adress`
+--
+ALTER TABLE `adress`
+  ADD PRIMARY KEY (`adressid`),
+  ADD KEY `FK_Reference_7` (`userid`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`categoriesid`);
+
+--
+-- Indexes for table `gc`
+--
+ALTER TABLE `gc`
+  ADD PRIMARY KEY (`categoriesid`,`grandid`),
+  ADD KEY `FK_Reference_9` (`grandid`);
+
+--
+-- Indexes for table `goods`
+--
+ALTER TABLE `goods`
+  ADD PRIMARY KEY (`goodid`),
+  ADD KEY `FK_Relationship_2` (`categoriesid`),
+  ADD KEY `FK_Relationship_3` (`grandid`);
+
+--
+-- Indexes for table `grand`
+--
+ALTER TABLE `grand`
+  ADD PRIMARY KEY (`grandid`);
+
+--
+-- Indexes for table `orderdate`
+--
+ALTER TABLE `orderdate`
+  ADD PRIMARY KEY (`orderdateid`),
+  ADD KEY `FK_Reference_4` (`goodid`),
+  ADD KEY `FK_Reference_6` (`orderid`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orderid`);
+
+--
+-- Indexes for table `shopingcar`
+--
+ALTER TABLE `shopingcar`
+  ADD PRIMARY KEY (`shopid`),
+  ADD KEY `USER_DEPARTMENT_FK` (`userid`),
+  ADD KEY `USER_DEPARTMENT_FK2` (`goodid`);
+
+--
+-- Indexes for table `state`
+--
+ALTER TABLE `state`
+  ADD PRIMARY KEY (`stateid`),
+  ADD KEY `FK_Relationship_7` (`orderstate`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- 在导出的表使用AUTO_INCREMENT
+--
+
+--
+-- 使用表AUTO_INCREMENT `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `adminid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- 使用表AUTO_INCREMENT `adress`
+--
+ALTER TABLE `adress`
+  MODIFY `adressid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- 使用表AUTO_INCREMENT `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `categoriesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- 使用表AUTO_INCREMENT `goods`
+--
+ALTER TABLE `goods`
+  MODIFY `goodid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- 使用表AUTO_INCREMENT `grand`
+--
+ALTER TABLE `grand`
+  MODIFY `grandid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- 使用表AUTO_INCREMENT `orderdate`
+--
+ALTER TABLE `orderdate`
+  MODIFY `orderdateid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- 使用表AUTO_INCREMENT `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- 使用表AUTO_INCREMENT `shopingcar`
+--
+ALTER TABLE `shopingcar`
+  MODIFY `shopid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- 使用表AUTO_INCREMENT `state`
+--
+ALTER TABLE `state`
+  MODIFY `stateid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- 使用表AUTO_INCREMENT `user`
+--
+ALTER TABLE `user`
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

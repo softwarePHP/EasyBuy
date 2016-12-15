@@ -14,9 +14,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="__PUBLIC__/home/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 	<script type="text/javascript" src="__PUBLIC__/home/js/megamenu.js"></script>
 	<!--<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>-->
-	<!-- cart -->
-	<script src="__PUBLIC__/home/js/simpleCart.min.js"> </script>
-	<!-- cart -->
+	
 	<script type="text/javascript" src="__PUBLIC__/home/js/bootstrap-3.1.1.min.js"></script>
 	<script src="__PUBLIC__/home/js/imagezoom.js"></script>
 
@@ -46,15 +44,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="top-right">
 				<ul>
-					<li class="text"><a href="__APP__/home/personal/personalCenter">{$user}</a></li>
-					<li><div class="cart box_1">
-						<a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
-							<span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
-						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
-						<div class="clearfix"> </div>
-					</div></li>
-					<li class="text"><a href="__APP__/home/index/logout">{$logout}</a></li>
+					<li class="text" title="我的账户"><a href="__APP__/home/personal/personalCenter">{$user}</a></li>
+                    <li><div class="cart box_1">
+                        <a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
+                            <span class="simpleCart_total" title="我的购物车">  ￥{$total} </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> {$count} </span>)
+                        </a>
+                        <div class="clearfix"> </div>
+                    </div></li>
+                    <li class="text"><a href="__APP__/home/index/logout">{$logout}</a></li>
 
 				</ul>
 			</div>
@@ -78,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!--/.navbar-header-->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li><a href="index.html">主页</a></li>
+							<li><a href="__APP__/home/index/index">主页</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">女士<b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column columns-3">
@@ -124,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>
 								</ul>
 							</li>
-							<li><a href="products.html">每日精选</a></li>
+							<li><a href="__APP__/home/index/daily">每日精选</a></li>
 
 						</ul>
 					</div>
