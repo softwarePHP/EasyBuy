@@ -120,6 +120,14 @@ class UserController extends Controller
         //echo $id;
         $data=$userTable->find($id);
         $this->assign('user',$data);
+         $phone1=$userTable->where("userid=$id")->getField('phone');
+        if($phone1==null)
+        {
+            $this->assign('phone','无');
+        }
+        else{
+            $this->assign('phone',$phone1);
+        }
         $this->display();
     }
     public function select(){
