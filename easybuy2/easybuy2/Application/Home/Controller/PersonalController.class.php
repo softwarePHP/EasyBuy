@@ -42,6 +42,44 @@ class PersonalController extends Controller
         $this->assign('men',$men);
         $this->assign('children',$children);
         $this->assign('adress',$date);
+         /**添加购物车，获取价格，数量功能
+         * 张宇晗
+         * 2016-12-15
+         **/
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
+
+
         $this->display();
     }
     public function delete(){
@@ -114,6 +152,44 @@ class PersonalController extends Controller
             //dump($pages);
             $this->assign('data',$data);
             $this->assign('pages',$pages);
+             /**添加购物车，获取价格，数量功能
+         * 张宇晗
+         * 2016-12-15
+         **/
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
+
+
             $this->display();
         }
 
@@ -148,6 +224,44 @@ class PersonalController extends Controller
         //dump($pages);
         $this->assign('data',$data);
         $this->assign('pages',$pages);
+         /**添加购物车，获取价格，数量功能
+         * 张宇晗
+         * 2016-12-15
+         **/
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
+
+
         $this->display('personal/personalcenter');
     }
 //未发货
@@ -180,6 +294,44 @@ class PersonalController extends Controller
         //dump($pages);
         $this->assign('data',$data);
         $this->assign('pages',$pages);
+         /**添加购物车，获取价格，数量功能
+         * 张宇晗
+         * 2016-12-15
+         **/
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
+
+
         $this->display('personal/personalcenter');
     }
 //已发货
@@ -212,6 +364,44 @@ class PersonalController extends Controller
         //dump($pages);
         $this->assign('data',$data);
         $this->assign('pages',$pages);
+         /**添加购物车，获取价格，数量功能
+         * 张宇晗
+         * 2016-12-15
+         **/
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
+
+
         $this->display('personal/personalcenter');
     }
 //已签收
@@ -244,6 +434,44 @@ class PersonalController extends Controller
         //dump($pages);
         $this->assign('data',$data);
         $this->assign('pages',$pages);
+         /**添加购物车，获取价格，数量功能
+         * 张宇晗
+         * 2016-12-15
+         **/
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
+
+
         $this->display('personal/personalcenter');
     }
 //已取消
@@ -276,6 +504,44 @@ class PersonalController extends Controller
         //dump($pages);
         $this->assign('data',$data);
         $this->assign('pages',$pages);
+         /**添加购物车，获取价格，数量功能
+         * 张宇晗
+         * 2016-12-15
+         **/
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
+
+
         $this->display('personal/personalcenter');
     }
 //已退货
@@ -308,6 +574,44 @@ class PersonalController extends Controller
         //dump($pages);
         $this->assign('data',$data);
         $this->assign('pages',$pages);
+         /**添加购物车，获取价格，数量功能
+         * 张宇晗
+         * 2016-12-15
+         **/
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
+
+
         $this->display('personal/personalcenter');
     }
 //取消订单
