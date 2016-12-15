@@ -1,177 +1,49 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>支付完成</title>
-	<style type="text/css">
-		div{position: relative;}
-		.header-img{z-index: 100;width: 200px;height: 200px;animation: myfirst 5s;
-			-moz-animation: myfirst 3s;  /* Firefox */
-			-webkit-animation: myfirst 3s;  /* Safari 和 Chrome */
-			-o-animation: myfirst 3s;}
-		.header-img img{width: 200px;height: 200px;}
-		/*div img{width: 100px;height: 100px;}*/
-		.div11{position: absolute;width: 200px;height: 200px;
-		background：url(images/duihao.png);animation: myfirst 5s;
-			-moz-animation: myfirst 3s;  /* Firefox */
-			-webkit-animation: myfirst 3s;  /* Safari 和 Chrome */
-			-o-animation: myfirst 3s;bottom: 0;background:#fff;left:0;}
-		@keyframes myfirst
-		{
-			0%   {left: 0;}
+<!--/sidebar-->
+<div class="main-wrap">
 
-			100% {left:200px;}
-		}
-
-		@-moz-keyframes myfirst /* Firefox */
-		{
-			0%   {left: 0;}
-
-			100% {left:100px;}
-		}
-
-		@-webkit-keyframes myfirst /* Safari 和 Chrome */
-		{
-			0%   {left: 0;}
-
-			100% {left:100px;}
-		}
-
-		@-o-keyframes myfirst /* Opera */
-		{
-			0%   {left: 0;}
-
-			100% {left:100px;}
-		}
-	</style>
-
-	<link href="__PUBLIC__/home/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
-	<link href="__PUBLIC__/home/css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="__PUBLIC__/home/css/owl.carousel.css" rel="stylesheet">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Swim Wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<script src="__PUBLIC__/home/js/jquery.min.js"></script>
-	<!-- cart -->
-	<script src="__PUBLIC__/home/js/simpleCart.min.js"> </script>
-	<!-- cart -->
-	<script type="text/javascript" src="__PUBLIC__/home/js/bootstrap-3.1.1.min.js"></script>
-	<script src="__PUBLIC__/home/js/imagezoom.js"></script>
-
-	<!-- FlexSlider -->
-	<script defer src="__PUBLIC__/home/js/jquery.flexslider.js"></script>
-	<link rel="stylesheet" href="__PUBLIC__/home/css/flexslider.css" type="text/css" media="screen" />
-
-	<script>
-		// Can also be used with $(document).ready()
-		$(window).load(function() {
-			$('.flexslider').flexslider({
-				animation: "slide",
-				controlNav: "thumbnails"
-			});
-		});
-
-	</script>
-
-<body>
-<!--header-->
-<div >
-	<div class="header-top">
-		<div class="container">
-			<div class="top-right">
-				<ul>
-					<li class="text"><a href="login.html">登录</a></li>
-					<li class="text"><a href="login.html">退出</a></li>
-				</ul>
-			</div>
-		</div>
+	<div class="crumb-wrap">
+		<div class="crumb-list"><i class="icon-font"></i><a href="__APP__/admin/index/index/">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name"><a href="/index.php/admin/order/all">订单管理</a></span><span class="crumb-step">&gt;</span><span class="crumb-name">已完成订单</span></div>
 	</div>
-	<div style="margin-left: auto; margin-right: auto; width: 500px; height: 200px;">
-		<div>
-			<div class="header-img"><img src="__PUBLIC__/home/images/duihao.png"/></div>
-			<div class="div11"></div>
-		</div>
-		<div style="text-align:center;"></div>
-		<p style="text-align:left">
-		<div class="fr w850" ><h1>支付成功！我们将尽快发货</h1></div>
-		</p>
+	<div class="result-wrap">
+		<form name="myform" id="myform" method="post">
+			<div class="result-title">
+
+			</div>
+			<div class="result-content">
+				<table class="result-tab" width="100%">
+					<tr>
+						<th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+						<th>订单号</th>
+						<th>下单时间</th>
+						<th>下单人</th>
+						<th>收货人信息</th>
+						<th>收货地址</th>
+						<th>商品详情</th>
+						<th>总金额</th>
+						<th>订单状态</th>
+					</tr>
+					<volist name="data" id="vo">
+						<tr>
+
+							<td class="tc"><input name="id[]" value={$vo.订单号} type="checkbox"></td>
+							<td>{$vo.订单号}</td>
+							<td>{$vo.下单时间}</td>
+							<td>{$vo.用户姓名}</td>
+							<td>{$vo.收货人姓名}<br/>{$vo.收货人电话}</td>
+							<td>{$vo.收货地址}</td>
+							<td>
+								<volist name="vo.商品详情" id="vos">
+									{$vos}<br/>
+								</volist>
+							</td>
+							<td>{$vo.总金额}</td>
+							<td>{$vo.订单状态}</td>
+						</tr>
+					</volist>
+				</table>
+				<div class="list-page">{$pages}</div>
+			</div>
+		</form>
 	</div>
 </div>
-<!--header-->
-<div style=" margin-left: auto; margin-right: auto; height: 100px;">
-</div>
-<!--footer-->
-<div class="footer">
-	<div class="container">
-		<div class="footer-grids">
-			<div class="col-md-1 footer-grid">
-			</div>
-			<div class="col-md-2 footer-grid">
-				<h4>新手指南</h4>
-				<ul>
-					<li><a href="products.html">购物流程</a></li>
-					<li><a href="#">优惠券规则</a></li>
-					<li><a href="#">联系客服</a></li>
-					<li><a href="#">常见问题</a></li>
-
-				</ul>
-			</div>
-			<div class="col-md-2 footer-grid">
-				<h4>付款方式</h4>
-				<ul>
-					<li><a href="#">在线支付</a></li>
-					<li><a href="#">货到付款</a></li>
-					<li><a href="#">钱包支付</a></li>
-
-				</ul>
-			</div>
-			<div class="col-md-2 footer-grid">
-				<h4>配送方式</h4>
-				<ul>
-					<li><a href="#">配送时效及运费</a></li>
-					<li><a href="#">验货与签收</a></li>
-
-				</ul>
-			</div>
-			<div class="col-md-2 footer-grid">
-				<h4>售后服务</h4>
-				<ul>
-					<li><a href="#">退货政策</a></li>
-					<li><a href="#">退货流程</a></li>
-					<li><a href="#">退货方式及时效</a></li>
-				</ul>
-			</div>
-			<div class="col-md-2 footer-grid">
-				<h4>部分合作网站</h4>
-				<ul>
-					<li><a href="www.lancome.com">兰蔻</a></li>
-					<li><a href="#">雅诗兰黛</a></li>
-					<li><a href="#">百雀羚</a></li>
-				</ul>
-			</div>
-			<div class="col-md-1 footer-grid">
-			</div>
-			<div class="clearfix"></div>
-		</div>
-		<div class="col-md-12 footer-grid1">
-			<div class="col-md-5 footer-grid">
-			</div>
-			<div class="col-md-2 social-icons">
-				<a href="#"><i class="icon"></i></a>
-				<a href="#"><i class="icon1"></i></a>
-				<a href="#"><i class="icon2"></i></a>
-				<a href="#"><i class="icon3"></i></a>
-				<a href="#"><i class="icon4"></i></a>
-				<p>Copyright &copy; 易购商城</p>
-			</div>
-			<div class="col-md-5 footer-grid">
-			</div>
-		</div>
-	</div>
-</div>
-
-</body>
-</html>
-
-
+<!--/main-->
