@@ -323,6 +323,7 @@ h1.navbar-brand a {
 }
 .banner-grid1 img {
     width: auto;
+    height:500px;
 }
 .banner-grids{
     background-color: #ffffff;
