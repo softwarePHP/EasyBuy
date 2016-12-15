@@ -1,4 +1,8 @@
 <?php
+/**用户删改查功能，及权限验证
+ * 张宇晗
+ * 2016-12-7
+ **/
 namespace Admin\Controller;
 
 use Common\library\easybuy;
@@ -96,7 +100,7 @@ class UserController extends Controller
                 $condition['userid'] = $id;
                 $result = $userTable->where($condition)->save($data);
                 if ($result) {
-                    $this->success("用户信息修改成功");
+                    $this->success("用户信息修改成功",'../../../user/index');
                 } else {
                     $this->error("sorry,用户信息修改不成功");
 
