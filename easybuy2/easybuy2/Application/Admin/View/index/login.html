@@ -1,11 +1,28 @@
-
-<!doctype html>
 <html>
 {__NOLAYOUT__}
 <head>
     <meta charset="UTF-8">
-    <title>『豪情』后台管理</title>
+    <title>后台管理</title>
     <link href="__PUBLIC__/admin/css/admin_login.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="__PUBLIC__/admin/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+      var bg = Math.floor(Math.random() * 6 + 1);
+      $('body').css('background-image', 'url(__PUBLIC__/admin/images/0'+ bg +'.jpg)');
+    });
+  </script>
+  <style type="text/css">
+body  {
+  /*背景照*/
+background-image:url(__PUBLIC__/admin/images/02.jpg);
+z-index: -1;
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size: cover;
+height: 100%;
+width: 100%;
+}
+</style>
 </head>
 <body>
 <div class="admin_login_wrap">
