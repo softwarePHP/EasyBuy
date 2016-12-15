@@ -180,7 +180,7 @@ class GoodsController extends Controller
         }
         if ($keyword)
         {
-            $condetion['keyword'] = $keyword;
+            $condetion['goodname'] = array('like',"%$keyword%");
         }
         $count = M('goods')->where($condetion)->count();
         $page = $easybuy->getpage($count);
