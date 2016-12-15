@@ -196,6 +196,15 @@ class IndexController extends Controller
     //搜索功能
     public function select()
     {
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
         $search = I('search');
         $condetion['goodname'] = array('like',"%$search%");
         $result = M('goods')->where($condetion)->select();
@@ -212,6 +221,37 @@ class IndexController extends Controller
             $grand = M('grand');
             $gr = $grand->select();
             $this->assign('grand', $gr);
+              //添加购物车，获取价格，数量功能
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
         $this->display('./products/index');
 
     }
