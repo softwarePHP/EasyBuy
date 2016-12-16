@@ -672,9 +672,9 @@ input[type=text]:focus,textarea:focus {
 	-moz-box-shadow:none;
 	-webkit-box-shadow:none;
 	box-shadow:none;
-	border-color:#fca700;
+	border-color:#F2F2F2;
 	right:0;
-	background-color:#ffebcc
+	background-color:#F2F2F2
 }
 
 .order-table .insure label,.order-table .insure input,.insure .fare-insure .price,.order-table .insure-tip .price {
