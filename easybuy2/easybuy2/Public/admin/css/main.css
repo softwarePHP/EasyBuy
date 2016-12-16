@@ -4,6 +4,22 @@
 .sidebar-title h1{font-weight: normal;}
 .sidebar-content{padding-top: 5px;}
 .sidebar-list li{border:1px solid #e5e5e5;border-width:1px 0;}
+
+.sidebar-list li.open .link {
+    color: #1963AA;
+}
+
+.sidebar-list li.open i {
+    color: #1963AA;
+}
+.sidebar-list li.open i.fa-chevron-down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+
 .sidebar-list li .icon-font{margin-right: 5px;color: #888;font-size: 14px;}
 .sidebar-list li a{padding: 0 16px 0 20px;display: block;height: 38px;line-height: 38px;color: #333;}
 .sidebar-list li a:hover{background: #fff;color: #1963AA;}
