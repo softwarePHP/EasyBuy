@@ -17,6 +17,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		.delivery{
 			margin-bottom: 10px;
 		}
+		label {font-size:12px;cursor:pointer;}
+		label i {font-size:12px;font-style:normal;display:inline-block;width:12px;height:12px;text-align:center;line-height:12px;color:#fafcff;vertical-align:middle;margin:-2px 2px 1px 0px;border:#000 1px solid;}
+		input[type="checkbox"],input[type="radio"] {display:none;}
+		input[type="radio"] + i {border-radius:7px;}
+		input[type="checkbox"]:checked + i,input[type="radio"]:checked + i {background:#000;}
+		input[type="checkbox"]:disabled + i,input[type="radio"]:disabled + i {border-color:#fafcff;}
+		input[type="checkbox"]:checked:disabled + i,input[type="radio"]:checked:disabled + i {background:#fafcff;}
 	</style>
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<script src="__PUBLIC__/home/js/jquery.min.js"></script>
@@ -77,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<h1 class="navbar-brand"><a  href="index.html">Easy Buy</a></h1>
+						<h1 class="navbar-brand"><a  href="__APP__/home/index/index">Easy Buy</a></h1>
 					</div>
 					<!--/.navbar-header-->
 
@@ -165,9 +172,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="content">
 		<div class="cart-items">
 			<div class="container">
-				<h2>我的购物车</h2>
+				<h2 >我的购物车</h2>
 				<!--<form action="__APP__/home/order/order/userid/{$vo.userid}" method="post">-->
+
 				<form action="__APP__/home/order/order" method="post">
+					<div style="background-color: #fafcff;">
 					<foreach name='data' item='vo'>
 						<script>$(document).ready(function(c) {
 							$('.close1').on('click', function(c){
@@ -179,17 +188,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</script>
 
 						<div class="cart-header">
-							<div class="close1"> </div>
+							<!--<div class="close1"> </div>-->
 							<div class="cart-sec simpleCart_shelfItem">
 								<div class="cart-item cyc">
-									<label><input name="shopids[]" type="checkbox" value="{$vo.shopid}"/> </label>
-									<img src="__ROOT__/{$vo.imageurl}" class="img-responsive" alt="">
+									<label><input name="shopids[]" type="checkbox" value="{$vo.shopid}" type="checkbox"><i>✓</i></label>
+									<img src="__ROOT__/{$vo.imageurl}" class="img-responsive" alt="" style="margin-left: 10px;"/>
 								</div>
 								<div class="cart-item-info">
 
 									<div class="product-info simpleCart_shelfItem">
 										<div class="product-info-cust prt_name">
-											<h2>【{$vo.goodname}】</h2>
+											<h3>【{$vo.goodname}】</h3>
 											<span class="item_price">商品价格：￥{$vo.goodprice}</span>
 											<div class="ofr">
 												<p class="disc">商品折扣：[{$vo.discount}% Off]</p>
@@ -201,7 +210,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="delivery">
 
 											<div class="clearfix"></div>
-											<p class="qty"> 数量 :  </p><input min="1" type="number" id="quantity" name="quantity" value="{$vo.shopcount}" class="form-control input-small">
+											 <p style="font-size: 0.95em;color: #1A1A1A">数量 : {$vo.shopcount}</p><!--<input min="1" type="number" id="quantity" name="quantity" value="{$vo.shopcount}" style="border:1.5px solid #000;">-->
 										</div>
 									</div>
 
@@ -209,17 +218,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="subscribe2" style="float: right;">
 
 								</div>
-
+								<div style="float: right;"><!--<input type="button" value="删除" style="background:#000;border:2px solid #000;font-size: 0.95em;font-weight: 300;padding: 0.5em 2em;color: white;"/>-->
+								<a href="__APP__/home/order/delete?shopid={$vo.shopid}" style="font-size: 0.96em;"/>删除
+								</div>
 								<div class="clearfix"></div>
 
 							</div>
-						</div>
-					</foreach>
 
+						</div>
+
+					</foreach>
+				</div>
 					<br/>
 					<div style="float: right">
-						<a href="__APP__/home/order/order/userid/{$vo.userid}" class="button">购买</a>
-						<input type="submit" value="支付"/>
+						<input type="submit" value="支付" style="background:#000;border:2px solid #000;font-size: 0.95em;font-weight: 600;padding: 0.5em 4em;color: white;"/>
 					</div>
 				</form>
 			</div>
