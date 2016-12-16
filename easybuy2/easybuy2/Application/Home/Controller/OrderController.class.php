@@ -9,6 +9,7 @@ namespace Home\Controller;
 
 use Common\library\easybuy;
 use Think\Controller;
+use Think\Upload;
 
 class OrderController extends Controller
 {
@@ -25,6 +26,9 @@ class OrderController extends Controller
 
         )
     );*/
+    /**
+     * 购物车
+     */
     public function checkout()
     {
         //购物车中显示商品价格和图片
@@ -58,14 +62,6 @@ class OrderController extends Controller
                 $data[$i]['mark2'] = $good['mark2'];
                 $data[$i]['spec'] = $good['spec'];
                 $data[$i]['shopcount'] = $vo['shopcount'];
-                /*$goodid = $good['goodid'];
-                $goodname = $good['goodname'];
-                $goodprice = $good['goodprice'];
-                $shopcount = $vo['shopcount'];
-                $date[$i]['goodid']=$goodid;
-                $date[$i]['goodname']=$goodname;
-                $date[$i]['goodprice']=$goodprice;
-                $date[$i]['shopcount']=$shopcount;*/
                 $i++;
                 //dump($good);
             }
@@ -82,183 +78,260 @@ class OrderController extends Controller
             $this->display();
         }
     }
-
+    /**
+     * 订单详情
+     */
     public function order(){
 
-
-
-        //实例化对象order
-
-        //$orders = $orderTable->where($orderTable['userid']=$_SESSION['id'])->select();
-        //实例化对象goods
-        //$goodsTable = M('goods');
-
-        //$goods = $goodsTable->where($goodsTable['goodid']=$orderTable['goodid'])->select();
-        //实例化订单物品
-        //$orderdate = M('orderdate');
-        //$orderid = $orderTable['orderid'];
-        //$orderdates = $orderdate ->query('select * from orderdate where orderid = '.$orderid);
-        //$orderdates = $orderdate->where($orderdate['orderid']=$orderid)->select();
-        //dump($orderdates);
-        //dump($goods);
-
-        //$orders = $orderTable ->query('select * from orderdate where orderid = '.$orderid);
-
-        //$data = $easybuy->OrderSelect($orders);
-        //dump($data);
-        /*$easybuy = new easybuy();
-        $orderTable = M('orders');
-        $orders = $orderTable->select();
-        $data = $easybuy->OrderSelect($orders);
-        //$this->assign('order', $orders);
-        $this->assign('order',$data);
-        //dump($orders);
-        dump($data);
-        $this->display();*/
-        //$id=I('userid');
-        $shopid=I('shopid');
         session_start();
-        $id=$_SESSION['id'];
-        $condition['userid']=$id;
-        $condition['shopid']=$shopid;
-        $shopids = $_POST['shopids'];
-        //dump($shopids);
-        //$shopids=array();
-        //$shopids[]=$_POST('goods[]');
-        //dump($shopids);
-        $j = 0;
-        $i=0;
-        foreach ($shopids as $valus){
-            $condition1['userid']=3;
-            $condition1['shopid']=$valus[$j];
-            $shopingcar=M('shopingcar')->where($condition1)->select();
-            //dump($condition1);
-            //dump($shopingcar);
+            $id=$_SESSION['id'];
+            $condition['userid']=$id;
+            //$condition['shopid']=$shopid;
+            $shopids = $_POST['shopids'];
+            //dump($shopids);
+            //$shopids=array();
+            //$shopids[]=$_POST('goods[]');
+            //dump($shopids);
+            $i=0;
+            $alltotal = 0;
+            foreach ($shopids as $valus){
+                $condition1['userid']=$id;
+                $condition1['shopid']=$valus;
+                $shopingcar=M('shopingcar')->where($condition1)->select();
+                //dump($condition1);
+                //dump($shopingcar);
+                foreach($shopingcar as $vo){
+                    $goodid=$vo['goodid'];
+                    $good=M('goods')->find($goodid);
+                    $data[$i]['shopid']=$vo['shopid'];
+                    $data[$i]['userid']=$vo['userid'];
+                    $data[$i]['goodid']=$good['goodid'];
+                    $data[$i]['goodname']=$good['goodname'];
+                    $data[$i]['imageurl']=$good['imageurl'];
+                    $discount1 = $good['discount'];
+                    $discount = $discount1 * 100;
+                    $goodprice = $good['goodprice'];
+                    $count = $vo['shopcount'];
+                    $total =  $goodprice * $count;
 
-            foreach($shopingcar as $vo){
-                $goodid=$vo['goodid'];
-                $good=M('goods')->find($goodid);
-                $data[$i]['shopid']=$vo['shopid'];
-                $data[$i]['userid']=$vo['userid'];
-                $data[$i]['goodid']=$good['goodid'];
-                $data[$i]['goodname']=$good['goodname'];
-                $data[$i]['imageurl']=$good['imageurl'];
-                $discount1 = $good['discount'];
-                $discount = $discount1 * 100;
-                $goodprice = $good['goodprice'];
-                $count = $vo['shopcount'];
-                $total =  $goodprice * $count;
-
-                $data[$i]['total'] = $total;
-                $data[$i]['discount']=$discount;
-                $data[$i]['goodprice']=$goodprice;
-                $data[$i]['mark1']=$good['mark1'];
-                $data[$i]['mark2']=$good['mark2'];
-                $data[$i]['spec']=$good['spec'];
-                $data[$i]['shopcount']=$count;
-                //$userid=$vo['userid'];
-                $i++;
-                //dump($good);
-            }
-
-            //$adress = $_GET['adress'];
-            //dump($adress);
-
-            //dump($values);
+                    $data[$i]['total'] = $total;
+                    $data[$i]['discount']=$discount;
+                    $data[$i]['goodprice']=$goodprice;
+                    $data[$i]['mark1']=$good['mark1'];
+                    $data[$i]['mark2']=$good['mark2'];
+                    $data[$i]['spec']=$good['spec'];
+                    $data[$i]['shopcount']=$count;
+                    //$userid=$vo['userid'];
+                    $i++;
+                    //dump($good);
+                }
+            $alltotal += $total;
         }
+        //dump($alltotal);
         $j = 0;
-        $ids['userid']=3;
+        $ids['userid']=$id;
         $address=M('adress')->where($ids)->select();
         foreach ($address as $value){
             $userid = $value['userid'];
             $user=M('user')->find($userid);
+            $values[$j]['adressid']=$value['adressid'];
             $values[$j]['username']=$user['username'];
             $values[$j]['tel']=$value['tel'];
+            $value[$j]['adressid']=$value['adressid'];
             $values[$j]['adress']=$value['adress'];
+            $values[$j]['name']=$value['name'];
             $j++;
         }
         //dump($data);
         $women = M('grand')->where("mark=1")->select();
         $men = M('grand')->where("mark=2")->select();
         $children = M('grand')->where("mark=3")->select();
+        $this->assign('alltotal',$alltotal);
         $this->assign('women',$women);
         $this->assign('men',$men);
         $this->assign('children',$children);
         $this->assign('values',$values);
         $this->assign('data',$data);
-        $this->display();
-
-    }
-    public function over(){
-
+        $this->assign('user',$_SESSION['user']);
+        $this->assign('logout','退出');
         $this->display();
     }
+    /**
+     *  确认支付（添加到表orders和orderdate）
+     */
     public function payment(){
+        // 获取userID
         session_start();
         $id=$_SESSION['id'];
         //dump($id);
-        $shopid=I('shopid');
+        // 获取购物车id
+        $shopid=I('shopids');
+        $address=$_POST['address'];
+        //dump($address);
+        //$address=explode('<li>收货地址：',$address);
+        // 字符串切割
+        $a='收货地址';
+        $address=ltrim($address,'<li>'.$a);
+        $address=str_replace('</li><li>收件人：','：',$address);
+        $address=str_replace('（收）','：',$address);
+        $address = rtrim($address,'</li>');
+        //dump($address);
+        $choseaddress = explode("：",$address);
+        //dump($choseaddress);
+        //dump($shopid);
+        //$alltotal = $_GET('alltotal');
         $condition['userid']=$id;
         $condition['shopid']=$shopid;
         $condition1['userid']=$id;
-        $shopingcar=M('shopingcar')->where($condition)->select();
+        //$shopingcar=M('shopingcar')->where($condition)->select();
+
+
+        // 提交到订单表
         $orderTable = M('orders');
-        /*$i = 0;
-        foreach ($shopingcar as $vo) {
-            $goodid = $vo['goodid'];
-            $good = M('goods')->find($goodid);
-            $address = M('adress')->find($id);
-            $data = array();
-            $data[$i]['userid'] = $id;
-            $data[$i]['shopid'] = $vo['shopid'];
-            $data[$i]['ordernumber'] = rand(100000000,999999999);
-            $data[$i]['ordertime'] = time();
-            $data[$i]['discount'] = $good['discount'];
-            $data[$i]['orderaddress'] = $address['adress'];
-            $data[$i]['orderstate'] = 2;
-            $i ++;
-        }*/
-        $goodid = $shopingcar['goodid'];
-        $good = M('goods')->find($goodid);
-        $address = M('adress')->where($condition1)->find();
         $data = array();
         $data['userid'] = $id;
-        //dump($data['userid']);
-        $data['shopid'] = $shopingcar['shopid'];
-        $data['ordernumber'] = rand(100000000,999999999);
         $date = time();
         $ordertime = date('Y-m-d H:m:s',$date);
         $data['ordertime'] = $ordertime;
-        $data['discount'] = $good['discount'];
-        //dump($good['discount']);
-        $data['orderaddress'] = $address['adress'];
-        $data['orderstate'] = 2;
+        $str1 = rand(100000000,999999999);
+        $str2 = $date;
+        $data['ordernumber'] = $str1.$str2;
+        //$data['discount'] = $good['discount'];
+        $data['orderaddress'] = $choseaddress[1];
+        $data['tel'] = $choseaddress[3];
+        $data['name'] = $choseaddress[2];
+        $data['orderstate'] = 4;
         $orderTable->add($data);
-        //dump($result1);
-        /*$orderdateTable = M('orderdate');
-        $shopingcar=M('shopingcar')->where($condition)->select();
-        $data1=array();
-        $data1['goodid']=$good['goodid'];
-        $data1['orderid']=$orderTable['orderid'];
-        $data1['count']=$shopingcar['count'];
-        $orderdateTable->add($data1);*/
+        //$orderid = $orderTable['orderid'];
+        $ordernumber = $data['ordernumber'];
 
-        /*$goodprice = $good['goodprice'];
-        $count = $shopingcar['count'];
-        $total =  $goodprice * $count;
-        $data2['total']=$total;*/
+        //dump($ordernumber);
+        //dump($shopingcar);
+        //dump($data);
+        //  提交到订单状态表
+        $orderdate = M('orderdate');
+        $i = 0;
+        $j = 0;
+        //dump($shopid);
+        foreach ($shopid as $value){
+            $condition1['userid']=$id;
+            $condition1['shopid']=$value;
+            $shopingcar=M('shopingcar')->where($condition1)->select();
+            //dump($condition1);
+            foreach ($shopingcar as $vo) {
+                $goodid = $vo['goodid'];
+                //$good = M('goods')->find($goodid);
+                $order = M('orders')->where("ordernumber=$ordernumber")->getField('orderid');
+                //$order = intval($order);
+                $values[$i]['goodid'] = $goodid;
+                //$values[$i]['goodid'] = intval($values[$i]['goodid']);
+                $values[$i]['count'] = $vo['shopcount'];
+                //$values[$i]['count'] = intval($values[$i]['count']);
+                $values[$i]['orderid'] = $order;
+                $i ++;
+            }
+            $j ++;
+
+        }
+        dump($order);
+        //dump($values);
+        $orderdate->addALL($values);
+        //dump($result);
+
+        // 计算商品总价
+        $p=0;
+        $alltotal = 0;
+        foreach ($shopid as $valus){
+            $condition1['userid']=$id;
+            $condition1['shopid']=$valus;
+            $shopingcar=M('shopingcar')->where($condition1)->select();
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $p++;
+            }
+            $alltotal += $total;
+        }
+        //dump($alltotal);
+
         $women = M('grand')->where("mark=1")->select();
         $men = M('grand')->where("mark=2")->select();
         $children = M('grand')->where("mark=3")->select();
+        //$this->assign('alltotal',$alltotal);
+        $this->assign('alltotal', $alltotal);
         $this->assign('women',$women);
         $this->assign('men',$men);
         $this->assign('children',$children);
         $this->assign('data',$data);
+        $this->assign('values',$values);
         $this->display();
     }
-    public function add(){
+    /**
+     * 购物车删除
+     */
+    public function delete()
+    {
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $shoppingcerTable = M('shopingcar');
+            $shopid = I('shopid');
+            $result = $shoppingcerTable->delete($shopid);
+            if ($result) {
+                $this->success('数据删除成功');
+            } else {
+                $this->error('删除失败');
+            }
+        } else {
+            $this->error("请登录！", '../index/login');
 
-
+        }
     }
+    /**
+     * 支付完成
+     */
+    public function over(){
+        session_start();
+        $id=$_SESSION['id'];
+        $this->display();
+    }
+    /*public function adds()
+    {
+        session_start();
+        $condition['userid']=$_SESSION['id'];
+        $condition['shopid']=$_GET['shopid'];
+        //dump($condition);
+        if($condition['userid']==null)
+        {
+            $this->error('亲，请先登录！','../../../index/login');
+        }
+        else{
+            $ordersTable=M('orders');
+            $find=$ordersTable->where($condition)->find();
+            //dump($find);
+            if($find)
+            {
+                $shopcount=$ordersTable->where($condition)->getField('shopcount');
+                $condition1['shopcount']=$shopcount+1;
+                $result=$ordersTable->where($condition)->save($condition1);
+                if($result)
+                {
+                    $this->success('添加成功','../../../order/checkout');
+                }
+            }
+            else{
+                $condition['shopcount']=1;
+                $result=$ordersTable->add($condition);
+                if($result)
+                {
+                    $this->success('添加成功','../../../order/order');
+                }
 
+            }
+
+
+        }
+    }*/
 }
