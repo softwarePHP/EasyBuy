@@ -84,6 +84,15 @@ class IndexController extends Controller
             $this->display();
         }
     }
+     public function tologin()
+    {
+        if($_SESSION['id']==null) {
+            header('Location:login');
+        }
+        else{
+            header('Location:../personal/personalCenter');
+        }
+    }
     public function  dologin(){
         if(!empty($_POST)) {
             //验证数据
