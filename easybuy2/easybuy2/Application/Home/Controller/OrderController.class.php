@@ -61,6 +61,42 @@ class OrderController extends Controller
                 $data[$i]['mark2'] = $good['mark2'];
                 $data[$i]['spec'] = $good['spec'];
                 $data[$i]['shopcount'] = $vo['shopcount'];
+                 /**添加购物车，获取价格，数量功能
+         * 张宇晗
+         * 2016-12-15
+         **/
+       if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
                 $i++;
                 //dump($good);
             }
