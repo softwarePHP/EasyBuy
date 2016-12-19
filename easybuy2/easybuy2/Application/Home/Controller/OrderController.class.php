@@ -12,20 +12,7 @@ use Think\Controller;
 use Think\Upload;
 
 class OrderController extends Controller
-{
-    /*protected $_link = array(
-        'orders' => array(
-            'mapping_type' => self::BELONGS_TO,
-            'class_name' => 'orders',
-            'foreign_key' => 'goodid',
-        ),
-        'goods' => array(
-            'mapping_type' => self::MANY_TO_MANY,
-            'class_name' => 'goods',
-            'foreign_key' => 'goodid',
-
-        )
-    );*/
+{   
     /**
      * 购物车
      */
@@ -75,10 +62,7 @@ class OrderController extends Controller
             $this->assign('data', $data);
             $this->assign('user',$_SESSION['user']);
             $this->assign('logout','退出');
-            /**添加购物车，获取价格，数量功能
-         * 张宇晗
-         * 2016-12-15
-         **/
+           
         if($_SESSION['id']!=null)
         {
             $id=$_SESSION['id'];
@@ -124,10 +108,6 @@ class OrderController extends Controller
             $condition['userid']=$id;
             //$condition['shopid']=$shopid;
             $shopids = $_POST['shopids'];
-            //dump($shopids);
-            //$shopids=array();
-            //$shopids[]=$_POST('goods[]');
-            //dump($shopids);
             $i=0;
             $alltotal = 0;
             foreach ($shopids as $valus){
@@ -199,11 +179,11 @@ class OrderController extends Controller
         // 获取userID
         session_start();
         $id=$_SESSION['id'];
-        //dump($id);
+       
         // 获取购物车id
         $shopid=I('shopids');
         $address=$_POST['address'];
-        //dump($address);
+   
         //$address=explode('<li>收货地址：',$address);
         // 字符串切割
         $a='收货地址';
@@ -211,10 +191,9 @@ class OrderController extends Controller
         $address=str_replace('</li><li>收件人：','：',$address);
         $address=str_replace('（收）','：',$address);
         $address = rtrim($address,'</li>');
-        //dump($address);
+        
         $choseaddress = explode("：",$address);
-        //dump($choseaddress);
-        //dump($shopid);
+        
         //$alltotal = $_GET('alltotal');
         $condition['userid']=$id;
         $condition['shopid']=$shopid;
@@ -241,14 +220,10 @@ class OrderController extends Controller
         //$orderid = $orderTable['orderid'];
         $ordernumber = $data['ordernumber'];
 
-        //dump($ordernumber);
-        //dump($shopingcar);
-        //dump($data);
         //  提交到订单状态表
         $orderdate = M('orderdate');
         $i = 0;
         $j = 0;
-        //dump($shopid);
         foreach ($shopid as $value){
             $condition1['userid']=$id;
             $condition1['shopid']=$value;
@@ -268,11 +243,8 @@ class OrderController extends Controller
             }
             $j ++;
 
-        }
-        dump($order);
-        //dump($values);
+        }      
         $orderdate->addALL($values);
-        //dump($result);
 
         // 计算商品总价
         $p=0;
@@ -291,7 +263,6 @@ class OrderController extends Controller
             }
             $alltotal += $total;
         }
-        //dump($alltotal);
 
         $women = M('grand')->where("mark=1")->select();
         $men = M('grand')->where("mark=2")->select();
@@ -330,7 +301,26 @@ class OrderController extends Controller
      */
     public function over(){
         session_start();
-        $id=$_SESSION['id'];
+        $id=$_SESSION['userid'];
+        $orderid = I('orderid');
+        $condition['orderid'] = $orderid;
+        $date['orderstate'] = 1;
+        // 更改订单状态为未发货状态(由状态4未付款到状态1未发货)
+        M('orders')->where($condition)->save($date);
+        // 更改商品表中商品数量
+        $orderstate = M('orderdate')->where($condition)->select();
+        $i = 0;
+        foreach ($orderstate as $value){
+            // 获取购买商品数量
+            $vos['count'] = $value['count'];
+            // 获取购买商品id
+            $vo['goodid'] = $value['goodid'];
+            $goods = M('goods')->where($vo)->getField('count');
+            $voo['count'] = $goods-$vos['count'];
+            $i ++;
+        }
+        // 更新数量
+        M('goods')->where($vo)->save($voo);
         $this->display();
     }
     /*public function adds()
