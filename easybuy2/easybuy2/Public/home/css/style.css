@@ -387,7 +387,7 @@ span.glyphicon.glyphicon-eye-open {
 .gallery-info {
     position: absolute;
     width: 94%;
-    top: 40.8%;
+    top: 53%;
     left: 8px;
     display: none;
     background-color: rgba(25, 23, 23, 0.4);
@@ -843,7 +843,7 @@ p span.overline{
     border: 1px solid #555;
     outline-color:#08538C;
     width: 96%;
-    font-size:0.8125em;
+    font-size:1em;
     padding: 0.5em;
 }
 .login-right #verify img{
