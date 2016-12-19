@@ -187,4 +187,17 @@ class AdminController extends Controller
         $this->error('登录失败，不存在该用户','/Home/Admin/index');
        }
     }*/
+    public function select(){
+        $easybuy = new easybuy();
+        $keywords=I('post.keyword');
+        $condition = array();
+        $condition['adminname'] = $keywords;
+        $adminTable=M('admin');
+        $count = $adminTable->where($condition)->count();
+        $page = $easybuy->getpage($count);
+        $pages = $page->show();
+        $data=$adminTable->where($condition)->limit($page->firstRow.','.$page->listRows)->select();
+        $this->assign('admin',$data);
+        $this->assign('pages',$pages);
+        $this->display('admin/index');
 }
