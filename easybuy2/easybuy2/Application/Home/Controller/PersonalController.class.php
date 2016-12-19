@@ -212,6 +212,7 @@ class PersonalController extends Controller
         $this->assign('men',$men);
         $this->assign('children',$children);
         $name = $_SESSION['user'];//获取已登录的用户名
+
         $user = M('user');
         $userid = $user->where('username = "'.$name.'"')->getField('userid');//获取已登录的用户的userid
         $easybuyhome = new easybuyhome();
@@ -632,10 +633,68 @@ class PersonalController extends Controller
     }
 //show查看详情
     public function show(){
-        $id = I('id');
-        echo"静态页面正在开发中......";
-        //dump($id);
-        //$this->display();
-    }
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
 
+
+
+        $id = I('id');
+        $easybuyhome = new easybuyhome();
+        $order = M('orders');
+        $oredrs = $order->where('orderid = '.$id)->select();
+        $data = $easybuyhome->OrderSelect($oredrs);
+        //dump($data);
+
+        $this->assign('data',$data);
+
+        if($_SESSION['id']!=null)
+        {
+            $id=$_SESSION['id'];
+            $shopingcar=M('shopingcar')->where("userid=$id")->select();
+            $i=0;
+            $alltotal=0;
+            $allcount=0;
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                //$discount1 = $good['discount'];
+                //$discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $data[$i]['shopcount']=$count;
+                $allcount+=$count;
+                $alltotal+= $total;
+                $i++;
+            }
+
+
+            $this->assign('total',$alltotal);
+            $this->assign('count',$allcount);
+        }else {
+            $this->assign('total',"0.00");
+            $this->assign('count',"0");
+        }
+
+
+
+        $this->display();
+    }
 }

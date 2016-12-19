@@ -186,50 +186,135 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                             </div>
                             <div class="col-md-10 column">
-                                <div >
+                                <div style ="margin-bottom:50px;">
                                     <h1>
-                                        订单详情
+                                        <B>订单详情</B>
                                     </h1>
-                                    <table class="table" border="1">
-                                        <tr>
-                                            <td>row 1, cell 1</td>
-                                            <td>row 1, cell 2</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>row 2, cell 2</td>
-                                        </tr>
-                                    </table>
-                                    <!--<table class="table" style ="border:1px solid #CCC;">-->
-                                        <thead style ="background:#EEE;">
-                                        <tr>
-                                            <th>
-                                                当前订单状态：
-                                            </th>
-                                            <th>
-                                                已完成
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <volist name="data" id="vo">
-                                            <tr>
-                                                <td>{$vo.下单时间}&nbsp|&nbsp&nbsp{$vo.订单号}</td>
-                                                <td>
-                                                    <volist name="vo.商品详情" id="vos">
-                                                        {$vos}<br/>
+                                </div>
+                                <div>
+                                    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+                                    <div class="panel-group" id="panel-96606">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-96606" href="#panel-element-29569">状态信息</a>
+                                            </div>
+                                            <div id="panel-element-29569" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <volist name="data" id="vo">
+                                                        {$vo.状态}<br/>
+                                                        {$vo.状态内容}
                                                     </volist>
-                                                </td>
-                                                <td>{$vo.总金额}</td>
-                                                <td>{$vo.订单状态}<br/><a href = "/EasyBuy/index.php/home/Personal/show?id={$vo.id}">查看详情</a></td>
-                                                <td>
-                                                    {$vo.操作}
-                                                </td>
-                                            </tr>
-                                        </volist>
-                                        <hr/>
-                                        </tbody>
-                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-96606" href="#panel-element-43032">物流信息</a>
+                                            </div>
+                                            <div id="panel-element-43032" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    此版本不涉及物流相关问题（下一版本进行更新，敬请期待）
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-96606" href="#panel-element-4303">订单信息</a>
+                                            </div>
+                                            <div id="panel-element-4303" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    收货地址：<br/>
+                                                    &emsp; <volist name="data" id="vo">
+                                                    {$vo.收货姓名}&emsp;{$vo.收货电话}&emsp;{$vo.收货地址}<br/>
+                                                </volist>
+                                                    运送方式：<br/>
+                                                    &emsp;快递<br/>
+                                                    <hr style="height:1px;border-top:1px dashed #CCC;" />
+                                                    卖家信息:<br/>
+                                                    &emsp;河北省石家庄市EsayBuy购物商城&emsp;联系方式：（就不告诉你，保证你找不到我，O(∩_∩)O~）
+                                                    <hr style="height:1px;border-top:1px dashed #CCC;" />
+                                                    订单信息：<br/>
+                                                    <volist name="data" id="vo">
+                                                        订单编号：{$vo.订单号}<br/>
+                                                        支付宝交易号：（未涉及付款，暂无）<br/>
+                                                        订单创建时间：{$vo.下单时间}<br/>
+                                                    </volist>
+
+                                                    <table class="table">
+                                                        <thead style ="color:#FFF; background:#aaa;">
+                                                        <tr style ="border:1px solid #CCC;">
+                                                            <th>
+                                                                商品
+                                                            </th>
+                                                            <th>
+                                                                单价
+                                                            </th>
+                                                            <th>
+                                                                数量
+                                                            </th>
+                                                            <th>
+                                                                状态
+                                                            </th>
+                                                            <th>
+                                                                总价
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <volist name="data" id="vo">
+                                                            <tr style ="border:1px solid #CCC;">
+                                                                <td>
+                                                                    <table class="table">
+                                                                        <tbody>
+                                                                        <volist name="vo.商品" id="vos">
+                                                                            <tr>
+                                                                                <td width="65"><img src="__ROOT__/{$vos.图片}" width="60" height="60"/></td>
+                                                                                <td>{$vos.名称}</td>
+                                                                            </tr>
+                                                                        </volist>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td >
+                                                                <td>
+                                                                    <table class="table">
+                                                                        <tbody>
+                                                                        <volist name="vo.商品价格" id="vos">
+                                                                            <tr>
+                                                                                <td><img src="__PUBLIC__/home/images/zhanwei.png" width="1" height="60"/>
+                                                                                    {$vos}</td>
+                                                                            </tr>
+                                                                        </volist>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td >
+                                                                <td>
+                                                                    <table class="table">
+                                                                        <tbody>
+                                                                        <volist name="vo.商品数量" id="vos">
+                                                                            <tr>
+                                                                                <td><img src="__PUBLIC__/home/images/zhanwei.png" width="1" height="60"/>
+                                                                                    {$vos}</td>
+                                                                            </tr>
+                                                                        </volist>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                                <td style ="border:1px solid #CCC;">
+                                                                    {$vo.订单状态}
+                                                                </td>
+                                                                <td style ="border:1px solid #CCC;">
+                                                                    总金额：{$vo.总金额}<br/>实际金额：{$vo.实付金额}
+                                                                </td>
+                                                            </tr>
+                                                        </volist>
+                                                        </tbody>
+                                                    </table>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <br/>
                             </div>

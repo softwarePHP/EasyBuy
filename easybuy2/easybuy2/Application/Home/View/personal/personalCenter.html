@@ -188,58 +188,123 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="col-md-10 column">
 								<div >
 									<h1>
-										我的订单
+										<B>我的订单</B>
 									</h1>
 								</div>
 								<br/>
-								<div class="btn-group">
+								<div class="btn-group" style ="margin-bottom:10px;">
 									<button class="btn btn-default" type="button"> <a href="__APP__/home/Personal/personalCenter">全部订单</a></button>
 									<button class="btn btn-default" type="button"> <a href="__APP__/home/Personal/pendingPayment">待付款</a></button>
 									<button class="btn btn-default" type="button"> <a href="__APP__/home/Personal/unSend">未发货</a></button>
-									<button class="btn btn-default" type="button"> <a href="__APP__/home/Personal/send">已发货</a></button>
-									<button class="btn btn-default" type="button"> <a href="__APP__/home/Personal/over">已完成</a></button>
-									<button class="btn btn-default" type="button"> <a href="__APP__/home/Personal/canceledOrder">已取消</a></button>
-									<button class="btn btn-default" type="button"> <a href="__APP__/home/Personal/returned">已退货</a></button>
+									<button class="btn btn-default" type="button"> <a href="__APP__/index.php/home/Personal/send">已发货</a></button>
+									<button class="btn btn-default" type="button"> <a href="__APP__/index.php/home/Personal/over">已完成</a></button>
+									<button class="btn btn-default" type="button"> <a href="__APP__/index.php/home/Personal/canceledOrder">已取消</a></button>
+									<button class="btn btn-default" type="button"> <a href="__APP__/index.php/home/Personal/returned">已退货</a></button>
 								</div>
-								<table class="table" style ="border:1px solid #CCC;">
-								<thead style ="background:#EEE;">
-								<tr>
-									<th>
-										订单信息
-									</th>
-									<th>
-										商品
-									</th>
-									<th>
-										订单金额
-									</th>
-									<th>
-										订单状态
-									</th>
-									<th>
-										操作
-									</th>
-								</tr>
-								</thead>
-								<tbody>
-								<volist name="data" id="vo">
+								<table class="table">
+									<thead style ="color:#FFF; background:#000;">
 									<tr>
-										<td>{$vo.下单时间}&nbsp|&nbsp&nbsp{$vo.订单号}</td>
+										<th>
+											商品
+										</th>
+										<th>
+											单价
+										</th>
+										<th>
+											数量
+										</th>
+										<th>
+											实付款
+										</th>
+										<th>
+											订单状态
+										</th>
+										<th>
+											操作
+										</th>
+									</tr>
+									</thead>
+									<tr>
+										<td></td >
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr><!--占位，无实际意义-->
+									<tbody>
+									<volist name="data" id="vo">
+									<thead style ="color:#FFF;background:#000;border:1px solid #CCC;">
+									<tr>
+										<th>
+											时间：{$vo.下单时间}&emsp;订单号：{$vo.订单号}
+										</th>
+										<th>
+										</th>
+										<th>
+										</th>
+										<th>
+										</th>
+										<th>
+										</th>
+										<th>
+										</th>
+									</tr>
+									</thead>
+									<tr style ="border:1px solid #CCC;">
 										<td>
-											<volist name="vo.商品详情" id="vos">
-												{$vos}<br/>
-											</volist>
-										</td>
-										<td>{$vo.总金额}</td>
-										<td>{$vo.订单状态}<br/><a href = "__APP__/home/Personal/show?id={$vo.id}">查看详情</a></td>
+											<table class="table">
+												<tbody>
+												<volist name="vo.商品" id="vos">
+													<tr>
+														<td width="65"><img src="__ROOT__/{$vos.图片}" width="60" height="60"/></td>
+														<td>{$vos.名称}</td>
+													</tr>
+												</volist>
+												</tbody>
+											</table>
+										</td >
 										<td>
+											<table class="table">
+												<tbody>
+												<volist name="vo.商品价格" id="vos">
+													<tr>
+														<td><img src="__PUBLIC__/home/images/zhanwei.png" width="1" height="60"/>
+															{$vos}</td>
+													</tr>
+												</volist>
+												</tbody>
+											</table>
+										</td >
+										<td>
+											<table class="table">
+												<tbody>
+												<volist name="vo.商品数量" id="vos">
+													<tr>
+														<td><img src="__PUBLIC__/home/images/zhanwei.png" width="1" height="60"/>
+															{$vos}</td>
+													</tr>
+												</volist>
+												</tbody>
+											</table>
+										</td >
+										<td style ="border:1px solid #CCC;">总金额：{$vo.总金额}<br/>实际金额：{$vo.实付金额}</td>
+										<td style ="border:1px solid #CCC;">{$vo.订单状态}<br/><a href = "__APP__/index.php/home/Personal/show?id={$vo.id}">查看详情</a></td>
+										<td style ="border:1px solid #CCC;">
 											{$vo.操作}
 										</td>
 									</tr>
-								</volist>
-								<hr/>
-								</tbody>
-							</table>
+									<tr>
+										<td></td >
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr><!--占位，无实际意义-->
+									</volist>
+									</tbody>
+								</table>
 								<div class="list-page">{$pages}</div>
 								<!--<ul class="pagination">
 									<li>
