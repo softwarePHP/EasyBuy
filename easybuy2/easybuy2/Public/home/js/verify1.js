@@ -86,7 +86,7 @@ jQuery(function(){
             setTimeout(function(){o.focus()},0);
             return false;
         }else{
-            showInfo($("#username_msg"),'正确','ok');
+            showInfo($("#username_msg"),'格式正确','ok');
 
         }
         /* ajax校验： */
