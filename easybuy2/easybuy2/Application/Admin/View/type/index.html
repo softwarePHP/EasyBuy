@@ -34,7 +34,8 @@
                             <td>{$vo.categoriesnum}</td>
                             <td title="artichoke"><a target="_blank" href="#" title="artichoke">{$vo.categoriesname}</a>
                             <td>
-                                <a class="link-delete" href="__APP__/admin/Type/delete?id={$vo.categoriesid}">删除</a>
+                                <a class="link-delete" href="__APP__/admin/Type/delete?id={$vo.categoriesid}" onclick=
+                                        "return confirm('确认要删除吗？请慎重哦！')">删除</a>
                             </td>
                         </tr>
                         </volist>

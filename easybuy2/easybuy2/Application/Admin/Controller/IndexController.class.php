@@ -33,7 +33,7 @@ class IndexController extends Controller
                 $_SESSION['id'] = $id;
                 $name=$adminTable->where($condition)->getField('adminname');
                 $_SESSION['admin'] = $name;
-                $this->success('登录成功', '../index/index/');
+                $this->redirect('index',0);
             } else {
                 $this->error('用户名或密码错误，请重新登录！');
             }

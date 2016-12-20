@@ -81,7 +81,7 @@ public function insert()
                     $result = $grandTable->add($data);
                     if($result)
                     {
-                        $this->success('添加成功',"../Grands/index");
+                        $this->redirect('index',0);
                     }
                     else{
                         $this->error('添加失败');
@@ -173,7 +173,7 @@ public function delete()
     $id = I('id');
     $result =$grandTable->delete($id);
     if ($result){
-        $this->success('数据删除成功');
+        $this->redirect('index',0);
     } else {
         $this->error('删除失败');
     }}

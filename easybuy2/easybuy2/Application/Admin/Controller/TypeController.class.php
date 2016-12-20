@@ -68,7 +68,7 @@ class TypeController extends Controller
         //参数判断
         $result=$categoriesTable->add($data);
 
-        $this->success('插入成功','../Type/index');
+            $this->redirect('index',0);
     }
 
         else{
@@ -89,7 +89,7 @@ class TypeController extends Controller
         if ($_SESSION['id'] != null) {
         $result = $grandTable->where($condition)->save($data);
         if ($result){
-            $this->success('修改成功');
+            $this->redirect('index',0);
         }else{
             $this->error('修改失败');
         }
@@ -124,7 +124,7 @@ class TypeController extends Controller
         if ($result){
             $this->success('数据删除成功');
         } else {
-            $this->error('删除失败');
+            $this->redirect('index',0);
         }}
         else{
                 $this->error("请登录！",'../index/login');

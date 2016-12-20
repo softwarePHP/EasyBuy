@@ -48,7 +48,7 @@ class UserController extends Controller
             $id = $_GET['userid'];
             $result = $userTable->delete($id);
             if ($result) {
-                $this->success("用户信息删除成功");
+                $this->redirect('index',0);
             } else {
                 $this->error("Sorry,用户信息删除不成功","__APP__/home/user/index");
             }
@@ -100,7 +100,7 @@ class UserController extends Controller
                 $condition['userid'] = $id;
                 $result = $userTable->where($condition)->save($data);
                 if ($result) {
-                    $this->success("用户信息修改成功",'../../../user/index');
+                    $this->redirect('index',0);
                 } else {
                     $this->error("sorry,用户信息修改不成功");
 

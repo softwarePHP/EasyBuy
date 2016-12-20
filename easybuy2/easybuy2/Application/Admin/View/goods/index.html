@@ -58,7 +58,8 @@
                                 <td>
                                     <a class="link-update" href="__APP__/admin/goods/show?id={$vo.goodid}">详情</a>
                                     <a class="link-update" href="__APP__/admin/goods/revise?id={$vo.goodid}">修改</a>
-                                    <a class="link-del" href="__APP__/admin/goods/delete?id={$vo.goodid}">删除</a>
+                                    <a class="link-del" href="{:U('admin/goods/delete',array('id'=>encode($vo['goodid'])))}" onclick=
+                                            "return confirm('确认要删除吗？请慎重哦！')">删除</a>
                                 </td>
                             </tr>
                         </foreach>

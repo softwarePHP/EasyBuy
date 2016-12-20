@@ -49,7 +49,8 @@
                             <td>
                                  <a class="link-update" href="__APP__/admin/admin/view?id={$vo.adminid}">查看</a>
                                 <a class="link-update" href="__APP__/admin/admin/update/adminid/{$vo.adminid}">修改</a>
-                                <a class="link-delete" href="__APP__/admin/admin/delete?id={$vo.adminid}">删除</a>
+                                <a class="link-delete" href="__APP__/admin/admin/delete?id={$vo.adminid}" onclick=
+                                        "return confirm('确认要删除吗？请慎重哦！')">删除</a>
                             </td>
                             </tr>
                     </foreach>

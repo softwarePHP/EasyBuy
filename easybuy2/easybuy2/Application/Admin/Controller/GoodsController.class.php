@@ -6,11 +6,11 @@ use Think\Controller;
 use Think\Page;
 use Think\Session\Driver\Memcache;
 use Think\Upload;
-
 class GoodsController extends Controller
 {
     public function index()
     {
+
         $easybuy = new easybuy();//实例化一个easybuy类
         $grands = M('grand')->select();
         $categories = M('categories')->select();
@@ -29,6 +29,8 @@ class GoodsController extends Controller
     }
     public function revise()
     {
+
+
         $easybuy = new easybuy();//实例化一个easybuy类
         $date = $easybuy->GoodGetGC();
         $result = $easybuy->GoodArrayMake($date['good'],$date['grandname'],$date['categoriesname']);//调用构建一维数组方法
@@ -92,7 +94,7 @@ class GoodsController extends Controller
         $result = M('goods')->add($date);
         if ($result)
         {
-            $this->success('商品插入成功','index');
+            $this->redirect('index',0);
         }
         else
         {
@@ -110,11 +112,11 @@ class GoodsController extends Controller
     {
         session_start();
         if($_SESSION['id']!=null) {
-        $id = I('get.id');
+        $id = decode(I('get.id'));
         $result = M('goods')->delete($id);
         if($result)
         {
-            $this->success('删除成功','index');
+            $this->redirect('index',0);
         }
         else
         {
@@ -142,7 +144,7 @@ class GoodsController extends Controller
             $result = M('goods')->where("goodid=$goodid")->save($date);
         if ($result)
         {
-            $this->success('商品修改成功','index');
+            $this->redirect('index',0);
         }
         else
         {
