@@ -178,6 +178,14 @@ class OrderController extends Controller
     public function payment(){
         // 获取userID
         session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
         $id=$_SESSION['id'];
        
         // 获取购物车id
@@ -320,6 +328,14 @@ class OrderController extends Controller
      */
     public function over(){
         session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
         $id=$_SESSION['userid'];
         $orderid = I('orderid');
         $condition['orderid'] = $orderid;
