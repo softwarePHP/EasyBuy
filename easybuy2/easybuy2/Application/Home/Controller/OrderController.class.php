@@ -274,7 +274,7 @@ class OrderController extends Controller
         $orderdate->addALL($values);
 
         // 计算商品总价
-        $p=0;
+        /*$p=0;
         $alltotal = 0;
         foreach ($shopid as $valus){
             $condition1['userid']=$id;
@@ -289,8 +289,14 @@ class OrderController extends Controller
                 $p++;
             }
             $alltotal += $total;
-        }
+        }*/
 
+        // 购物车表删除
+        foreach ($shopid as $valus) {
+            $shoppingcerTable = M('shopingcar');
+            $result = $shoppingcerTable->where("shopid=$value")->delete();
+        }
+        
         $women = M('grand')->where("mark=1")->select();
         $men = M('grand')->where("mark=2")->select();
         $children = M('grand')->where("mark=3")->select();
