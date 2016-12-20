@@ -201,6 +201,24 @@ class OrderController extends Controller
         //$shopingcar=M('shopingcar')->where($condition)->select();
 
 
+        // 计算商品总价
+        $p=0;
+        $alltotal = 0;
+        foreach ($shopid as $valus){
+            $condition1['userid']=$id;
+            $condition1['shopid']=$valus;
+            $shopingcar=M('shopingcar')->where($condition1)->select();
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $p++;
+            }
+            $alltotal += $total;
+        }
+        
         // 提交到订单表
         $orderTable = M('orders');
         $data = array();
@@ -216,6 +234,7 @@ class OrderController extends Controller
         $data['tel'] = $choseaddress[3];
         $data['name'] = $choseaddress[2];
         $data['orderstate'] = 4;
+        $data['alltotal'] = $alltotal;
         $orderTable->add($data);
         //$orderid = $orderTable['orderid'];
         $ordernumber = $data['ordernumber'];
