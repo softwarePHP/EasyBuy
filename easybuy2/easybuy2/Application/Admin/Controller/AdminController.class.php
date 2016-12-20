@@ -200,4 +200,4 @@ class AdminController extends Controller
         $this->assign('admin',$data);
         $this->assign('pages',$pages);
         $this->display('admin/index');
-}
+}}
