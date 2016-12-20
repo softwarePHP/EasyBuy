@@ -47,9 +47,9 @@
                             <td>{$vo.permission}</td>
                
                             <td>
-                                 <a class="link-update" href="__APP__/admin/admin/view?id={$vo.adminid}">查看</a>
-                                <a class="link-update" href="__APP__/admin/admin/update/adminid/{$vo.adminid}">修改</a>
-                                <a class="link-delete" href="__APP__/admin/admin/delete?id={$vo.adminid}" onclick=
+                                 <a class="link-update" href="{:U('admin/admin/view',array('id'=>encode($vo['adminid'])))}">查看</a>
+                                <a class="link-update" href="{:U('admin/admin/update',array('id'=>encode($vo['adminid'])))}">修改</a>
+                                <a class="link-delete" href="{:U('admin/admin/delete',array('id'=>encode($vo['adminid'])))}" onclick=
                                         "return confirm('确认要删除吗？请慎重哦！')">删除</a>
                             </td>
                             </tr>

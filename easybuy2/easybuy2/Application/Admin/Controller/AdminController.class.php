@@ -55,10 +55,10 @@ class AdminController extends Controller
 
             } else {
                 //echo "有权限，成功";
-                $id = I('get.id');
+                $id = decode(I('get.id'));
                 $result = M('admin')->delete($id);
                 if ($result) {
-                    $this->redirect('../admin/index',0);
+                    $this->redirect('index',0);
                 } else {
                     $this->error('删除失败', '../Admin/index');
                 }
@@ -100,7 +100,7 @@ class AdminController extends Controller
                 $result = M('admin')->add($data);
                 //dump($data);
                 if ($result) {
-                    $this->redirect('../Admin/index',0);
+                    $this->redirect('index',0);
                 } else {
                     $this->error('插入失败', '../Admin/index');
                 }
@@ -114,7 +114,7 @@ class AdminController extends Controller
     public function update()
     {
         $admin = M('admin');
-        $id = $_GET['adminid'];
+        $id = decode(I('id'));
         $data = $admin->find($id);
         $this->assign('admin', $data);
         $this->display();
@@ -164,7 +164,7 @@ class AdminController extends Controller
 
     public function view()
     {
-        $id = I('get.id');
+        $id = decode(I('get.id'));
         $admin = M('admin')->find($id);
         if ($admin['permission'] != "超级管理员") {
             $a = "部分权限";

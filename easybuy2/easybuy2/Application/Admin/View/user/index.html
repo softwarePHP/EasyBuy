@@ -43,9 +43,9 @@
                             </td>
                             <td>{$vo.userpswd|md5}</td>
                             <td>
-                                <a class="link-update" href="__APP__/admin/user/view/userid/{$vo.userid}">查看</a>
-                                <a class="link-update" href="__APP__/admin/user/update/userid/{$vo.userid}">修改</a>
-                                <a class="link-update" href="__APP__/admin/user/delete/userid/{$vo.userid}" onclick=
+                                <a class="link-update" href="{:U('admin/user/view',array('id'=>encode($vo['userid'])))}">查看</a>
+                                <a class="link-update" href="{:U('admin/user/update',array('id'=>encode($vo['userid'])))}">修改</a>
+                                <a class="link-update" href="{:U('admin/user/delete',array('id'=>encode($vo['userid'])))}" onclick=
                                         "return confirm('确认要删除吗？请慎重哦！')">删除</a>
                             </td>
                         </tr>

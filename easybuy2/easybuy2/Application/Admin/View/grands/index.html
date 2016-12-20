@@ -43,9 +43,9 @@
                             <td title="百雀羚"><a target="_blank" href="__APP__/index/admin/goods/show" title="百雀羚">{$vo.grandname}</a>
                             </td>
                             <td>
-                                <a class="link-update" href="__APP__/admin/grands/show?id={$vo.grandid}">查看</a>
-                                <a class="link-update" href="__APP__/admin/grands/revise?id={$vo.grandid}">修改</a>
-                                <a class="link-del" href="__APP__/admin/grands/delete?id={$vo.grandid}" onclick=
+                                <a class="link-update" href="{:U('admin/grands/show',array('id'=>encode($vo['grandid'])))}">查看</a>
+                                <a class="link-update" href="{:U('admin/grands/revise',array('id'=>encode($vo['grandid'])))}">修改</a>
+                                <a class="link-del" href="{:U('admin/grands/delete',array('id'=>encode($vo['grandid'])))}" onclick=
                                         "return confirm('确认要删除吗？请慎重哦！')">删除</a>
                             </td>
                         </tr>

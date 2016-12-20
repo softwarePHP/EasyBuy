@@ -47,11 +47,6 @@ class easybuy extends Controller
         $result['imageurl']       = $good['imageurl'];
         $result['mark1']          = $good['mark1'];
         $result['mark2']          = $good['mark2'];
-        
-      
-        $result['spec']            =$good['spec'];
-        $result['discount']       =$good['discount'];
-        
         $result['brief']          = $good['brief'];
         $result['daily']          = $good['daily'];
         return $result;
@@ -66,11 +61,6 @@ class easybuy extends Controller
         $date['goodprice']    = I('goodprice');
         $date['mark1']        = I('mark1');
         $date['mark2']        = I('mark2');
-        
-       
-        $date['spec']            =I('spec');
-        $date['discount']       =I('discount');
-        
         $date['introduction'] = I('introduction');
         $date['brief']        =  I('brief');
         $date['daily']        = I('daily');
@@ -82,7 +72,7 @@ class easybuy extends Controller
     /*对商品表进行操作      获取商品的品牌和分类   用于查看  以及修改查看*/
     public function GoodGetGC()
     {
-        $id = I('get.id');
+        $id = decode(I('get.id'));
         $grands = M('grand')->select();
         $categories = M('categories')->select();
 

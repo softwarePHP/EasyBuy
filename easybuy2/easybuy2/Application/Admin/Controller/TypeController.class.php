@@ -119,7 +119,7 @@ class TypeController extends Controller
         session_start();
         if ($_SESSION['id'] != null) {
         $categoriesTable = M('categories');
-        $id = I('id');
+        $id = decode(I('id'));
         $result =$categoriesTable->delete($id);
         if ($result){
             $this->success('数据删除成功');

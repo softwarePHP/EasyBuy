@@ -102,7 +102,7 @@ public function revise()
 {
     //1.1 获取id
     $grandTable = M('grand');
-    $grandid = $_POST['grandid'];
+    $grandid = decode(I('grandid'));
     //dump($grandid);
     //1.2 获取该条记录
     $grand = $grandTable->find($grandid);
@@ -130,7 +130,7 @@ public function update()
         // 数据库更新
         $result = $grandTable->where($condition)->save($data);
         if ($result) {
-            $this->success('修改成功','index');
+            $this->redirect('index',0);
         } else {
             $this->error('修改失败');
         }
@@ -144,7 +144,7 @@ public function update()
 public function show()
 {
     //1、获取get参数
-    $id = I('id');
+    $id = decode(I('id'));
 
     //2、获取记录
     $grand = M('grand')->find($id);
@@ -170,7 +170,8 @@ public function delete()
     session_start();
     if ($_SESSION['id'] != null) {
     $grandTable = M('grand');
-    $id = I('id');
+    $id = decode(I('id'));
+       // dump($id);
     $result =$grandTable->delete($id);
     if ($result){
         $this->redirect('index',0);

@@ -45,12 +45,12 @@ class UserController extends Controller
         }
         else {
             $userTable = M('user');
-            $id = $_GET['userid'];
+            $id=decode(I('id'));
             $result = $userTable->delete($id);
             if ($result) {
                 $this->redirect('index',0);
             } else {
-                $this->error("Sorry,用户信息删除不成功","__APP__/home/user/index");
+                $this->error("Sorry,用户信息删除不成功","__APP__/admin/user/index");
             }
         }
         }
@@ -64,7 +64,7 @@ class UserController extends Controller
     {
 
         $userTable=M('user');
-        $id=$_GET['userid'];
+        $id=decode(I('id'));
         //echo $id;
         $data=$userTable->find($id);
         $this->assign('user',$data);
@@ -116,7 +116,7 @@ class UserController extends Controller
     public function view()
     {
         $userTable=M('user');
-        $id=$_GET['userid'];
+        $id=decode(I('id'));
         //echo $id;
         $data=$userTable->find($id);
         $this->assign('user',$data);
