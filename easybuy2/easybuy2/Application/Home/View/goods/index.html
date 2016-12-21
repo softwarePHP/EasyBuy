@@ -42,7 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul>
 					<li class="text" title="我的账户"><a href="__APP__/home/index/tologin">{$user}</a></li>
 					<li><div class="cart box_1">
-							<a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
+							<a href="__APP__/home/order/checkout">
 								 <span class="simpleCart_total" title="我的购物车">  ￥{$total} </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> {$count} </span>)
 							</a>	
 							<div class="clearfix"> </div>
@@ -186,7 +186,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<p class="qty"> Qty :  </p><input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">
 					<div class="btn_form">
-						<a href="__APP__/home/goods/checkout/goodid/{$good.goodid}" class="add-cart item_add">加入购物车</a>
+						<a href="{:U('home/goods/checkout',array('id'=>encode($vo['goodid'])))}" class="add-cart item_add">加入购物车</a>
 					</div>
 					<div class="tag">
 						<p>类别 : {$good.categoriesname}</p>
@@ -255,7 +255,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="product-model-sec single-product-grids">
                 <foreach name="likethis" item="vo">
 				<div class="product-grid single-product">
-					<a href="__APP__/home/goods/index__APP__/home/goods/index?id={$vo.goodid}">
+					<a href="{:U('home/goods/index',array('id'=>encode($vo['goodid'])))}">
 						<div class="more-product"><span> </span></div>
 						<div class="product-img b-link-stripe b-animate-go  thickbox">
 							<img src="__ROOT__/{$vo.imageurl}" class="img-responsive" alt="">

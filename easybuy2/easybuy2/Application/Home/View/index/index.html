@@ -24,7 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul>
 					<li class="text" title="我的账户"><a href="__APP__/home/index/tologin">{$user}</a></li>
 					<li><div class="cart box_1">
-							<a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
+							<a href="__APP__/home/order/checkout">
 								 <span class="simpleCart_total" title="我的购物车">  ￥{$total} </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> {$count} </span>)
 							</a>	
 							<div class="clearfix"> </div>
@@ -183,7 +183,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="gallery-grids">
 				<volist name="goods" id="vo">
 				<div class="col-md-3 gallery-grid ">
-					<a href="__APP__/home/goods/index/id/{$vo.goodid}"><img src="__ROOT__/{$vo.imageurl}" class="img-responsive" alt=""/>
+					<a href="{:U('home/goods/index',array('id'=>encode($vo['goodid'])))}"><img src="__ROOT__/{$vo.imageurl}" class="img-responsive" alt=""/>
 					<div class="gallery-info">
 					<div class="quick">
 					<p><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> view</p>
@@ -197,7 +197,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 							<div class="shop">
 								<div class="btn_form">
-									<a href="__APP__/home/goods/checkout/goodid/{$vo.goodid}" class="add-cart item_add">加入购物车</a>
+									<a href="{:U('home/goods/checkout',array('id'=>encode($vo['goodid'])))}" class="add-cart item_add">加入购物车</a>
 								</div>
 
 							</div>

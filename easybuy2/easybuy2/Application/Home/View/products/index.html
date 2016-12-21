@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul>
 					 <li class="text" title="我的账户"><a href="__APP__/home/index/tologin">{$user}</a></li>
                     			<li><div class="cart box_1">
-                        		<a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
+                        		<a href="__APP__/home/order/checkout">
                            		 <span class="simpleCart_total" title="我的购物车">  ￥{$total} </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> {$count} </span>)
                         		</a>
                         		<div class="clearfix"> </div>
@@ -168,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<!--<p class="disc">[8折]</p>-->
 						</div>
 						<!--<input type="text" class="item_quantity" value="1" />-->
-						<a href = "__APP__/home/goods/checkout/goodid/{$vo.goodid}"><input type="button" class="item_add items" value="+"></a>
+						<a href = "{:U('home/goods/checkout',array('id'=>encode($vo['goodid'])))}"><input type="button" class="item_add items" value="+"></a>
 						<div class="clearfix"> </div>
 					</div>
 				</div>

@@ -113,7 +113,7 @@ class IndexController extends Controller
                     $this->error("亲，验证码输错了哦！",$this->site_url,6);
                 }
                 else{
-                    $this->success('登录成功，欢迎光临易购商城', '../index/index/');
+                    $this->redirect('index',0);
                 }
             } else {
                 $this->error('用户名或密码错误，请重新登录！');

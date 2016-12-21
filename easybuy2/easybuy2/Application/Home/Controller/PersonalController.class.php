@@ -651,7 +651,7 @@ class PersonalController extends Controller
 
 
 
-        $id = I('id');
+        $id = decode(I('id'));
         $easybuyhome = new easybuyhome();
         $order = M('orders');
         $oredrs = $order->where('orderid = '.$id)->select();

@@ -167,14 +167,15 @@ class AdminController extends Controller
         $id = decode(I('get.id'));
         $admin = M('admin')->find($id);
         if ($admin['permission'] != "超级管理员") {
-            $a = "部分权限";
+            $admin['permission'] = "部分权限";
         } else {
-            $a = "全部权限";
+            $admin['permission'] = "全部权限";
         }
         $date['adminid'] = $admin['adminid'];
         $date['adminname'] = $admin['adminname'];
         $date['adminpswd'] = $admin['adminpswd'];
         $date['permission'] = $admin['permission'];
+        dump($date);
         //显示视图
         $this->assign('admin', $date);
         $this->display();
