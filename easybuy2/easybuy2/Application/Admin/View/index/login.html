@@ -1,11 +1,23 @@
-<html>
+<!DOCTYPE html>
 {__NOLAYOUT__}
-<head>
-    <meta charset="UTF-8">
-    <title>后台管理</title>
-    <link href="__PUBLIC__/admin/css/admin_login.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="__PUBLIC__/admin/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript">
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>Login and Registration Form with HTML5 and CSS3</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/animate-custom.css" />
+        <script type="text/javascript">
     $(function() {
       var bg = Math.floor(Math.random() * 6 + 1);
       $('body').css('background-image', 'url(__PUBLIC__/admin/images/0'+ bg +'.jpg)');
@@ -23,30 +35,46 @@ height: 100%;
 width: 100%;
 }
 </style>
-</head>
-<body>
-<div class="admin_login_wrap">
-    <h1>后台管理</h1>
-    <div class="adming_login_border">
-        <div class="admin_input">
-            <form action="__APP__/admin/index/dologin" method="post">
-                <ul class="admin_items">
-                    <li>
-                        <label for="user">用户名：</label>
-                        <input type="text" name="adminname" value="admin" id="user" size="40" class="admin_input_style" />
-                    </li>
-                    <li>
-                        <label for="pwd">密码：</label>
-                        <input type="password" name="adminpswd" value="admin" id="pwd" size="40" class="admin_input_style" />
-                    </li>
-                    <li>
-                        <input type="submit" tabindex="3" value="登录" class="btn btn-primary" />
-                    </li>
-                </ul>
-            </form>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+				<nav class="codrops-demos">
+					
+				</nav>
+            </header>
+            <section>				
+                <div id="container_demo" >
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form action="__APP__/admin/index/dologin" method="post">
+                                <h1>Log in</h1> 
+                                <p> 
+                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
+                                    <input id="user" name="adminname" required="required" value="admin" type="text" placeholder="myusername or mymail@mail.com"/>
+                                </p>
+                                <p> 
+                                    <label for="pswd" class="youpasswd" data-icon="p"> Your password </label>
+                                    <input id="pswd" name="adminpswd" required="required" type="password" value="admin" placeholder="eg. X8df!90EO" /> 
+
+                                </p>
+                                <p class="login button"> 
+                                    <input type="submit" tabindex="3" value="登录" class="btn btn-primary" />
+								</p>
+                                <p class="change_link">
+									
+									<a href="#toregister" class="to_register"></a>
+								</p>
+                            </form>
+                        </div>	
+                    </div>
+                </div>  
+            </section>
         </div>
-    </div>
-    <p class="admin_copyright"><a tabindex="5" href="#">返回首页</a> &copy; 2014 Powered by <a href="http://jscss.me" target="_blank">有主机上线</a></p>
-</div>
-</body>
+    </body>
 </html>
+
+                        
