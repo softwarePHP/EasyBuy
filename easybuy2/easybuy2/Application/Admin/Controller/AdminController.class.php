@@ -198,7 +198,7 @@ class AdminController extends Controller
         $easybuy = new easybuy();
         $keywords = I('post.keyword');
         $condition = array();
-        $condition['adminname'] = $keywords;
+        $condition['adminid'] = $keywords;
         $adminTable = M('admin');
         $count = $adminTable->where($condition)->count();
         $page = $easybuy->getpage($count);
