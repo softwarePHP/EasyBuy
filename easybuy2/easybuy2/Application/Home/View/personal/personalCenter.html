@@ -46,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul>
 					<li class="text" title="我的账户"><a href="__APP__/home/personal/personalCenter">{$user}</a></li>
                     <li><div class="cart box_1">
-                        <a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">
+                        <a href="__APP__/home/order/checkout">
                             <span class="simpleCart_total" title="我的购物车">  ￥{$total} </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> {$count} </span>)
                         </a>
                         <div class="clearfix"> </div>
@@ -289,7 +289,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</table>
 										</td >
 										<td style ="border:1px solid #CCC;">总金额：{$vo.总金额}<br/>实际金额：{$vo.实付金额}</td>
-										<td style ="border:1px solid #CCC;">{$vo.订单状态}<br/><a href = "__APP__/index.php/home/Personal/show?id={$vo.id}">查看详情</a></td>
+										<td style ="border:1px solid #CCC;">{$vo.订单状态}<br/><a href = "{:U('home/personal/show',array('id'=>encode($vo['id'])))}">查看详情</a></td>
 										<td style ="border:1px solid #CCC;">
 											{$vo.操作}
 										</td>

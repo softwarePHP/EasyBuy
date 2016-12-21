@@ -87,7 +87,7 @@ class GoodsController extends Controller
     {
         session_start();
         $condition['userid']=$_SESSION['id'];
-        $condition['goodid']=$_GET['goodid'];
+        $condition['goodid']=decode(I('id'));
         //dump($condition);
         if($condition['userid']==null)
         {
