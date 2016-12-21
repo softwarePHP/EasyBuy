@@ -10,106 +10,141 @@ class OrderController extends Controller
 {
     public function all()
     {
-        $easybuy = new easybuy();
-        $count = M('orders')->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $order = M('orders');
-        $oredrs = $order->limit($page->firstRow.','.$page->listRows)->select();
-        $data = $easybuy->OrderSelect($oredrs);
-        $this->assign('data',$data);
-        $this->assign('pages',$pages);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $count = M('orders')->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $order = M('orders');
+            $oredrs = $order->limit($page->firstRow.','.$page->listRows)->select();
+            $data = $easybuy->OrderSelect($oredrs);
+            $this->assign('data',$data);
+            $this->assign('pages',$pages);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     //已完成订单
     public function over()
     {
-        $easybuy = new easybuy();
-        $condetion['orderstate'] = 3;
-        $count = M('orders')->where($condetion)->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $order = M('orders');
-        $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
-        $data = $easybuy->OrderSelect($oredrs);
-        $this->assign('data',$data);
-        $this->assign('pages',$pages);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $condetion['orderstate'] = 3;
+            $count = M('orders')->where($condetion)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $order = M('orders');
+            $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
+            $data = $easybuy->OrderSelect($oredrs);
+            $this->assign('data',$data);
+            $this->assign('pages',$pages);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     //已发货订单
     public function send()
     {
-        $easybuy = new easybuy();
-        $condetion['orderstate'] = 2;
-        $count = M('orders')->where($condetion)->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $order = M('orders');
-        $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
-        $data = $easybuy->OrderSelect($oredrs);
-        $this->assign('data',$data);
-        $this->assign('pages',$pages);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $condetion['orderstate'] = 2;
+            $count = M('orders')->where($condetion)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $order = M('orders');
+            $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
+            $data = $easybuy->OrderSelect($oredrs);
+            $this->assign('data',$data);
+            $this->assign('pages',$pages);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     //未发货订单
     public function unsend()
     {
-        $easybuy = new easybuy();
-        $condetion['orderstate'] = 1;
-        $count = M('orders')->where($condetion)->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $order = M('orders');
-        $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
-        $data = $easybuy->OrderSelect($oredrs);
-        $this->assign('data',$data);
-        $this->assign('pages',$pages);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $condetion['orderstate'] = 1;
+            $count = M('orders')->where($condetion)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $order = M('orders');
+            $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
+            $data = $easybuy->OrderSelect($oredrs);
+            $this->assign('data',$data);
+            $this->assign('pages',$pages);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     //待付款订单
     public function pendingPayment()
     {
-        $easybuy = new easybuy();
-        $condetion['orderstate'] = 4;
-        $count = M('orders')->where($condetion)->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $order = M('orders');
-        $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
-        $data = $easybuy->OrderSelect($oredrs);
-        $this->assign('data',$data);
-        $this->assign('pages',$pages);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $condetion['orderstate'] = 4;
+            $count = M('orders')->where($condetion)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $order = M('orders');
+            $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
+            $data = $easybuy->OrderSelect($oredrs);
+            $this->assign('data',$data);
+            $this->assign('pages',$pages);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     //已取消
     public function canceledOrder()
     {
-        $easybuy = new easybuy();
-        $condetion['orderstate'] = 5;
-        $count = M('orders')->where($condetion)->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $order = M('orders');
-        $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
-        $data = $easybuy->OrderSelect($oredrs);
-        $this->assign('data',$data);
-        $this->assign('pages',$pages);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $condetion['orderstate'] = 5;
+            $count = M('orders')->where($condetion)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $order = M('orders');
+            $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
+            $data = $easybuy->OrderSelect($oredrs);
+            $this->assign('data',$data);
+            $this->assign('pages',$pages);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     //未发货订单
     public function returned()
     {
-        $easybuy = new easybuy();
-        $condetion['orderstate'] = 6;
-        $count = M('orders')->where($condetion)->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $order = M('orders');
-        $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
-        $data = $easybuy->OrderSelect($oredrs);
-        $this->assign('data',$data);
-        $this->assign('pages',$pages);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $condetion['orderstate'] = 6;
+            $count = M('orders')->where($condetion)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $order = M('orders');
+            $oredrs = $order ->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
+            $data = $easybuy->OrderSelect($oredrs);
+            $this->assign('data',$data);
+            $this->assign('pages',$pages);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
 
     //发货处理
@@ -135,13 +170,18 @@ class OrderController extends Controller
 //全部订单的查询
     public function allselect()
     {
-        $easybuy = new easybuy();
-        $ordernumber = $_POST['ordernumber'];
-        $order = M('orders');
-        $oredrs = $order ->query('select * from orders where ordernumber ='.$ordernumber);
-        $data = $easybuy->OrderSelect($oredrs);
-        $this->assign('data',$data);
-        $this->display('order/all');
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $ordernumber = $_POST['ordernumber'];
+            $order = M('orders');
+            $oredrs = $order ->query('select * from orders where ordernumber ='.$ordernumber);
+            $data = $easybuy->OrderSelect($oredrs);
+            $this->assign('data',$data);
+            $this->display('order/all');
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
 
 }

@@ -10,60 +10,76 @@ class GoodsController extends Controller
 {
     public function index()
     {
-
-        $easybuy = new easybuy();//实例化一个easybuy类
-        $grands = M('grand')->select();
-        $categories = M('categories')->select();
-        //实例化一个商品类
-        $count = M('goods')->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $goods = M('goods')->limit($page->firstRow.','.$page->listRows)->select();
-        $date = $easybuy->GoodsArraysMake($goods);//调用easybuy类的方法
-        $this->assign("goods",$date);//将数据显示到视图
-        $this->assign('grands',$grands);
-        $this->assign('categories',$categories);
-        $this->assign("pages",$pages);
-        //dump($date);
-        $this->display();//显示模板
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();//实例化一个easybuy类
+            $grands = M('grand')->select();
+            $categories = M('categories')->select();
+            //实例化一个商品类
+            $count = M('goods')->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $goods = M('goods')->limit($page->firstRow.','.$page->listRows)->select();
+            $date = $easybuy->GoodsArraysMake($goods);//调用easybuy类的方法
+            $this->assign("goods",$date);//将数据显示到视图
+            $this->assign('grands',$grands);
+            $this->assign('categories',$categories);
+            $this->assign("pages",$pages);
+            //dump($date);
+            $this->display();//显示模板
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     public function revise()
     {
-
-
-        $easybuy = new easybuy();//实例化一个easybuy类
-        $date = $easybuy->GoodGetGC();
-        $result = $easybuy->GoodArrayMake($date['good'],$date['grandname'],$date['categoriesname']);//调用构建一维数组方法
-        //显示视图
-        $this->assign('grands',$date['grands']);
-        $this->assign('categories',$date['categories']);
-        $this->assign('good',$result);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();//实例化一个easybuy类
+            $date = $easybuy->GoodGetGC();
+            $result = $easybuy->GoodArrayMake($date['good'],$date['grandname'],$date['categoriesname']);//调用构建一维数组方法
+            //显示视图
+            $this->assign('grands',$date['grands']);
+            $this->assign('categories',$date['categories']);
+            $this->assign('good',$result);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     public function show()
     {
-        $easybuy = new easybuy();//实例化一个easybuy类
-        $date = $easybuy->GoodGetGC();
-        $result = $easybuy->GoodArrayMake($date['good'],$date['grandname'],$date['categoriesname']);
-        //显示视图
-        $this->assign('good',$result);
-        if($result['daily']==1)
-        {
-            $this->assign('daily',"是");
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();//实例化一个easybuy类
+            $date = $easybuy->GoodGetGC();
+            $result = $easybuy->GoodArrayMake($date['good'],$date['grandname'],$date['categoriesname']);
+            //显示视图
+            $this->assign('good',$result);
+            if($result['daily']==1)
+            {
+                $this->assign('daily',"是");
+            }
+            else{
+                $this->assign('daily',"否");
+            }
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
         }
-        else{
-            $this->assign('daily',"否");
-        }
-
-        $this->display();
     }
     public function insert()
     {
+        session_start();
+        if ($_SESSION['id'] != null) {
             $grands = M('grand')->select();
             $categories = M('categories')->select();
             $this->assign('grands', $grands);
             $this->assign('categories', $categories);
             $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     public function add()
     {
@@ -132,77 +148,85 @@ class GoodsController extends Controller
     }
     public function update()
     {
-        $goodid = $_POST['goodid'];
-        $easybuy = new easybuy();
-        $things = $easybuy->GoodPostGC();
-
-        //dump($categories);
         session_start();
-        if($_SESSION['id']!=null) {
-            //$easybuy = new easybuy();//实例化一个easybuy类
-            $date = $easybuy->GoodArrayMake2($things['grand'],$things['categories']);
-            $result = M('goods')->where("goodid=$goodid")->save($date);
-        if ($result)
-        {
-            $this->redirect('index',0);
-        }
-        else
-        {
-            $this->error('修改失败','revise');
-        }
-        }
+        if ($_SESSION['id'] != null) {
+            $goodid = $_POST['goodid'];
+            $easybuy = new easybuy();
+            $things = $easybuy->GoodPostGC();
+            //dump($categories);
+            session_start();
+            if($_SESSION['id']!=null) {
+                //$easybuy = new easybuy();//实例化一个easybuy类
+                $date = $easybuy->GoodArrayMake2($things['grand'],$things['categories']);
+                $result = M('goods')->where("goodid=$goodid")->save($date);
+                if ($result)
+                {
+                    $this->redirect('index',0);
+                }
+                else
+                {
+                    $this->error('修改失败','revise');
+                }
+            }
 
-        else{
-            $this->error("请登录！",'../index/login');
+            else{
+                $this->error("请登录！",'../index/login');
 
+            }
+        } else{
+            header('Location: ../../admin/index/login');
         }
-
     }
     public function select()
     {
-        $easybuy = new easybuy();//实例化一个easybuy类
-        $grandname = $_POST['g_name'];
-        $categoriesname = $_POST['c_name'];
-        //dump($grandname);
-        $keyword = $_POST['keyword'];
-        $select['grandname'] = $grandname;
-        $select2['categoriesname'] = $categoriesname;
-        $grand = M('grand')->where($select)->find();
-        //dump($grand);
-        $categories = M('categories')->where($select2)->find();
-        $condetion = array();
-        //dump($grand['grandid']);
-        if($grandname)
-        {
-           $condetion['grandid'] = $grand['grandid'];
-        }
-        if($categoriesname)
-        {
-            $condetion['categoriesid'] = $categories['categoriesid'];
-        }
-        if ($keyword)
-        {
-            $condetion['goodname'] = array('like',"%$keyword%");
-        }
-        $count = M('goods')->where($condetion)->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();//实例化一个easybuy类
+            $grandname = $_POST['g_name'];
+            $categoriesname = $_POST['c_name'];
+            //dump($grandname);
+            $keyword = $_POST['keyword'];
+            $select['grandname'] = $grandname;
+            $select2['categoriesname'] = $categoriesname;
+            $grand = M('grand')->where($select)->find();
+            //dump($grand);
+            $categories = M('categories')->where($select2)->find();
+            $condetion = array();
+            //dump($grand['grandid']);
+            if($grandname)
+            {
+                $condetion['grandid'] = $grand['grandid'];
+            }
+            if($categoriesname)
+            {
+                $condetion['categoriesid'] = $categories['categoriesid'];
+            }
+            if ($keyword)
+            {
+                $condetion['goodname'] = array('like',"%$keyword%");
+            }
+            $count = M('goods')->where($condetion)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
 
-        //dump($page);
-        $goods = M('goods')->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
-        $date = $easybuy->GoodsArraysMake($goods);//调用easybuy类的方法
-        $grands = M('grand')->select();
-        $categories = M('categories')->select();
-        $this->assign("goods",$date);//将数据显示到视图
-        $this->assign('grands',$grands);
-        $this->assign('categories',$categories);
-        $this->assign("pages",$pages);
-        $condetion = NULL;
-        //dump($date);
+            //dump($page);
+            $goods = M('goods')->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
+            $date = $easybuy->GoodsArraysMake($goods);//调用easybuy类的方法
+            $grands = M('grand')->select();
+            $categories = M('categories')->select();
+            $this->assign("goods",$date);//将数据显示到视图
+            $this->assign('grands',$grands);
+            $this->assign('categories',$categories);
+            $this->assign("pages",$pages);
+            $condetion = NULL;
+            //dump($date);
 
-        $this->display("goods/index");
-        //$condetion = NULL;
+            $this->display("goods/index");
+            //$condetion = NULL;
 
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
 
 }

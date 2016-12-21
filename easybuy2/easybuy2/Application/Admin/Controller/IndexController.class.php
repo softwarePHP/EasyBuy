@@ -12,12 +12,11 @@ class IndexController extends Controller
             //$this->assign('user',$_SESSION['admin']);
             $this->display();
         }else {
-            header('Location:index/login');
+            header('Location:admin/index/login');
         }
     }
     public function login(){
         $this->display();
-
     }
     public function  dologin(){
         if(!empty($_POST)) {
@@ -46,6 +45,7 @@ class IndexController extends Controller
 
             session_start();
             session('id',null);
+            session('admin',null);
             header('Location:login');
 
     }

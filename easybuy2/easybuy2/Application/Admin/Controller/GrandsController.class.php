@@ -42,83 +42,98 @@ class GrandsController extends Controller
 
 public function index()
 {
-    $easybuy = new easybuy();
-    $count = M('grand')->count();
-    $page = $easybuy->getpage($count);
-    $pages = $page->show();
-    $grandTable = M('grand');
-    $grand = $grandTable->limit($page->firstRow.','.$page->listRows)->select();
-    $this->assign('grand',$grand);
-    $this->assign('pages',$pages);
-    $this->display();
+    session_start();
+    if ($_SESSION['id'] != null) {
+        $easybuy = new easybuy();
+        $count = M('grand')->count();
+        $page = $easybuy->getpage($count);
+        $pages = $page->show();
+        $grandTable = M('grand');
+        $grand = $grandTable->limit($page->firstRow.','.$page->listRows)->select();
+        $this->assign('grand',$grand);
+        $this->assign('pages',$pages);
+        $this->display();
+    } else{
+        header('Location: ../../admin/index/login');
+    }
 }
 
 public function insert()
 {
-    $this->display();
+    session_start();
+    if ($_SESSION['id'] != null) {
+        $this->display();
+    } else{
+        header('Location: ../../admin/index/login');
+    }
 }
     public function insert1()
     {
-        //dump($data);
-        $grandTable = M('grand');
         session_start();
         if ($_SESSION['id'] != null) {
-            /* 上传商品图片*/
-            $upload = new Upload(C('FILE_UPLOAD'));
-            $info = $upload->upload();
-            if (!$info) {
-                dump($upload->getError());
-                exit;
-            } else {
-                foreach ($info as $file) {
-                    $url = $file['savepath'] . $file['savename'];
-                    $data=array();
-                    $data['grandnum'] = I('grandnum');
-                    $data['grandname'] = I('grandname');
-                    $data['imageurl']=$url;
-                    $data['mark'] =     I('mark');
-                    $data['grandintroduction'] = I('content');
-                    $result = $grandTable->add($data);
-                    if($result)
-                    {
-                        $this->redirect('index',0);
-                    }
-                    else{
-                        $this->error('添加失败');
-                    }
+            //dump($data);
+            $grandTable = M('grand');
+            session_start();
+            if ($_SESSION['id'] != null) {
+                /* 上传商品图片*/
+                $upload = new Upload(C('FILE_UPLOAD'));
+                $info = $upload->upload();
+                if (!$info) {
+                    dump($upload->getError());
+                    exit;
+                } else {
+                    foreach ($info as $file) {
+                        $url = $file['savepath'] . $file['savename'];
+                        $data=array();
+                        $data['grandnum'] = I('grandnum');
+                        $data['grandname'] = I('grandname');
+                        $data['imageurl']=$url;
+                        $data['mark'] =     I('mark');
+                        $data['grandintroduction'] = I('content');
+                        $result = $grandTable->add($data);
+                        if($result)
+                        {
+                            $this->redirect('index',0);
+                        }
+                        else{
+                            $this->error('添加失败');
+                        }
 
 
+                    }
                 }
             }
+            else{
+                $this->error('请登录','../index/login');
+            }
+            //参数判断
+        } else{
+            header('Location: ../../admin/index/login');
         }
-        else{
-            $this->error('请登录','../index/login');
-        }
-        //参数判断
-
 
     }
 public function revise()
 {
-    //1.1 获取id
-    $grandTable = M('grand');
-    $grandid = decode(I('grandid'));
-    //dump($grandid);
-    //1.2 获取该条记录
-    $grand = $grandTable->find($grandid);
-    //2、显示更新表单
-   // dump($grand);
-    $this->assign('grand',$grand);
-    $this->display();
-
+    session_start();
+    if ($_SESSION['id'] != null) {
+        //1.1 获取id
+        $grandTable = M('grand');
+        $grandid = decode(I('grandid'));
+        //dump($grandid);
+        //1.2 获取该条记录
+        $grand = $grandTable->find($grandid);
+        //2、显示更新表单
+        // dump($grand);
+        $this->assign('grand',$grand);
+        $this->display();
+    } else{
+        header('Location: ../../admin/index/login');
+    }
 }
 
 
 public function update()
-{
-
-
-    session_start();
+{    session_start();
     if ($_SESSION['id'] != null) {
         // 实例化
         $grandTable = M('grand');
@@ -143,6 +158,12 @@ public function update()
 
 public function show()
 {
+    session_start();
+    if ($_SESSION['id'] != null) {
+        $this->display();
+    } else{
+        header('Location: ../../admin/index/login');
+    }
     //1、获取get参数
     $id = decode(I('id'));
 
@@ -182,6 +203,26 @@ else{
     $this->error("请登录！",'../index/login');
 
 }}
+
+    public function select()
+    {
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $keyword = $_POST['keyword'];
+            $condetion['grandname'] = array('like',"%$keyword%");
+            $count = M('grand')->where($condetion)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $grandTable = M('grand');
+            $grand = $grandTable->where($condetion)->limit($page->firstRow.','.$page->listRows)->select();
+            $this->assign('grand',$grand);
+            $this->assign('pages',$pages);
+            $this->display("grands/index");
+        } else{
+            header('Location: ../../admin/index/login');
+        }
+    }
 
 
 

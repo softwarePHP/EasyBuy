@@ -8,29 +8,35 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $easybuy = new easybuy();
-        $count = M('admin')->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $model = M('admin')->limit($page->firstRow . ',' . $page->listRows)->select();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $count = M('admin')->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $model = M('admin')->limit($page->firstRow . ',' . $page->listRows)->select();
 
-        $i = 0;
-        foreach ($model as $vo) {
-            $permission = $vo['permission'];
-            if ($permission == "超级管理员") {
-                $a = "全部权限";
-            } else {
-                $a = "部分权限";
+            $i = 0;
+            foreach ($model as $vo) {
+                $permission = $vo['permission'];
+                if ($permission == "超级管理员") {
+                    $a = "全部权限";
+                } else {
+                    $a = "部分权限";
+                }
+                $date[$i]['adminid'] = $vo['adminid'];
+                $date[$i]['adminname'] = $vo['adminname'];
+                $date[$i]['adminpswd'] = $vo['adminpswd'];
+                $date[$i]['permission'] = $a;
+                $i++;
             }
-            $date[$i]['adminid'] = $vo['adminid'];
-            $date[$i]['adminname'] = $vo['adminname'];
-            $date[$i]['adminpswd'] = $vo['adminpswd'];
-            $date[$i]['permission'] = $a;
-            $i++;
+            $this->assign('admin', $date);
+            $this->assign('pages', $pages);
+            $this->display();
         }
-        $this->assign('admin', $date);
-        $this->assign('pages', $pages);
-        $this->display();
+        else{
+            header('Location: ../../admin/index/login');
+        }
 
     }
 
@@ -71,7 +77,13 @@ class AdminController extends Controller
 
     public function insert()
     {
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
+
     }
 
     public function adds()
@@ -113,11 +125,16 @@ class AdminController extends Controller
 
     public function update()
     {
-        $admin = M('admin');
-        $id = decode(I('id'));
-        $data = $admin->find($id);
-        $this->assign('admin', $data);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $admin = M('admin');
+            $id = decode(I('id'));
+            $data = $admin->find($id);
+            $this->assign('admin', $data);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
 
     public function save()
@@ -164,21 +181,25 @@ class AdminController extends Controller
 
     public function view()
     {
-        $id = decode(I('get.id'));
-        $admin = M('admin')->find($id);
-        if ($admin['permission'] != "超级管理员") {
-            $admin['permission'] = "部分权限";
-        } else {
-            $admin['permission'] = "全部权限";
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $id = decode(I('get.id'));
+            $admin = M('admin')->find($id);
+            if ($admin['permission'] != "超级管理员") {
+                $admin['permission'] = "部分权限";
+            } else {
+                $admin['permission'] = "全部权限";
+            }
+            $date['adminid'] = $admin['adminid'];
+            $date['adminname'] = $admin['adminname'];
+            $date['adminpswd'] = $admin['adminpswd'];
+            $date['permission'] = $admin['permission'];
+            //显示视图
+            $this->assign('admin', $date);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
         }
-        $date['adminid'] = $admin['adminid'];
-        $date['adminname'] = $admin['adminname'];
-        $date['adminpswd'] = $admin['adminpswd'];
-        $date['permission'] = $admin['permission'];
-        dump($date);
-        //显示视图
-        $this->assign('admin', $date);
-        $this->display();
     }
 
     /* public function dologin(){
@@ -195,17 +216,23 @@ class AdminController extends Controller
      }*/
     public function select()
     {
-        $easybuy = new easybuy();
-        $keywords = I('post.keyword');
-        $condition = array();
-        $condition['adminid'] = $keywords;
-        $adminTable = M('admin');
-        $count = $adminTable->where($condition)->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $data = $adminTable->where($condition)->limit($page->firstRow . ',' . $page->listRows)->select();
-        $this->assign('admin', $data);
-        $this->assign('pages', $pages);
-        $this->display('admin/index');
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $keywords = I('post.keyword');
+            $condition = array();
+            $condition['adminname'] = $keywords;
+            $adminTable = M('admin');
+            $count = $adminTable->where($condition)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $data = $adminTable->where($condition)->limit($page->firstRow . ',' . $page->listRows)->select();
+            $this->assign('admin', $data);
+            $this->assign('pages', $pages);
+            $this->display('admin/index');
+        } else{
+            header('Location: ../../admin/index/login');
+        }
+
     }
 }

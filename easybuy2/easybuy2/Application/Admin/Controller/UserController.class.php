@@ -12,15 +12,20 @@ class UserController extends Controller
 {
     public function index()
     {
-        $easybuy = new easybuy();
-        $count = M('user')->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $userTable=M('user');
-        $data=$userTable->limit($page->firstRow.','.$page->listRows)->select();
-        $this->assign('user',$data);
-        $this->assign('pages',$pages);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $count = M('user')->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $userTable=M('user');
+            $data=$userTable->limit($page->firstRow.','.$page->listRows)->select();
+            $this->assign('user',$data);
+            $this->assign('pages',$pages);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
+        }
     }
     public function delete()
     {
@@ -62,14 +67,18 @@ class UserController extends Controller
     }
     public function update()
     {
-
-        $userTable=M('user');
-        $id=decode(I('id'));
-        //echo $id;
-        $data=$userTable->find($id);
-        $this->assign('user',$data);
-        $this->display();
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $userTable=M('user');
+            $id=decode(I('id'));
+            //echo $id;
+            $data=$userTable->find($id);
+            $this->assign('user',$data);
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
         }
+    }
     public function verify()
     {
         //获取管理员id
@@ -115,34 +124,44 @@ class UserController extends Controller
     }
     public function view()
     {
-        $userTable=M('user');
-        $id=decode(I('id'));
-        //echo $id;
-        $data=$userTable->find($id);
-        $this->assign('user',$data);
-         $phone1=$userTable->where("userid=$id")->getField('phone');
-        if($phone1==null)
-        {
-            $this->assign('phone','无');
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $userTable=M('user');
+            $id=decode(I('id'));
+            //echo $id;
+            $data=$userTable->find($id);
+            $this->assign('user',$data);
+            $phone1=$userTable->where("userid=$id")->getField('phone');
+            if($phone1==null)
+            {
+                $this->assign('phone','无');
+            }
+            else{
+                $this->assign('phone',$phone1);
+            }
+            $this->display();
+        } else{
+            header('Location: ../../admin/index/login');
         }
-        else{
-            $this->assign('phone',$phone1);
-        }
-        $this->display();
     }
     public function select(){
-        $easybuy = new easybuy();
-        $keywords=I('post.keywords');
-        $condition = array();
-        $condition['username'] = $keywords;
-        $userTable=M('user');
-        $count = $userTable->where($condition)->count();
-        $page = $easybuy->getpage($count);
-        $pages = $page->show();
-        $data=$userTable->where($condition)->limit($page->firstRow.','.$page->listRows)->select();
-        $this->assign('user',$data);
-        $this->assign('pages',$pages);
-        $this->display('user/index');
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $easybuy = new easybuy();
+            $keywords=I('post.keywords');
+            $condition = array();
+            $condition['username'] = $keywords;
+            $userTable=M('user');
+            $count = $userTable->where($condition)->count();
+            $page = $easybuy->getpage($count);
+            $pages = $page->show();
+            $data=$userTable->where($condition)->limit($page->firstRow.','.$page->listRows)->select();
+            $this->assign('user',$data);
+            $this->assign('pages',$pages);
+            $this->display('user/index');
+        } else{
+            header('Location: __APP__/admin/index/login');
+        }
     }
 
 }
