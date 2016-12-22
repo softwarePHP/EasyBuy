@@ -74,12 +74,7 @@
                                 <input class="common-text required"  name="discount" size="50" value="{$good.discount}" type="text">
                             </td>
                         </tr>
-                        <tr>
-                            <th><i class="require-red">*</i>商品简介：</th>
-                            <td>
-                                <input class="common-text required"  name="brief" size="50" value="{$good.brief}" type="text">
-                            </td>
-                        </tr>
+                       
                             
                         <tr>
                             <th><i class="require-red">*</i>每日精选：</th>
@@ -88,14 +83,31 @@
                                 <input type="radio" name="daily" value="0">否&nbsp;
                             </td>
                         </tr>
-                        <tr>
-                            <th>商品详情：</th>
+                               <tr>
+                            <th><i class="require-red">*</i>商品图片：</th>
                             <td>
-                                <textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10">
-
-                                </textarea>
+                                <span>上传图片尺寸建议为200*200</span><br>
+                                <input name="imageurl" type="file" />
+                                <input type="hidden" name="in" value="{$goods.introduction}">
+                                <input type="hidden" name="pi" value="{$goods.imageurl}">
                             </td>
                         </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品简介：</th>
+                            <td>
+                                <input class="common-text required"  name="brief" size="50" value="{$good.brief}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品详情：</th>
+                            <td>
+                                <img id="img"  src="{$goods.introduction}" width="200" height="400" border="0" /><br>
+                                <span>上传图片尺寸建议为700*2210</span><br>
+                                <input type="hidden" name="pic" id="pic">
+                                <input id="file_upload" name="introduction" type="file"  size="560" />
+                            </td>
+                        </tr>
+                       
                             <tr>
                                 <th></th>
                                 <td>
