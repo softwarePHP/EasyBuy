@@ -31,9 +31,9 @@ class easybuyhome extends Controller
             $state = M('state');
             $statename = $state->where('orderstate = '.$orderstate)->getField('statename');
             if($statename === '待付款'){
-                $data[$i]['操作'] = "<a href='/easybuy2/index.php/home/order/payment'>前往付款</a>";
+                $data[$i]['操作'] = "<a href='/easybuy2/index.php/home/order/payment?id=$orderid'>前往付款</a>";
                 $data[$i]['状态']= "当前订单状态：宝贝已拍下，请在3天内付款；若未及时付款，系统将自动取消订单";
-                $data[$i]['状态内容']="<a href='/easybuy2/index.php/home/order/payment'>点击这里</a>进行付款<br/>";
+                $data[$i]['状态内容']="<a href='/easybuy2/index.php/home/order/payment?id=$orderid'>点击这里</a>进行付款<br/>";
             }
             elseif($statename === '未发货'){
                 $data[$i]['操作'] = "<a href='/easybuy2/index.php/home/Personal/cancelOrder?id=$orderid'>取消订单</a>";
