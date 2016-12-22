@@ -157,11 +157,17 @@ class GoodsController extends Controller
             $goodid = $_POST['goodid'];
             $things = $easybuy->GoodPostGC();
             $date = $easybuy->GoodArrayMake2($things['grand'], $things['categories']);
-        foreach ($info as $file) {
-            $date['imageurl'] = $file['savepath'] . $file['savename'];
-            //exit;
-        }
-           $date['imageurl']=I('pi');
+              if($info)
+            {
+                foreach ($info as $file) {
+                    $date['imageurl'] = $file['savepath'] . $file['savename'];
+                    //exit;
+                }
+            }
+            else{
+                $date['imageurl']=I('pi');
+            }
+          
            if( I('pic')!=null)
            {
                $date['introduction']=I('pic');
