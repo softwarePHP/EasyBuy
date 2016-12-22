@@ -151,11 +151,7 @@ class GoodsController extends Controller
     {
         session_start();
         if ($_SESSION['id'] != null) {
-            
-           }
-    }
-    public function select()
-    {$upload = new Upload(C('FILE_UPLOAD'));
+             $upload = new Upload(C('FILE_UPLOAD'));
         $info = $upload->upload();
             $easybuy = new easybuy();
             $goodid = $_POST['goodid'];
@@ -190,7 +186,11 @@ class GoodsController extends Controller
                 $this->error("请登录！", '../index/login');
 
             }
-        /**
+            
+           }
+       
+    }
+      /**
      * 2016-12-22
      * 张宇晗
      * 图像上传处理
@@ -221,6 +221,13 @@ class GoodsController extends Controller
 
             }
         }
+
+    public function select()
+    {
+
+            
+   
+
         if ($_SESSION['id'] != null) {
             $easybuy = new easybuy();//实例化一个easybuy类
             $grandname = $_POST['g_name'];
