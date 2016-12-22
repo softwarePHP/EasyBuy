@@ -1,0 +1,337 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>【EeayBuy】购物指南</title>
+    <link href="__PUBLIC__/help/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="__PUBLIC__/help/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="__PUBLIC__/help/css/owl.carousel.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Swim Wear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="__PUBLIC__/help/application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="__PUBLIC__/help/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/help/js/bootstrap-3.1.1.min.js"></script>
+    <!-- cart -->
+    <script src="__PUBLIC__/help/js/simpleCart.min.js"> </script>
+    <!-- cart -->
+    <!-- the jScrollPane script -->
+    <script type="text/javascript" src="__PUBLIC__/help/js/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" id="sourcecode">
+        $(function()
+        {
+            $('.scroll-pane').jScrollPane();
+        });
+    </script>
+    <!-- //the jScrollPane script -->
+    <link href="__PUBLIC__/help/css/form.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- the mousewheel plugin -->
+    <script type="text/javascript" src="__PUBLIC__/help/js/jquery.mousewheel.js"></script>
+</head>
+<body>
+<!--header-->
+<div class="header">
+    <div class="header-top">
+        <div class="container">
+
+            <div class="top-right">
+                <ul>
+                    <li class="text"><a href="__APP__/home/order/checkout/userid/{$_SESSION['id']}">{$user}</a>
+                    <li class="text"><a href="__APP__/home/index/logout">退出</a>
+
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="container">
+            <!--/.content-->
+            <div class="content white">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <h1 class="navbar-brand"><a  href="__APP__/home/index/index">Easy Buy</a></h1>
+                    </div>
+                    <!--/.navbar-header-->
+
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="__APP__/home/index/index">主页</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">女士<b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-3">
+                                    <div class="row">
+                                        <volist name="women" id="vo">
+                                            <div class="col-sm-4">
+                                                <ul class="multi-column-dropdown">
+                                                    <!--<li><a class="list" href="products.html">女士</a></li>-->
+                                                    <li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+                                                </ul>
+                                            </div>
+                                        </volist>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">男士 <b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-2">
+                                    <div class="row">
+                                        <volist name="men" id="vo">
+                                            <div class="col-sm-4">
+                                                <ul class="multi-column-dropdown">
+                                                    <!--<li><a class="list" href="products.html">女士</a></li>-->
+                                                    <li><a class="list1" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+                                                </ul>
+                                            </div>
+                                        </volist>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">儿童 <b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-1">
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <ul class="multi-column-dropdown">
+                                                <volist name="children" id="vo">
+                                                    <li><a class="list1" style="width:150px;" href="__APP__/home/products/select/grandname/{$vo.grandname}">{$vo.grandname}</a></li>
+                                                </volist>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </ul>
+                            </li>
+                            <li><a href="__APP__/home/index/daily">每日精选</a></li>
+
+                        </ul>
+                    </div>
+                    <!--/.navbar-collapse-->
+                </nav>
+                <!--/.navbar-->
+            </div>
+            <div class="search-box">
+                <div id="sb-search" class="sb-search">
+                    <form>
+                        <input class="sb-search-input" placeholder="输入你想要搜索的内容..." type="search" name="search" id="search">
+                        <input class="sb-search-submit" type="submit" value="">
+                        <span class="sb-icon-search"> </span>
+                    </form>
+                </div>
+            </div>
+
+            <!-- search-scripts -->
+            <script src="__PUBLIC__/help/js/classie.js"></script>
+            <script src="__PUBLIC__/help/js/uisearch.js"></script>
+            <script>
+                new UISearch( document.getElementById( 'sb-search' ) );
+            </script>
+            <!-- //search-scripts -->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--header-->
+<div class="content">
+    <div class="product-model">
+        <div class="container">
+            {__CONTENT__}
+            <div class="rsidebar span_1_of_left">
+                <section  class="sky-form">
+                    <div class="product_right">
+                        <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>帮助中心</h4>
+                        <div class="tab1">
+                            <ul class="place">
+                                <li class="sort">新手指南</li>
+                                <li class="by"><img src="__PUBLIC__/help/images/do.png" alt=""></li>
+                                <div class="clearfix"> </div>
+                            </ul>
+                            <div class="single-bottom">
+                                <a href="__APP__/help/guide/shopping"><p>购物流程</p></a>
+                                <a href="__APP__/help/guide/coupon"><p>优惠券规则</p></a>
+                                <a href="__APP__/help/guide/customer"><p>联系客服</p></a>
+                                <a href="__APP__/help/guide/question"><p>常见问题</p></a>
+
+                            </div>
+                        </div>
+                        <div class="tab2">
+                            <ul class="place">
+                                <li class="sort">付款方式</li>
+                                <li class="by"><img src="__PUBLIC__/help/images/do.png" alt=""></li>
+                                <div class="clearfix"> </div>
+                            </ul>
+                            <div class="single-bottom">
+                                <a href="__APP__/help/paymentMethod/paymentOnline"><p>在线支付</p></a>
+                                <a href="__APP__/help/paymentMethod/cash"><p>货到付款</p></a>
+                                <a href="__APP__/help/paymentMethod/wallet"><p>钱包支付</p></a>
+                            </div>
+                        </div>
+                        <div class="tab3">
+                            <ul class="place">
+                                <li class="sort">配送方式</li>
+                                <li class="by"><img src="__PUBLIC__/help/images/do.png" alt=""></li>
+                                <div class="clearfix"> </div>
+                            </ul>
+                            <div class="single-bottom">
+                                <a href="__APP__/help/distributionMode/distribution"><p>配送时效及运费</p></a>
+                                <a href="__APP__/help/distributionMode/inspection"><p>验货与签收</p></a>
+                            </div>
+                        </div>
+                        <div class="tab4">
+                            <ul class="place">
+                                <li class="sort">售后服务</li>
+                                <li class="by"><img src="__PUBLIC__/help/images/do.png" alt=""></li>
+                                <div class="clearfix"> </div>
+                            </ul>
+                            <div class="single-bottom">
+                                <a href="__APP__/help/service/returnpolicy"><p>退货政策</p></a>
+                                <a href="__APP__/help/service/returnflow"><p>退货流程</p></a>
+                                <a href="__APP__/help/service/returnmethod"><p>退货方式及时效</p></a>
+                            </div>
+                        </div>
+                        <div class="tab5">
+                            <ul class="place">
+                                <li class="sort">部分合作网站</li>
+                                <li class="by"><img src="__PUBLIC__/help/images/do.png" alt=""></li>
+                                <div class="clearfix"> </div>
+                            </ul>
+                            <div class="single-bottom">
+                                <a href="www.lancome.com"><p>兰蔻</p></a>
+                                <a href="www.esteelauder.com.cn"><p>雅诗兰黛</p></a>
+                                <a href="pechoin51870.com"><p>百雀羚</p></a>
+                            </div>
+                        </div>
+                        <!--script-->
+                        <script>
+                            $(document).ready(function(){
+                                $(".tab1 .single-bottom").hide();
+                                $(".tab2 .single-bottom").hide();
+                                $(".tab3 .single-bottom").hide();
+                                $(".tab4 .single-bottom").hide();
+                                $(".tab5 .single-bottom").hide();
+
+                                $(".tab1 ul").click(function(){
+                                    $(".tab1 .single-bottom").slideToggle(300);
+                                    $(".tab2 .single-bottom").hide();
+                                    $(".tab3 .single-bottom").hide();
+                                    $(".tab4 .single-bottom").hide();
+                                    $(".tab5 .single-bottom").hide();
+                                })
+                                $(".tab2 ul").click(function(){
+                                    $(".tab2 .single-bottom").slideToggle(300);
+                                    $(".tab1 .single-bottom").hide();
+                                    $(".tab3 .single-bottom").hide();
+                                    $(".tab4 .single-bottom").hide();
+                                    $(".tab5 .single-bottom").hide();
+                                })
+                                $(".tab3 ul").click(function(){
+                                    $(".tab3 .single-bottom").slideToggle(300);
+                                    $(".tab4 .single-bottom").hide();
+                                    $(".tab5 .single-bottom").hide();
+                                    $(".tab2 .single-bottom").hide();
+                                    $(".tab1 .single-bottom").hide();
+                                })
+                                $(".tab4 ul").click(function(){
+                                    $(".tab4 .single-bottom").slideToggle(300);
+                                    $(".tab5 .single-bottom").hide();
+                                    $(".tab3 .single-bottom").hide();
+                                    $(".tab2 .single-bottom").hide();
+                                    $(".tab1 .single-bottom").hide();
+                                })
+                                $(".tab5 ul").click(function(){
+                                    $(".tab5 .single-bottom").slideToggle(300);
+                                    $(".tab4 .single-bottom").hide();
+                                    $(".tab3 .single-bottom").hide();
+                                    $(".tab2 .single-bottom").hide();
+                                    $(".tab1 .single-bottom").hide();
+                                })
+                            });
+                        </script>
+                        <!-- script -->
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+</div>
+<!--footer-->
+
+<div style=" margin-left: auto; margin-right: auto;">
+    <div class="container">
+        <div class="footer-grids">
+            <div class="col-md-1 footer-grid">
+            </div>
+            <div class="col-md-2 footer-grid">
+                <h4>新手指南</h4>
+                <ul>
+                    <li><a href="__APP__/help/guide/shopping">购物流程</a></li>
+                    <li><a href="__APP__/help/guide/coupon">优惠券规则</a></li>
+                    <li><a href="__APP__/help/guide/customer">联系客服</a></li>
+                    <li><a href="__APP__/help/guide/question">常见问题</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-2 footer-grid">
+                <h4>付款方式</h4>
+                <ul>
+                    <li><a href="__APP__/help/paymentMethod/paymentOnline">在线支付</a></li>
+                    <li><a href="__APP__/help/paymentMethod/cash">货到付款</a></li>
+                    <li><a href="__APP__/help/paymentMethod/wallet">钱包支付</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 footer-grid">
+                <h4>配送方式</h4>
+                <ul>
+                    <li><a href="__APP__/help/distributionMode/distribution">配送时效及运费</a></li>
+                    <li><a href="__APP__/help/distributionMode/inspection">验货与签收</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-2 footer-grid">
+                <h4>售后服务</h4>
+                <ul>
+                    <li><a href="__APP__/help/service/returnpolicy">退货政策</a></li>
+                    <li><a href="__APP__/help/service/returnflow">退货流程</a></li>
+                    <li><a href="__APP__/help/service/returnmethod">退货方式及时效</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 footer-grid">
+                <h4>部分合作网站</h4>
+                <ul>
+                    <li><a href="www.lancome.com">兰蔻</a></li>
+                    <li><a href="www.esteelauder.com.cn">雅诗兰黛</a></li>
+                    <li><a href="pechoin51870.com">百雀羚</a></li>
+                </ul>
+            </div>
+            <div class="col-md-1 footer-grid">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 footer-grid1">
+            <div class="col-md-5 footer-grid">
+            </div>
+            <div class="col-md-2 social-icons">
+                <a href="#"><i class="icon"></i></a>
+                <a href="#"><i class="icon1"></i></a>
+                <a href="#"><i class="icon2"></i></a>
+                <a href="#"><i class="icon3"></i></a>
+                <a href="#"><i class="icon4"></i></a>
+                <p>Copyright &copy; 易购商城</p>
+            </div>
+            <div class="col-md-5 footer-grid">
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer-->
+
+</body>
+</html>
