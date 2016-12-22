@@ -12,7 +12,7 @@ use Think\Controller;
 use Think\Upload;
 
 class OrderController extends Controller
-{   
+{
     /**
      * 购物车
      */
@@ -26,7 +26,6 @@ class OrderController extends Controller
 
         }
         else {
-
 
             $id = $_SESSION['id'];
             $condition['userid'] = $id;
@@ -62,39 +61,6 @@ class OrderController extends Controller
             $this->assign('data', $data);
             $this->assign('user',$_SESSION['user']);
             $this->assign('logout','退出');
-           
-        if($_SESSION['id']!=null)
-        {
-            $id=$_SESSION['id'];
-            $shopingcar=M('shopingcar')->where("userid=$id")->select();
-            $i=0;
-            $alltotal=0;
-            $allcount=0;
-            foreach($shopingcar as $vo){
-                $goodid=$vo['goodid'];
-                $good=M('goods')->find($goodid);
-                $data[$i]['shopid']=$vo['shopid'];
-                $data[$i]['userid']=$vo['userid'];
-                $data[$i]['goodid']=$good['goodid'];
-                $data[$i]['goodname']=$good['goodname'];
-                //$discount1 = $good['discount'];
-                //$discount = $discount1 * 100;
-                $goodprice = $good['goodprice'];
-                $count = $vo['shopcount'];
-                $total =  $goodprice * $count;
-                $data[$i]['shopcount']=$count;
-                $allcount+=$count;
-                $alltotal+= $total;
-                $i++;
-            }
-
-
-            $this->assign('total',$alltotal);
-            $this->assign('count',$allcount);
-        }else {
-            $this->assign('total',"0.00");
-            $this->assign('count',"0");
-        }
             $this->display();
         }
     }
@@ -102,45 +68,45 @@ class OrderController extends Controller
      * 订单详情
      */
     public function order(){
-
+        //从购物车表和商品表中查询信息
         session_start();
-            $id=$_SESSION['id'];
-            $condition['userid']=$id;
-            //$condition['shopid']=$shopid;
-            $shopids = $_POST['shopids'];
-            $i=0;
-            $alltotal = 0;
-            foreach ($shopids as $valus){
-                $condition1['userid']=$id;
-                $condition1['shopid']=$valus;
-                $shopingcar=M('shopingcar')->where($condition1)->select();
-                //dump($condition1);
-                //dump($shopingcar);
-                foreach($shopingcar as $vo){
-                    $goodid=$vo['goodid'];
-                    $good=M('goods')->find($goodid);
-                    $data[$i]['shopid']=$vo['shopid'];
-                    $data[$i]['userid']=$vo['userid'];
-                    $data[$i]['goodid']=$good['goodid'];
-                    $data[$i]['goodname']=$good['goodname'];
-                    $data[$i]['imageurl']=$good['imageurl'];
-                    $discount1 = $good['discount'];
-                    $discount = $discount1 * 100;
-                    $goodprice = $good['goodprice'];
-                    $count = $vo['shopcount'];
-                    $total =  $goodprice * $count;
+        $id=$_SESSION['id'];
+        $condition['userid']=$id;
+        //$condition['shopid']=$shopid;
+        $shopids = $_POST['shopids'];
+        $i=0;
+        $alltotal = 0;
+        foreach ($shopids as $valus){
+            $condition1['userid']=$id;
+            $condition1['shopid']=$valus;
+            $shopingcar=M('shopingcar')->where($condition1)->select();
+            //dump($condition1);
+            //dump($shopingcar);
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $data[$i]['shopid']=$vo['shopid'];
+                $data[$i]['userid']=$vo['userid'];
+                $data[$i]['goodid']=$good['goodid'];
+                $data[$i]['goodname']=$good['goodname'];
+                $data[$i]['imageurl']=$good['imageurl'];
+                $discount1 = $good['discount'];
+                $discount = $discount1 * 100;
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
 
-                    $data[$i]['total'] = $total;
-                    $data[$i]['discount']=$discount;
-                    $data[$i]['goodprice']=$goodprice;
-                    $data[$i]['mark1']=$good['mark1'];
-                    $data[$i]['mark2']=$good['mark2'];
-                    $data[$i]['spec']=$good['spec'];
-                    $data[$i]['shopcount']=$count;
-                    //$userid=$vo['userid'];
-                    $i++;
-                    //dump($good);
-                }
+                $data[$i]['total'] = $total;
+                $data[$i]['discount']=$discount;
+                $data[$i]['goodprice']=$goodprice;
+                $data[$i]['mark1']=$good['mark1'];
+                $data[$i]['mark2']=$good['mark2'];
+                $data[$i]['spec']=$good['spec'];
+                $data[$i]['shopcount']=$count;
+                //$userid=$vo['userid'];
+                $i++;
+                //dump($good);
+            }
             $alltotal += $total;
         }
         //dump($alltotal);
@@ -175,39 +141,23 @@ class OrderController extends Controller
     /**
      *  确认支付（添加到表orders和orderdate）
      */
-    public function payment(){
-        // 获取userID
+    public function add(){
         session_start();
-        if($_SESSION['id']!=null)
-        {
-            $this->assign('user',$_SESSION['user']);
-            $this->assign('logout','退出');
-        }else {
-            $this->assign('user','登录');
-            $this->assign('logout','');
-        }
         $id=$_SESSION['id'];
-       
         // 获取购物车id
         $shopid=I('shopids');
         $address=$_POST['address'];
-   
-        //$address=explode('<li>收货地址：',$address);
         // 字符串切割
         $a='收货地址';
         $address=ltrim($address,'<li>'.$a);
         $address=str_replace('</li><li>收件人：','：',$address);
         $address=str_replace('（收）','：',$address);
         $address = rtrim($address,'</li>');
-        
         $choseaddress = explode("：",$address);
-        
-        //$alltotal = $_GET('alltotal');
         $condition['userid']=$id;
         $condition['shopid']=$shopid;
         $condition1['userid']=$id;
         //$shopingcar=M('shopingcar')->where($condition)->select();
-
 
         // 计算商品总价
         $p=0;
@@ -226,7 +176,8 @@ class OrderController extends Controller
             }
             $alltotal += $total;
         }
-        
+
+
         // 提交到订单表
         $orderTable = M('orders');
         $data = array();
@@ -243,14 +194,15 @@ class OrderController extends Controller
         $data['name'] = $choseaddress[2];
         $data['orderstate'] = 4;
         $data['alltotal'] = $alltotal;
-        $orderTable->add($data);
-        //$orderid = $orderTable['orderid'];
-        $ordernumber = $data['ordernumber'];
 
+        $result = $orderTable->add($data);
+        $ordernumber = $data['ordernumber'];
+        //dump($data);
         //  提交到订单状态表
         $orderdate = M('orderdate');
         $i = 0;
         $j = 0;
+        //dump($shopid);
         foreach ($shopid as $value){
             $condition1['userid']=$id;
             $condition1['shopid']=$value;
@@ -259,22 +211,58 @@ class OrderController extends Controller
             foreach ($shopingcar as $vo) {
                 $goodid = $vo['goodid'];
                 //$good = M('goods')->find($goodid);
-                $order = M('orders')->where("ordernumber=$ordernumber")->getField('orderid');
+                $orderid = M('orders')->where("ordernumber=$ordernumber")->getField('orderid');
                 //$order = intval($order);
                 $values[$i]['goodid'] = $goodid;
                 //$values[$i]['goodid'] = intval($values[$i]['goodid']);
                 $values[$i]['count'] = $vo['shopcount'];
                 //$values[$i]['count'] = intval($values[$i]['count']);
-                $values[$i]['orderid'] = $order;
+                $values[$i]['orderid'] = $orderid;
                 $i ++;
             }
             $j ++;
 
-        }      
+        }
         $orderdate->addALL($values);
 
+        // 购物车表删除
+        foreach ($shopid as $valus) {
+            $shoppingcerTable = M('shopingcar');
+            $result = $shoppingcerTable->where("shopid=$value")->delete();
+        }
+
+    }
+    public function payment(){
+        // 获取userID
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $id=$_SESSION['id'];
+        //dump($id);
+        // 获取购物车id
+
+        $shopid=I('shopids');
+        $address=$_POST['address'];
+        // 字符串切割
+        $a='收货地址';
+        $address=ltrim($address,'<li>'.$a);
+        $address=str_replace('</li><li>收件人：','：',$address);
+        $address=str_replace('（收）','：',$address);
+        $address = rtrim($address,'</li>');
+        $choseaddress = explode("：",$address);
+        $condition['userid']=$id;
+        $condition['shopid']=$shopid;
+        $condition1['userid']=$id;
+        //$shopingcar=M('shopingcar')->where($condition)->select();
+
         // 计算商品总价
-        /*$p=0;
+        $p=0;
         $alltotal = 0;
         foreach ($shopid as $valus){
             $condition1['userid']=$id;
@@ -289,18 +277,67 @@ class OrderController extends Controller
                 $p++;
             }
             $alltotal += $total;
-        }*/
+        }
+
+
+        // 提交到订单表
+        $orderTable = M('orders');
+        $data = array();
+        $data['userid'] = $id;
+        $date = time();
+        $ordertime = date('Y-m-d H:m:s',$date);
+        $data['ordertime'] = $ordertime;
+        $str1 = rand(100000000,999999999);
+        $str2 = $date;
+        $data['ordernumber'] = $str1.$str2;
+        //$data['discount'] = $good['discount'];
+        $data['orderaddress'] = $choseaddress[1];
+        $data['tel'] = $choseaddress[3];
+        $data['name'] = $choseaddress[2];
+        $data['orderstate'] = 4;
+        $data['alltotal'] = $alltotal;
+
+        $result = $orderTable->add($data);
+        $ordernumber = $data['ordernumber'];
+        //dump($data);
+        //  提交到订单状态表
+        $orderdate = M('orderdate');
+        $i = 0;
+        $j = 0;
+        //dump($shopid);
+        foreach ($shopid as $value){
+            $condition1['userid']=$id;
+            $condition1['shopid']=$value;
+            $shopingcar=M('shopingcar')->where($condition1)->select();
+            //dump($condition1);
+            foreach ($shopingcar as $vo) {
+                $goodid = $vo['goodid'];
+                //$good = M('goods')->find($goodid);
+                $orderid = M('orders')->where("ordernumber=$ordernumber")->getField('orderid');
+                //$order = intval($order);
+                $values[$i]['goodid'] = $goodid;
+                //$values[$i]['goodid'] = intval($values[$i]['goodid']);
+                $values[$i]['count'] = $vo['shopcount'];
+                //$values[$i]['count'] = intval($values[$i]['count']);
+                $values[$i]['orderid'] = $orderid;
+                $i ++;
+            }
+            $j ++;
+
+        }
+        $orderdate->addALL($values);
 
         // 购物车表删除
         foreach ($shopid as $valus) {
             $shoppingcerTable = M('shopingcar');
             $result = $shoppingcerTable->where("shopid=$value")->delete();
         }
-        
+
         $women = M('grand')->where("mark=1")->select();
         $men = M('grand')->where("mark=2")->select();
         $children = M('grand')->where("mark=3")->select();
         //$this->assign('alltotal',$alltotal);
+        $this->assign('orderid',$orderid);
         $this->assign('alltotal', $alltotal);
         $this->assign('women',$women);
         $this->assign('men',$men);
@@ -309,6 +346,49 @@ class OrderController extends Controller
         $this->assign('values',$values);
         $this->display();
     }
+    /*public function payment(){
+        session_start();
+        $id=$_SESSION['id'];
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $shopid=I('shopids');
+        // 计算商品总价
+        $p=0;
+        $alltotal = 0;
+        foreach ($shopid as $valus){
+            $condition1['userid']=$id;
+            $condition1['shopid']=$valus;
+            $shopingcar=M('shopingcar')->where($condition1)->select();
+            foreach($shopingcar as $vo){
+                $goodid=$vo['goodid'];
+                $good=M('goods')->find($goodid);
+                $goodprice = $good['goodprice'];
+                $count = $vo['shopcount'];
+                $total =  $goodprice * $count;
+                $p++;
+            }
+            $alltotal += $total;
+        }
+
+        $women = M('grand')->where("mark=1")->select();
+        $men = M('grand')->where("mark=2")->select();
+        $children = M('grand')->where("mark=3")->select();
+        //$this->assign('alltotal',$alltotal);
+        $this->assign('orderid',$orderid);
+        $this->assign('alltotal', $alltotal);
+        $this->assign('women',$women);
+        $this->assign('men',$men);
+        $this->assign('children',$children);
+        $this->assign('data',$data);
+        $this->assign('values',$values);
+        $this->display();
+    }*/
     /**
      * 购物车删除
      */
@@ -364,41 +444,11 @@ class OrderController extends Controller
         M('goods')->where($vo)->save($voo);
         $this->display();
     }
-    /*public function adds()
-    {
-        session_start();
-        $condition['userid']=$_SESSION['id'];
-        $condition['shopid']=$_GET['shopid'];
-        //dump($condition);
-        if($condition['userid']==null)
-        {
-            $this->error('亲，请先登录！','../../../index/login');
-        }
-        else{
-            $ordersTable=M('orders');
-            $find=$ordersTable->where($condition)->find();
-            //dump($find);
-            if($find)
-            {
-                $shopcount=$ordersTable->where($condition)->getField('shopcount');
-                $condition1['shopcount']=$shopcount+1;
-                $result=$ordersTable->where($condition)->save($condition1);
-                if($result)
-                {
-                    $this->success('添加成功','../../../order/checkout');
-                }
-            }
-            else{
-                $condition['shopcount']=1;
-                $result=$ordersTable->add($condition);
-                if($result)
-                {
-                    $this->success('添加成功','../../../order/order');
-                }
+    /**
+     * 确认付款后删除购物车相关信息
+     */
+    public function checkdelete(){
 
-            }
+    }
 
-
-        }
-    }*/
 }
