@@ -42,6 +42,7 @@ class GoodsController extends Controller
             $this->assign('grands',$date['grands']);
             $this->assign('categories',$date['categories']);
             $this->assign('good',$result);
+             $this->assign('goods',$date['good']);
             $this->display();
         } else{
             header('Location: ../../admin/index/login');
@@ -150,36 +151,89 @@ class GoodsController extends Controller
     {
         session_start();
         if ($_SESSION['id'] != null) {
-            $goodid = $_POST['goodid'];
+             $upload = new Upload(C('FILE_UPLOAD'));
+        $info = $upload->upload();
             $easybuy = new easybuy();
+            $goodid = $_POST['goodid'];
             $things = $easybuy->GoodPostGC();
+            $date = $easybuy->GoodArrayMake2($things['grand'], $things['categories']);
+              if($info)
+            {
+                foreach ($info as $file) {
+                    $date['imageurl'] = $file['savepath'] . $file['savename'];
+                    //exit;
+                }
+            }
+            else{
+                $date['imageurl']=I('pi');
+            }
+          
+           if( I('pic')!=null)
+           {
+               $date['introduction']=I('pic');
+           }
+           else{
+               $date['introduction']=I('in');
+           }
+            //dump($date);
+
             //dump($categories);
             session_start();
-            if($_SESSION['id']!=null) {
+            if ($_SESSION['id'] != null) {
                 //$easybuy = new easybuy();//实例化一个easybuy类
-                $date = $easybuy->GoodArrayMake2($things['grand'],$things['categories']);
+
                 $result = M('goods')->where("goodid=$goodid")->save($date);
-                if ($result)
-                {
-                    $this->redirect('index',0);
+                if ($result) {
+                    $this->success('商品修改成功', 'index');
+                } else {
+                    $this->error('修改失败', 'revise');
                 }
-                else
-                {
-                    $this->error('修改失败','revise');
-                }
-            }
-
-            else{
-                $this->error("请登录！",'../index/login');
+            } else {
+                $this->error("请登录！", '../index/login');
 
             }
-        } else{
-            header('Location: ../../admin/index/login');
-        }
+            
+           }
+       
     }
+      /**
+     * 2016-12-22
+     * 张宇晗
+     * 图像上传处理
+     **/
+    public function uploadify() {
+        if (!empty($_FILES)) {
+            //图片上传设置
+            $config = array(
+                'maxSize' => 3145728,
+                'savePath' => '',
+                'saveName' => array('uniqid', ''),
+                'exts' => array('jpg', 'gif', 'png', 'jpeg'),
+                'autoSub' => true,
+                'subName' => array('date', 'Ymd'),
+            );
+            $upload = new Upload($config);// 实例化上传类
+            $info = $upload->upload();
+            if (!$info) {
+                //上传错误提示信息
+                $this->error($upload->getError());
+            } else {
+
+                foreach ($info as $file) {
+                    echo $file['savepath'] . $file['savename'];
+                    //exit;
+                }
+            }
+
+            }
+        }
+
     public function select()
     {
-        session_start();
+
+            
+   
+
         if ($_SESSION['id'] != null) {
             $easybuy = new easybuy();//实例化一个easybuy类
             $grandname = $_POST['g_name'];

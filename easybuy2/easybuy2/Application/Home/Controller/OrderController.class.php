@@ -223,7 +223,6 @@ class OrderController extends Controller
                 //$good = M('goods')->find($goodid);
                 $orderid = M('orders')->where("ordernumber=$ordernumber")->getField('orderid');
                 //$order = intval($order);
-                dump($orderid);
                 $values[$i]['goodid'] = $goodid;
                 //$values[$i]['goodid'] = intval($values[$i]['goodid']);
                 $values[$i]['count'] = $vo['shopcount'];
@@ -254,6 +253,87 @@ class OrderController extends Controller
         $this->assign('data',$data);
         $this->assign('values',$values);
         $this->display('order/payment');
+    }
+    
+    /**
+     *  支付页
+     **/
+    public function payment(){
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $orderid = I('id');
+        $alltotal = M('orders')->where("orderid=$orderid")->getField('alltotal');
+        $this->assign('alltotal',$alltotal);
+        $this->assign('orderid',$orderid);
+        $this->display();
+    }
+    /**
+     * 购物车删除
+     */
+    public function delete()
+    {
+        session_start();
+        if ($_SESSION['id'] != null) {
+            $shoppingcerTable = M('shopingcar');
+            $shopid = I('shopid');
+            $result = $shoppingcerTable->delete($shopid);
+            if ($result) {
+                $this->success('数据删除成功');
+            } else {
+                $this->error('删除失败');
+            }
+        } else {
+            $this->error("请登录！", '../index/login');
+
+        }
+    }
+    /**
+     * 支付完成
+     */
+    public function over(){
+        session_start();
+        if($_SESSION['id']!=null)
+        {
+            $this->assign('user',$_SESSION['user']);
+            $this->assign('logout','退出');
+        }else {
+            $this->assign('user','登录');
+            $this->assign('logout','');
+        }
+        $id=$_SESSION['userid'];
+        $orderid = I('orderid');
+        $condition['orderid'] = $orderid;
+        $date['orderstate'] = 1;
+        // 更改订单状态为未发货状态(由状态4未付款到状态1未发货)
+        M('orders')->where($condition)->save($date);
+        // 更改商品表中商品数量
+        $orderstate = M('orderdate')->where($condition)->select();
+        $i = 0;
+        foreach ($orderstate as $value){
+            // 获取购买商品数量
+            $vos['count'] = $value['count'];
+            // 获取购买商品id
+            $vo['goodid'] = $value['goodid'];
+            $goods = M('goods')->where($vo)->getField('count');
+            $voo['count'] = $goods-$vos['count'];
+            $i ++;
+        }
+        // 更新数量
+        M('goods')->where($vo)->save($voo);
+        $this->display();
+    }
+    /**
+     * 确认付款后删除购物车相关信息
+     */
+    public function checkdelete(){
+
     }
     /*
      * 为了添加操作和获取操作分开，将此方法分别为add()和payment()
@@ -372,85 +452,5 @@ class OrderController extends Controller
         $this->assign('values',$values);
         $this->display();
     }*/
-    /**
-     *  支付页
-     **/
-    public function payment(){
-        session_start();
-        if($_SESSION['id']!=null)
-        {
-            $this->assign('user',$_SESSION['user']);
-            $this->assign('logout','退出');
-        }else {
-            $this->assign('user','登录');
-            $this->assign('logout','');
-        }
-        $orderid = I('id');
-        $alltotal = M('orders')->where("orderid=$orderid")->getField('alltotal');
-        $this->assign('alltotal',$alltotal);
-        $this->assign('orderid',$orderid);
-        $this->display();
-    }
-    /**
-     * 购物车删除
-     */
-    public function delete()
-    {
-        session_start();
-        if ($_SESSION['id'] != null) {
-            $shoppingcerTable = M('shopingcar');
-            $shopid = I('shopid');
-            $result = $shoppingcerTable->delete($shopid);
-            if ($result) {
-                $this->success('数据删除成功');
-            } else {
-                $this->error('删除失败');
-            }
-        } else {
-            $this->error("请登录！", '../index/login');
-
-        }
-    }
-    /**
-     * 支付完成
-     */
-    public function over(){
-        session_start();
-        if($_SESSION['id']!=null)
-        {
-            $this->assign('user',$_SESSION['user']);
-            $this->assign('logout','退出');
-        }else {
-            $this->assign('user','登录');
-            $this->assign('logout','');
-        }
-        $id=$_SESSION['userid'];
-        $orderid = I('orderid');
-        $condition['orderid'] = $orderid;
-        $date['orderstate'] = 1;
-        // 更改订单状态为未发货状态(由状态4未付款到状态1未发货)
-        M('orders')->where($condition)->save($date);
-        // 更改商品表中商品数量
-        $orderstate = M('orderdate')->where($condition)->select();
-        $i = 0;
-        foreach ($orderstate as $value){
-            // 获取购买商品数量
-            $vos['count'] = $value['count'];
-            // 获取购买商品id
-            $vo['goodid'] = $value['goodid'];
-            $goods = M('goods')->where($vo)->getField('count');
-            $voo['count'] = $goods-$vos['count'];
-            $i ++;
-        }
-        // 更新数量
-        M('goods')->where($vo)->save($voo);
-        $this->display();
-    }
-    /**
-     * 确认付款后删除购物车相关信息
-     */
-    public function checkdelete(){
-
-    }
 
 }

@@ -62,6 +62,7 @@ class easybuy extends Controller
         $date['mark1']        = I('mark1');
         $date['mark2']        = I('mark2');
         $date['introduction'] = I('introduction');
+        $date['imageurl'] = I('imageurl');
         $date['brief']        =  I('brief');
         $date['daily']        = I('daily');
         $date['grandid']      = $grand['grandid'];
@@ -77,6 +78,9 @@ class easybuy extends Controller
         $categories = M('categories')->select();
 
         $good = M('goods')->find($id);
+        $condition['goodid']=$id;
+        $introduction=M('goods')->where($condition)->getField('introduction');
+        $imageurl=M('goods')->where($condition)->getField('imageurl');
         $c_id = $good['categoriesid'];//获取分类id
         $g_id = $good['grandid'];//获取品牌id
         $grand = M('grand')->find($g_id);//实例化品牌表
@@ -86,6 +90,8 @@ class easybuy extends Controller
         $date['grands'] = $grands;
         $date['categories'] = $categories;
         $date['good'] = $good;
+         $date['introduction']=$introduction;
+        $date['imageurl']=$imageurl;
         $date['grandname'] = $grandname;
         $date['categoriesname'] = $categoriesname;
         return $date;
