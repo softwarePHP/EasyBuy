@@ -22,7 +22,7 @@ class OrderController extends Controller
         session_start();
         if($_SESSION['id']==null)
         {
-            $this->success('亲，请先登录！','../../../index/login');
+            $this->success('亲，请先登录！','../index/login');
 
         }
         else {
