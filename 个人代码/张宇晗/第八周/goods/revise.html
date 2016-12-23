@@ -1,0 +1,131 @@
+<script src="__PUBLIC__/admin/js/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/uploadify.css">
+
+<!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="__APP__/home/index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/index.php/home/good/index">商品管理</a><span class="crumb-step">&gt;</span><span>修改商品</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__APP__/admin/goods/update" method="post" id="myform" name="myform"  enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>分类：</th>
+                            <td>
+                                <select name="g_name" id="brand" class="required">
+                                    <volist name="grands" id="gr">
+                                        <if condition="$gr.grandname == $good.grandname">
+                                            <option value="{$gr.grandname}" selected = "selected">{$gr.grandname}</option>
+                                            <else/>
+                                            <option value="{$gr.grandname}">{$gr.grandname}</option>
+                                        </if>
+                                    </volist>
+                                </select>
+                                <select name="c_name" id="catids" class="required">
+                                    <volist name="categories" id="ca">
+                                        <if condition="$ca.categoriesname == $good.categoriesname">
+                                            <option value="{$ca.categoriesname}" selected = "selected">{$ca.categoriesname}</option>
+                                            <else/>
+                                            <option value="{$ca.categoriesname}">{$ca.categoriesname}</option>
+                                        </if>
+                                    </volist>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品名称：</th>
+                            <td>
+                                <input class="common-text required" id="goodname" name="goodname" size="50" value="{$good.goodname}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品价格：</th>
+                            <td>
+                                <input class="common-text required"  name="goodprice" size="50" value="{$good.goodprice}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品数量：</th>
+                            <td>
+                                <input class="common-text required" name="count" size="50" value="{$good.count}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>第一标签：</th>
+                            <td>
+                                <input class="common-text required"  name="mark1" size="50" value="{$good.mark1}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>第二标签：</th>
+                            <td>
+                                <input class="common-text required"  name="mark2" size="50" value="{$good.mark2}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品规格：</th>
+                            <td>
+                                <input class="common-text required"  name="spec" size="50" value="{$good.spec}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品折扣：</th>
+                            <td>
+                                <input class="common-text required"  name="discount" size="50" value="{$good.discount}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品简介：</th>
+                            <td>
+                                <img id="img"  src="{$goods.introduction}" width="200" height="400" border="0" /><br>
+                                <span>上传图片尺寸建议为700*2210</span><br>
+                                <input type="hidden" name="pic" id="pic">
+                                <input id="file_upload" name="introduction" type="file"  size="560" />
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <th><i class="require-red">*</i>每日精选：</th>
+                            <td>
+                                <input type="radio" name="daily" value="1">是&nbsp;
+                                <input type="radio" name="daily" value="0">否&nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品图片：</th>
+                            <td>
+                                <span>上传图片尺寸建议为200*200</span><br>
+                                <input name="imageurl" type="file" />
+                                <input type="hidden" name="in" value="{$goods.introduction}">
+                                <input type="hidden" name="pi" value="{$goods.imageurl}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>商品详情：</th>
+                            <td>
+                                <textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;" rows="10">
+
+                                </textarea>
+                            </td>
+                        </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="common-text required" id="title" name="goodid" type="hidden" value="{$good.goodid}"/>
+                                    <input class="btn btn6" value="提交" type="submit">
+                                    <a class="link-update" href="__APP__/home/good/index"><input class="btn btn6" value="返回" type="button"></a>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+
+
+</body>
+</html>

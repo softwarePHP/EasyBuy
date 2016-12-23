@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/main.css"/>
+    <script type="text/javascript" src="__PUBLIC__/admin/js/libs/modernizr.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/js/jquery-3.1.1.min.js"></script>
+
+    <script src="__PUBLIC__/admin/js/jquery.uploadify.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/uploadify.css">
+
+</head>
+<body>
+<div class="topbar-wrap white">
+    <div class="topbar-inner clearfix">
+        <div class="topbar-logo-wrap clearfix">
+            <h1 class="topbar-logo none"><a href="__APP__/admin/admin/index" class="navbar-brand">后台管理</a></h1>
+            <ul class="navbar-list clearfix">
+                <li><a class="on" href="__APP__/admin/index/index">首页</a></li>
+                <li><a href="#" target="_blank">网站首页</a></li>
+            </ul>
+        </div>
+        <div class="top-info-wrap">
+            <ul class="top-info-list clearfix">
+                <li>欢迎您</li>
+                <li><a href="__APP__/admin/index/index">{$_SESSION['admin']}</a></li>
+                <li><a href="__APP__/admin/admin/update">修改密码</a></li>
+                <li><a href="__APP__/admin/index/logout">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container clearfix">
+    <div class="sidebar-wrap">
+        <div class="sidebar-title">
+            <h1>菜单</h1>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-list"  id="accordion">
+                <li>
+                    <div class="link"><a href="#"><i class="icon-font">&#xe003;</i>常用操作</a></div>
+                    <ul class="sub-menu">
+                        <li><a href="__APP__/admin/order/unsend"><i class="icon-font">&#xe008;</i>未发货订单</a></li>
+                        <li><a href="__APP__/admin/goods/insert"><i class="icon-font">&#xe008;</i>添加商品</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <div class="link"><a href="#"><i class="icon-font">&#xe003;</i>用户管理</a></div>
+                    <ul class="sub-menu">
+                        <li><a href="__APP__/admin/user/index"><i class="icon-font">&#xe008;</i>查看用户</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link"><a href="#"><i class="icon-font">&#xe018;</i>管理员管理</a></div>
+                    <ul class="sub-menu">
+                        <li><a href="__APP__/admin/admin/index"><i class="icon-font">&#xe037;</i>查看管理员</a></li>
+                        <li><a href="__APP__/admin/admin/insert"><i class="icon-font">&#xe017;</i>添加管理员</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <div class="link"><a href="#"><i class="icon-font">&#xe018;</i>分类管理</a></div>
+                    <ul class="sub-menu">
+                        <li><a href="__APP__/admin/grands/index"><i class="icon-font">&#xe017;</i>查看品牌</a></li>
+                        <li><a href="__APP__/admin/grands/insert"><i class="icon-font">&#xe017;</i>添加品牌</a></li>
+                        <li><a href="__APP__/admin/type/index"><i class="icon-font">&#xe037;</i>查看种类</a></li>
+                        <li><a href="__APP__/admin/type/insert"><i class="icon-font">&#xe017;</i>添加种类</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link"><a href="#"><i class="icon-font">&#xe003;</i>订单管理</a></div>
+                    <ul class="sub-menu">
+                        <li><a href="__APP__/admin/order/all"><i class="icon-font">&#xe005;</i>全部订单</a></li>
+                        <li><a href="__APP__/admin/order/unsend"><i class="icon-font">&#xe005;</i>未发货订单</a></li>
+                        <li><a href="__APP__/admin/order/send"><i class="icon-font">&#xe008;</i>已发货订单</a></li>
+                        <li><a href="__APP__/admin/order/over"><i class="icon-font">&#xe006;</i>已完成订单</a></li>
+                        <li><a href="__APP__/admin/order/pendingPayment"><i class="icon-font">&#xe006;</i>待付款订单</a></li>
+                        <li><a href="__APP__/admin/order/canceledOrder"><i class="icon-font">&#xe006;</i>已取消订单</a></li>
+                        <li><a href="__APP__/admin/order/returned"><i class="icon-font">&#xe006;</i>已退货订单</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="link"><a href="#"><i class="icon-font">&#xe003;</i>商品管理</a></div>
+                    <ul class="sub-menu">
+                        <li><a href="__APP__/admin/goods/index"><i class="icon-font">&#xe005;</i>查看商品</a></li>
+                        <li><a href="__APP__/admin/goods/insert"><i class="icon-font">&#xe008;</i>添加商品</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    {__CONTENT__}
+</div>
+<script>
+    $(function() {
+        var Accordion = function(el, multiple) {
+            this.el = el || {};
+            this.multiple = multiple || false;
+
+            // Variables privadas
+            var links = this.el.find('.link');
+            // Evento
+            links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+        }
+
+        Accordion.prototype.dropdown = function(e) {
+            var $el = e.data.el;
+            $this = $(this),
+                    $next = $this.next();
+
+            $next.slideToggle();
+            $this.parent().toggleClass('open');
+
+            if (!e.data.multiple) {
+                $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+            };
+        }
+
+        var accordion = new Accordion($('#accordion'), false);
+    });
+</script>
+/**
+* 2016-12-22
+* 张宇晗
+* jQuery.uploadify功能
+**/
+<script type="text/javascript">
+    $(function () {
+        var sid = '{:session_id()}';
+        $('#file_upload').uploadify({
+            formData : {'session_id' : sid},
+            swf : '__PUBLIC__/admin/js/uploadify.swf',
+            uploader : "{:U(MODULE_NAME . '/' . CONTROLLER_NAME . '/uploadify')}",
+            buttonText : '商品介绍图片上传',
+            fileTypeExt : '*.png;*.jpeg;*.jpg;*.gif;',
+            fileTypeDesc : '选择图片',
+            onUploadSuccess : function(file, data, response) {
+                var src = '__ROOT__/Uploads/' + data;
+                $('#img').attr('src', src);
+                $('#pic').val(src);
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

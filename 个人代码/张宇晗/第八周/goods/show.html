@@ -1,0 +1,78 @@
+<!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="/index.php/admin/index/index">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="/index.php/admin/good/index">商品管理</a><span class="crumb-step">&gt;</span><span>修改商品</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="__APP__/admin/goods/revise?id={$good.goodid}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                        <tr>
+                            <th><i class="require-red">*</i>商品名称</th>
+                            <td>{$good.goodname}</td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>商品价格</th>
+                            <td>{$good.goodprice}</td>
+
+                        </tr>
+                        <tr>
+                            <th>商品数量</th>
+                            <td>{$good.count}</td>
+                        </tr>
+                        <tr>
+                            <th>所属品牌</th>
+                            <td>{$good.grandname}</td>
+                        </tr>
+                        <tr>
+                            <th>所属分类</th>
+                            <td>{$good.categoriesname}</td>
+                        </tr>
+                        <tr>
+                            <th>第一标签</th>
+                            <td>{$good.mark1}</td>
+                        </tr>
+                        <tr>
+                            <th>第二标签</th>
+                            <td>{$good.mark2}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;padding-right: 10px;">商品规格</td>
+                            <td>{$good.spec}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;padding-right: 10px;">商品折扣</td>
+                            <td>{$good.discount}</td>
+                        </tr>
+                        <tr>
+                            <th>每日精选</th>
+                            <td>{$daily}</td>
+                        </tr>
+                        <tr>
+                            <th>商品简介</th>
+                            <td>{$good.brief}</td>
+                        </tr>
+                        <tr>
+                            <th>商品详情</th>
+                            <td>{$good.introduction}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                           <td>
+                                <a class="link-update" href="__APP__/admin/goods/revise?id={$good.goodid}">
+                                    <input class="btn btn6" value="修改" type="button">
+                                </a>
+                                <a class="link-update" href="__APP__/admin/goods/index">
+                                    <input class="btn btn6" value="返回" type="button">
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
