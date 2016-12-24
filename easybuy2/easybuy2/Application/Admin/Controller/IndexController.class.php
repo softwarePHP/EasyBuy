@@ -12,7 +12,7 @@ class IndexController extends Controller
             //$this->assign('user',$_SESSION['admin']);
             $this->display();
         }else {
-            header('Location:admin/index/login');
+            header('Location:index/login');
         }
     }
     public function login(){
