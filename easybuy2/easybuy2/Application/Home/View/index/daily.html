@@ -149,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <h2>每日精选</h2>
             <div class="col-md-9 product-model-sec">
                 <volist name="goods" id="vo">
-                    <a href="__APP__/home/goods/index"><div class="product-grid">
+                    <a href="{:U('home/goods/index',array('id'=>encode($vo['goodid'])))}"><div class="product-grid">
                         <div class="more-product"><span> </span></div>
                         <div class="product-img b-link-stripe b-animate-go  thickbox">
                             <img src="__ROOT__/{$vo.imageurl}" class="img-responsive" alt="">
@@ -169,7 +169,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <!--<p class="disc">[8折]</p>-->
                             </div>
                             <!--<input type="text" class="item_quantity" value="1" />-->
-                            <a href = "__APP__/home/order/checkout?id={$vo.goodid}"><input type="button" class="item_add items" value="+"></a>
+                            <a href = "{:U('home/goods/checkout',array('id'=>encode($vo['goodid'])))}"><input type="button" class="item_add items" value="+"></a>
                             <div class="clearfix"> </div>
                         </div>
                     </div>
