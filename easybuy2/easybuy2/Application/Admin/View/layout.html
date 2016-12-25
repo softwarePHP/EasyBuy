@@ -139,8 +139,8 @@
             fileTypeExt : '*.png;*.jpeg;*.jpg;*.gif;',
             fileTypeDesc : '选择图片',
             onUploadSuccess : function(file, data, response) {
-                var src = '__ROOT__/Uploads/' + data;
-                $('#img').attr('src', src);
+                var src = 'uploads/' + data;
+                $('#img').attr('src', "__ROOT__/".src);
                 $('#pic').val(src);
             }
         });
